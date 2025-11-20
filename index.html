@@ -69,24 +69,45 @@
         transform: scale(0.96);
     }
 
-    /* ЗАГОЛОВКИ БЛОКОВ */
-    h2 {
-        font-size: 20px;
-        margin: 32px 18px 14px;
-        padding-bottom: 10px;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        position: relative;
+    /* ===== ЗАГОЛОВКИ КАТЕГОРИЙ + ПОДПИСЬ ===== */
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 32px 18px 4px;
     }
 
-    h2::after {
+    .section-marker {
+        width: 6px;
+        height: 22px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 0 12px rgba(255,255,255,0.7);
+    }
+
+    .section-header h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        line-height: 1.3;
+    }
+
+    .section-header::after {
         content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 2px;
-        width: 100%;
-        background: rgba(255,255,255,0.4);
+        flex: 1;
+        height: 1px;
+        margin-left: 12px;
+        background: rgba(255,255,255,0.30);
+    }
+
+    .section-hint {
+        margin: 0 18px 10px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(255,255,255,0.78);
     }
 
     /* Блок "Преимущества" */
@@ -305,24 +326,32 @@
 
     <!-- ВЫПРЯМЛЕНИЕ -->
     <div id="viypr" class="section">
-        <h2>ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
+        <div class="section-header">
+            <div class="section-marker"></div>
+            <h2>Процедуры для выпрямления / разглаживания волос</h2>
+        </div>
+        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
-    <div class="card"><img src="Ботокс.jpg" alt=""></div>
-    <div class="card"><img src="Биксипластия 2в1.jpg" alt=""></div>
-    <div class="card"><img src="Кератин коллаген.jpg" alt=""></div>
-    <div class="card"><img src="Кератин.jpg" alt=""></div>
-    <div class="card"><img src="totalnaya.jpg" alt=""></div>
-    <div class="card"><img src="totalnaya1.jpg" alt=""></div><!-- 🔥 ДОБАВЛЕН -->
-    <div class="card"><img src="Виски.JPG" alt=""></div>
-    <div class="card"><img src="Нанопластика.jpeg" alt=""></div>
-    <div class="card"><img src="Бразилиан.jpeg" alt=""></div>
-</div>
+            <div class="card"><img src="Ботокс.jpg" alt=""></div>
+            <div class="card"><img src="Биксипластия 2в1.jpg" alt=""></div>
+            <div class="card"><img src="Кератин коллаген.jpg" alt=""></div>
+            <div class="card"><img src="Кератин.jpg" alt=""></div>
+            <div class="card"><img src="totalnaya.jpg" alt=""></div>
+            <div class="card"><img src="totalnaya1.jpg" alt=""></div>
+            <div class="card"><img src="Виски.JPG" alt=""></div>
+            <div class="card"><img src="Нанопластика.jpeg" alt=""></div>
+            <div class="card"><img src="Бразилиан.jpeg" alt=""></div>
+        </div>
     </div>
 
     <!-- УХОДЫ -->
     <div id="uhod" class="section">
-        <h2>УХОДЫ + СТРИЖКИ</h2>
+        <div class="section-header">
+            <div class="section-marker"></div>
+            <h2>Уходы + стрижки</h2>
+        </div>
+        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
             <div class="card"><img src="Холодное восстановление.jpeg" alt=""></div>
@@ -336,7 +365,11 @@
 
     <!-- ОКРАШИВАНИЕ -->
     <div id="okrash" class="section">
-        <h2>ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
+        <div class="section-header">
+            <div class="section-marker"></div>
+            <h2>Окрашивание и биозавивка</h2>
+        </div>
+        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
             <div class="card"><img src="Окрашивание.JPG" alt=""></div>
