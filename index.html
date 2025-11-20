@@ -144,28 +144,38 @@
     }
 
     /* КАРТОЧКИ ПРАЙСОВ */
-    .card {
-        background: rgba(255,255,255,0.08);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 10px 22px rgba(0,0,0,0.28);
-        border: 1px solid rgba(255,255,255,0.22);
-        backdrop-filter: blur(16px) saturate(150%);
-        -webkit-backdrop-filter: blur(16px) saturate(150%);
-        cursor: pointer;
-        transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
-    }
+ .card {
+    background: rgba(255,255,255,0.05); /* темнее и чище */
+    border-radius: 18px;
+    overflow: hidden;
 
-    .card img {
-        width: 100%;
-        display: block;
-    }
+    /* более глубокая стильная тень */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 
-    .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 30px rgba(0,0,0,0.32);
-        border-color: rgba(210,225,255,0.9);
-    }
+    /* мягкая, менее кричащая обводка */
+    border: 1px solid rgba(255,255,255,0.15);
+
+    /* более чистое, глубокое стекло */
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+    cursor: pointer;
+
+    transition: transform 0.14s ease,
+                box-shadow 0.14s ease,
+                border-color 0.14s ease;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.40); /* чуть сильнее */
+    border-color: rgba(255,255,255,0.28); /* более премиальное свечение */
+}
 
     /* ПЛАВАЮЩЕЕ МЕНЮ "ЗАПИСАТЬСЯ" */
     .fab-wrapper {
