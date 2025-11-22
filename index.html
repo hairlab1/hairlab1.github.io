@@ -69,28 +69,15 @@
         transform: scale(0.96);
     }
 
-    /* ===== АДРЕС ===== */
+    /* ===== АДРЕС — просто текст ===== */
     .address-bar {
-        margin: 18px auto 10px;
-        padding: 8px 14px;
-        width: fit-content;
-
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(14px) saturate(150%);
-        -webkit-backdrop-filter: blur(14px) saturate(150%);
-        border: 1px solid rgba(255,255,255,0.18);
-
-        border-radius: 14px;
-        font-size: 13px;
+        margin: 16px 18px 6px;
+        font-size: 14px;
         font-weight: 500;
-
+        color: rgba(255,255,255,0.95);
         display: flex;
         align-items: center;
         gap: 6px;
-
-        color: rgba(255,255,255,0.92);
-
-        box-shadow: 0 6px 16px rgba(0,0,0,0.22);
     }
 
     .address-icon {
@@ -354,10 +341,10 @@
         <button onclick="scrollToId('okrash')">Окрашивание</button>
     </div>
 
-    <!-- АДРЕС -->
+    <!-- АДРЕС (без фона) -->
     <div class="address-bar">
         <span class="address-icon">📍</span>
-        <span>Томск — Розы Люксембург, 4В — 4 этаж</span>
+        Томск — Розы Люксембург, 4В — 4 этаж
     </div>
 
     <!-- ПРЕИМУЩЕСТВА -->
