@@ -76,20 +76,30 @@
         color: #ffffff;
     }
 
-    /* ===== АДРЕС — просто текст ===== */
+    /* ===== БЛОК БРЕНДА И АДРЕСА ===== */
     .address-bar {
         margin: 18px 18px 10px;
-        font-size: 14px;
-        font-weight: 500;
-        color: rgba(255,255,255,0.95);
         display: flex;
-        align-items: center;
-        gap: 6px;
+        flex-direction: column;
+        gap: 2px;
+        color: rgba(255,255,255,0.95);
     }
 
-    .address-icon {
+    .address-brand {
         font-size: 15px;
-        opacity: 0.9;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .address-sub {
+        font-size: 11px;
+        opacity: 0.8;
+    }
+
+    .address-line {
+        font-size: 12px;
+        opacity: 0.85;
     }
 
     /* ===== ЗАГОЛОВКИ КАТЕГОРИЙ + ПОДПИСЬ ===== */
@@ -249,6 +259,7 @@
 
     .whatsapp { background: #25D366; }
     .telegram { background: #229ED9; }
+    .phone { background: rgba(0,0,0,0.70); }
     .instagram {
         background: radial-gradient(circle at 30% 30%,
             #fdf497 0, #fdf497 8%, #fd5949 45%, #d6249f 60%, #285AEB 100%);
@@ -338,11 +349,15 @@
         position: relative;
         max-width: 100%;
         max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 
     .modal-inner img {
         max-width: 100%;
-        max-height: 90vh;
+        max-height: 80vh;
         border-radius: 18px;
         box-shadow:
             0 20px 40px rgba(0,0,0,0.7),
@@ -370,6 +385,51 @@
 
     .modal-close:active {
         transform: scale(0.92);
+    }
+
+    /* КНОПКИ ВПЕРЁД/НАЗАД */
+    .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border: none;
+        background: rgba(0,0,0,0.55);
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .modal-prev {
+        left: 6px;
+    }
+
+    .modal-next {
+        right: 6px;
+    }
+
+    .modal-nav:active {
+        transform: translateY(-50%) scale(0.92);
+    }
+
+    /* ПОДСКАЗКА */
+    .modal-hint {
+        text-align: center;
+        font-size: 11px;
+        color: rgba(255,255,255,0.55);
+        animation: fadeIn .4s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     /* ФУТЕР-НАДПИСЬ */
@@ -403,10 +463,11 @@
         <button data-target="okrash" onclick="scrollToId('okrash')">Окрашивание</button>
     </div>
 
-    <!-- АДРЕС (без фона) -->
+    <!-- БРЕНД + АДРЕС -->
     <div class="address-bar">
-        <span class="address-icon">📍</span>
-        Томск — Розы Люксембург, 4В — 4 этаж
+        <div class="address-brand">Hair Lab</div>
+        <div class="address-sub">Первая студия по реконструкции волос</div>
+        <div class="address-line">Томск — Розы Люксембург, 4В — 4 этаж</div>
     </div>
 
     <!-- ПРЕИМУЩЕСТВА -->
@@ -497,6 +558,16 @@
             <span>Telegram</span>
         </button>
 
+        <button class="fab-option phone" onclick="openPhone()">
+            <span class="fab-option-icon">
+                <!-- Phone icon -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#ffffff" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.96-.27 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.27.96l-2.2 2.15z"/>
+                </svg>
+            </span>
+            <span>Позвонить</span>
+        </button>
+
         <button class="fab-option instagram" onclick="openInstagram()">
             <span class="fab-option-icon">
                 <!-- Instagram SVG -->
@@ -520,7 +591,10 @@
 <div id="imageModal" class="modal-overlay">
     <div class="modal-inner">
         <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+        <button class="modal-nav modal-prev" type="button" aria-label="Предыдущее изображение">‹</button>
+        <button class="modal-nav modal-next" type="button" aria-label="Следующее изображение">›</button>
         <img id="modalImage" src="" alt="">
+        <div class="modal-hint">Листайте свайпами или стрелками, нажмите в любом месте, чтобы закрыть.</div>
     </div>
 </div>
 
@@ -544,16 +618,34 @@
         window.open("https://instagram.com/hairlab_", "_blank");
     }
 
+    function openPhone() {
+        window.location.href = "tel:+79528883050";
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
         const modalClose = modal.querySelector(".modal-close");
+        const prevBtn = modal.querySelector(".modal-prev");
+        const nextBtn = modal.querySelector(".modal-next");
         const fabWrapper = document.getElementById("fabWrapper");
 
-        // Увеличение картинок
-        document.querySelectorAll(".card img, .intro img").forEach(img => {
+        const thumbs = Array.from(document.querySelectorAll(".card img, .intro img"));
+        let currentIndex = 0;
+
+        function showImage(index) {
+            if (!thumbs.length) return;
+            if (index < 0) index = thumbs.length - 1;
+            if (index >= thumbs.length) index = 0;
+            currentIndex = index;
+            modalImage.src = thumbs[currentIndex].src;
+        }
+
+        // Открытие модалки по клику на картинки
+        thumbs.forEach((img, idx) => {
             img.addEventListener("click", function () {
-                modalImage.src = this.src;
+                currentIndex = idx;
+                showImage(currentIndex);
                 modal.classList.add("open");
                 document.body.style.overflow = "hidden";
                 fabWrapper.classList.add("hidden");
@@ -566,15 +658,55 @@
             fabWrapper.classList.remove("hidden");
         }
 
-        modal.addEventListener("click", function (e) {
-            // закрываем по клику вне картинки
-            if (!e.target.closest(".modal-inner")) {
-                closeModal();
-            }
+        // Закрытие по клику на любую часть модалки
+        modal.addEventListener("click", function () {
+            closeModal();
         });
 
-        modalClose.addEventListener("click", function () {
+        // Крестик (не даём клику пробиться до модалки)
+        modalClose.addEventListener("click", function (e) {
+            e.stopPropagation();
             closeModal();
+        });
+
+        // Стрелки вперёд/назад (НЕ закрывают модалку)
+        prevBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
+
+        // Свайпы по картинке
+        let touchStartX = null;
+
+        modalImage.addEventListener("touchstart", function (e) {
+            if (e.touches && e.touches.length > 0) {
+                touchStartX = e.touches[0].clientX;
+            }
+        }, { passive: true });
+
+        modalImage.addEventListener("touchend", function (e) {
+            if (touchStartX === null) return;
+            const endX = e.changedTouches[0].clientX;
+            const dx = endX - touchStartX;
+
+            // порог свайпа
+            if (Math.abs(dx) > 50) {
+                if (dx < 0) {
+                    // свайп влево — следующее
+                    showImage(currentIndex + 1);
+                } else {
+                    // свайп вправо — предыдущее
+                    showImage(currentIndex - 1);
+                }
+            }
+
+            touchStartX = null;
+            e.stopPropagation(); // чтобы тап по картинке не закрывал модалку сразу
         });
 
         // Кнопка "Записаться" и меню
@@ -616,7 +748,7 @@
         sections.forEach(sec => observer.observe(sec));
 
         // При загрузке страницы подсветить первую секцию
-        navButtons[0].classList.add("active");
+        if (navButtons[0]) navButtons[0].classList.add("active");
     });
 </script>
 
