@@ -69,6 +69,35 @@
         transform: scale(0.96);
     }
 
+    /* ===== АДРЕС ===== */
+    .address-bar {
+        margin: 18px auto 10px;
+        padding: 8px 14px;
+        width: fit-content;
+
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(14px) saturate(150%);
+        -webkit-backdrop-filter: blur(14px) saturate(150%);
+        border: 1px solid rgba(255,255,255,0.18);
+
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 500;
+
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        color: rgba(255,255,255,0.92);
+
+        box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+    }
+
+    .address-icon {
+        font-size: 15px;
+        opacity: 0.9;
+    }
+
     /* ===== ЗАГОЛОВКИ КАТЕГОРИЙ + ПОДПИСЬ ===== */
 
     .section-header {
@@ -143,39 +172,35 @@
         padding: 0 16px;
     }
 
-    /* КАРТОЧКИ ПРАЙСОВ */
- .card {
-    background: rgba(255,255,255,0.05); /* темнее и чище */
-    border-radius: 18px;
-    overflow: hidden;
+    /* КАРТОЧКИ ПРАЙСОВ (глубокое стекло) */
+    .card {
+        background: rgba(255,255,255,0.05);
+        border-radius: 18px;
+        overflow: hidden;
 
-    /* более глубокая стильная тень */
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        border: 1px solid rgba(255,255,255,0.15);
 
-    /* мягкая, менее кричащая обводка */
-    border: 1px solid rgba(255,255,255,0.15);
+        backdrop-filter: blur(22px) saturate(160%);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
 
-    /* более чистое, глубокое стекло */
-    backdrop-filter: blur(22px) saturate(160%);
-    -webkit-backdrop-filter: blur(22px) saturate(160%);
+        cursor: pointer;
 
-    cursor: pointer;
+        transition: transform 0.14s ease,
+                    box-shadow 0.14s ease,
+                    border-color 0.14s ease;
+    }
 
-    transition: transform 0.14s ease,
-                box-shadow 0.14s ease,
-                border-color 0.14s ease;
-}
+    .card img {
+        width: 100%;
+        display: block;
+    }
 
-.card img {
-    width: 100%;
-    display: block;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(0,0,0,0.40); /* чуть сильнее */
-    border-color: rgba(255,255,255,0.28); /* более премиальное свечение */
-}
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.40);
+        border-color: rgba(255,255,255,0.28);
+    }
 
     /* ПЛАВАЮЩЕЕ МЕНЮ "ЗАПИСАТЬСЯ" */
     .fab-wrapper {
@@ -327,6 +352,12 @@
         <button onclick="scrollToId('viypr')">Выпрямление</button>
         <button onclick="scrollToId('uhod')">Уходы</button>
         <button onclick="scrollToId('okrash')">Окрашивание</button>
+    </div>
+
+    <!-- АДРЕС -->
+    <div class="address-bar">
+        <span class="address-icon">📍</span>
+        <span>Томск — Розы Люксембург, 4В — 4 этаж</span>
     </div>
 
     <!-- ПРЕИМУЩЕСТВА -->
