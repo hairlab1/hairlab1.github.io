@@ -40,10 +40,11 @@
         border-radius: 22px;
         width: fit-content;
 
-        box-shadow: 0 10px 18px rgba(0,0,0,0.22);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.22);
         backdrop-filter: blur(14px) saturate(150%);
         -webkit-backdrop-filter: blur(14px) saturate(150%);
         border: 1px solid rgba(255,255,255,0.18);
+        transition: box-shadow 0.15s ease;
     }
 
     .nav button {
@@ -56,7 +57,7 @@
         font-weight: 600;
         cursor: pointer;
         letter-spacing: 0.3px;
-        transition: background 0.15s ease, transform 0.12s ease, border-color 0.12s ease;
+        transition: background 0.15s ease, transform 0.12s ease, border-color 0.12s ease, color 0.12s ease;
         white-space: nowrap;
     }
 
@@ -69,9 +70,15 @@
         transform: scale(0.96);
     }
 
+    .nav button.active {
+        background: rgba(255,255,255,0.26);
+        border-color: rgba(255,255,255,0.45);
+        color: #ffffff;
+    }
+
     /* ===== АДРЕС — просто текст ===== */
     .address-bar {
-        margin: 16px 18px 6px;
+        margin: 18px 18px 10px;
         font-size: 14px;
         font-weight: 500;
         color: rgba(255,255,255,0.95);
@@ -121,15 +128,15 @@
 
     .section-hint {
         margin: 0 18px 10px;
-        font-size: 12px;
+        font-size: 11px;
         line-height: 1.4;
-        color: rgba(255,255,255,0.78);
+        color: rgba(255,255,255,0.60);
     }
 
     /* Блок "Преимущества" */
     .intro {
         width: 94%;
-        margin: 18px auto 30px;
+        margin: 20px auto 30px;
         border-radius: 22px;
         overflow: hidden;
         box-shadow: 0 14px 26px rgba(0,0,0,0.28);
@@ -162,7 +169,7 @@
     /* КАРТОЧКИ ПРАЙСОВ (глубокое стекло) */
     .card {
         background: rgba(255,255,255,0.05);
-        border-radius: 18px;
+        border-radius: 16px;
         overflow: hidden;
 
         box-shadow: 0 12px 30px rgba(0,0,0,0.35);
@@ -193,12 +200,19 @@
     .fab-wrapper {
         position: fixed;
         right: 16px;
-        bottom: 18px;
+        bottom: 14px;
         z-index: 1000;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 8px;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .fab-wrapper.hidden {
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
     }
 
     .fab-menu {
@@ -320,13 +334,61 @@
         display: flex;
     }
 
-    .modal-overlay img {
+    .modal-inner {
+        position: relative;
+        max-width: 100%;
+        max-height: 90vh;
+    }
+
+    .modal-inner img {
         max-width: 100%;
         max-height: 90vh;
         border-radius: 18px;
         box-shadow:
             0 20px 40px rgba(0,0,0,0.7),
             0 0 24px rgba(200,220,255,0.9);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        border: none;
+        background: rgba(0,0,0,0.55);
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .modal-close:active {
+        transform: scale(0.92);
+    }
+
+    /* ФУТЕР-НАДПИСЬ */
+    .footer-note {
+        margin: 32px 18px 10px;
+        text-align: center;
+        font-size: 11px;
+        color: rgba(255,255,255,0.65);
+    }
+
+    /* АДАПТАЦИЯ ДЛЯ НИЗКИХ ЭКРАНОВ */
+    @media (max-height: 640px) {
+        .fab-wrapper {
+            bottom: 10px;
+        }
+        .fab-main {
+            padding: 10px 16px;
+            font-size: 13px;
+        }
     }
 </style>
 </head>
@@ -336,9 +398,9 @@
 
     <!-- НАВИГАЦИЯ -->
     <div class="nav">
-        <button onclick="scrollToId('viypr')">Выпрямление</button>
-        <button onclick="scrollToId('uhod')">Уходы</button>
-        <button onclick="scrollToId('okrash')">Окрашивание</button>
+        <button data-target="viypr" onclick="scrollToId('viypr')">Выпрямление</button>
+        <button data-target="uhod" onclick="scrollToId('uhod')">Уходы</button>
+        <button data-target="okrash" onclick="scrollToId('okrash')">Окрашивание</button>
     </div>
 
     <!-- АДРЕС (без фона) -->
@@ -361,15 +423,15 @@
         <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
-            <div class="card"><img src="Ботокс.jpg" alt=""></div>
-            <div class="card"><img src="Биксипластия 2в1.jpg" alt=""></div>
-            <div class="card"><img src="Кератин коллаген.jpg" alt=""></div>
-            <div class="card"><img src="Кератин.jpg" alt=""></div>
-            <div class="card"><img src="totalnaya.jpg" alt=""></div>
-            <div class="card"><img src="totalnaya1.jpg" alt=""></div>
-            <div class="card"><img src="Виски.JPG" alt=""></div>
-            <div class="card"><img src="Нанопластика.jpeg" alt=""></div>
-            <div class="card"><img src="Бразилиан.jpeg" alt=""></div>
+            <div class="card"><img src="Ботокс.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Биксипластия 2в1.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Кератин коллаген.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Кератин.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="totalnaya.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="totalnaya1.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Виски.JPG" alt="" loading="lazy"></div>
+            <div class="card"><img src="Нанопластика.jpeg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Бразилиан.jpeg" alt="" loading="lazy"></div>
         </div>
     </div>
 
@@ -382,12 +444,12 @@
         <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
-            <div class="card"><img src="Холодное восстановление.jpeg" alt=""></div>
-            <div class="card"><img src="Счастье для волос.jpeg" alt=""></div>
-            <div class="card"><img src="Адорн.jpeg" alt=""></div>
-            <div class="card"><img src="Диагностика+пилинг.jpg" alt=""></div>
-            <div class="card"><img src="Авторская стрижка(полировка).jpg" alt=""></div>
-            <div class="card"><img src="Стрижка.jpeg" alt=""></div>
+            <div class="card"><img src="Холодное восстановление.jpeg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Счастье для волос.jpeg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Адорн.jpeg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Диагностика+пилинг.jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Авторская стрижка(полировка).jpg" alt="" loading="lazy"></div>
+            <div class="card"><img src="Стрижка.jpeg" alt="" loading="lazy"></div>
         </div>
     </div>
 
@@ -400,9 +462,14 @@
         <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
         <div class="grid">
-            <div class="card"><img src="Окрашивание.JPG" alt=""></div>
-            <div class="card"><img src="Биозавивка.jpg" alt=""></div>
+            <div class="card"><img src="Окрашивание.JPG" alt="" loading="lazy"></div>
+            <div class="card"><img src="Биозавивка.jpg" alt="" loading="lazy"></div>
         </div>
+    </div>
+
+    <!-- ФУТЕР -->
+    <div class="footer-note">
+        HairLab · Томск · Красивые волосы без компромиссов
     </div>
 
 </div>
@@ -451,7 +518,10 @@
 
 <!-- МОДАЛЬНОЕ УВЕЛИЧЕНИЕ КАРТОК -->
 <div id="imageModal" class="modal-overlay">
-    <img id="modalImage" src="" alt="">
+    <div class="modal-inner">
+        <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+        <img id="modalImage" src="" alt="">
+    </div>
 </div>
 
 <script>
@@ -477,6 +547,8 @@
     document.addEventListener("DOMContentLoaded", function () {
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
+        const modalClose = modal.querySelector(".modal-close");
+        const fabWrapper = document.getElementById("fabWrapper");
 
         // Увеличение картинок
         document.querySelectorAll(".card img, .intro img").forEach(img => {
@@ -484,16 +556,28 @@
                 modalImage.src = this.src;
                 modal.classList.add("open");
                 document.body.style.overflow = "hidden";
+                fabWrapper.classList.add("hidden");
             });
         });
 
-        modal.addEventListener("click", function () {
+        function closeModal() {
             modal.classList.remove("open");
             document.body.style.overflow = "";
+            fabWrapper.classList.remove("hidden");
+        }
+
+        modal.addEventListener("click", function (e) {
+            // закрываем по клику вне картинки
+            if (!e.target.closest(".modal-inner")) {
+                closeModal();
+            }
+        });
+
+        modalClose.addEventListener("click", function () {
+            closeModal();
         });
 
         // Кнопка "Записаться" и меню
-        const fabWrapper = document.getElementById("fabWrapper");
         const fabMain = document.getElementById("fabMain");
         const fabMenu = document.getElementById("fabMenu");
 
@@ -507,6 +591,32 @@
                 fabMenu.classList.remove("open");
             }
         });
+
+        // Подсветка активной вкладки в навигации
+        const sections = document.querySelectorAll(".section");
+        const navButtons = document.querySelectorAll(".nav button");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navButtons.forEach(btn => {
+                        if (btn.getAttribute("data-target") === id) {
+                            btn.classList.add("active");
+                        } else {
+                            btn.classList.remove("active");
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.4
+        });
+
+        sections.forEach(sec => observer.observe(sec));
+
+        // При загрузке страницы подсветить первую секцию
+        navButtons[0].classList.add("active");
     });
 </script>
 
