@@ -364,59 +364,80 @@
             0 0 24px rgba(200,220,255,0.9);
     }
 
+    /* Минималистичный стеклянный крестик */
     .modal-close {
         position: absolute;
-        top: 8px;
-        right: 8px;
-        width: 26px;
-        height: 26px;
+        top: -6px;
+        right: -6px;
+        width: 22px;
+        height: 22px;
+
+        background: rgba(255,255,255,0.14);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
         border-radius: 999px;
-        border: none;
-        background: rgba(0,0,0,0.55);
+        border: 1px solid rgba(255,255,255,0.35);
+
         color: #ffffff;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1;
-        cursor: pointer;
+        font-weight: 400;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
+
+        cursor: pointer;
+        transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .modal-close:hover {
+        opacity: 1;
+        transform: scale(1.1);
     }
 
     .modal-close:active {
-        transform: scale(0.92);
+        transform: scale(0.9);
     }
 
-    /* КНОПКИ ВПЕРЁД/НАЗАД */
+    /* Стеклянные стрелки вперёд/назад */
     .modal-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 32px;
-        height: 32px;
+
+        width: 28px;
+        height: 28px;
+
+        background: rgba(255,255,255,0.14);
         border-radius: 999px;
-        border: none;
-        background: rgba(0,0,0,0.55);
+        border: 1px solid rgba(255,255,255,0.30);
+
         color: #ffffff;
         font-size: 20px;
         line-height: 1;
-        cursor: pointer;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
+
+        cursor: pointer;
+        transition: transform .15s ease, opacity .15s ease;
+
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
 
-    .modal-prev {
-        left: 6px;
-    }
+    .modal-prev { left: -12px; }
+    .modal-next { right: -12px; }
 
-    .modal-next {
-        right: 6px;
+    .modal-nav:hover {
+        transform: translateY(-50%) scale(1.1);
     }
 
     .modal-nav:active {
-        transform: translateY(-50%) scale(0.92);
+        transform: translateY(-50%) scale(0.9);
     }
 
     /* ПОДСКАЗКА */
@@ -538,6 +559,7 @@
 <!-- МЕНЮ "ЗАПИСАТЬСЯ" -->
 <div id="fabWrapper" class="fab-wrapper">
     <div id="fabMenu" class="fab-menu">
+
         <button class="fab-option whatsapp" onclick="openWhatsApp()">
             <span class="fab-option-icon">
                 <!-- WhatsApp SVG -->
@@ -558,16 +580,6 @@
             <span>Telegram</span>
         </button>
 
-        <button class="fab-option phone" onclick="openPhone()">
-            <span class="fab-option-icon">
-                <!-- Phone icon -->
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="#ffffff" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.96-.27 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.27.96l-2.2 2.15z"/>
-                </svg>
-            </span>
-            <span>Позвонить</span>
-        </button>
-
         <button class="fab-option instagram" onclick="openInstagram()">
             <span class="fab-option-icon">
                 <!-- Instagram SVG -->
@@ -579,6 +591,17 @@
             </span>
             <span>Instagram</span>
         </button>
+
+        <button class="fab-option phone" onclick="openPhone()">
+            <span class="fab-option-icon">
+                <!-- Phone icon -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#ffffff" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.96-.27 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.27.96l-2.2 2.15z"/>
+                </svg>
+            </span>
+            <span>Позвонить</span>
+        </button>
+
     </div>
 
     <button id="fabMain" class="fab-main">
@@ -663,13 +686,13 @@
             closeModal();
         });
 
-        // Крестик (не даём клику пробиться до модалки)
+        // Крестик
         modalClose.addEventListener("click", function (e) {
             e.stopPropagation();
             closeModal();
         });
 
-        // Стрелки вперёд/назад (НЕ закрывают модалку)
+        // Стрелки вперёд/назад
         prevBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             showImage(currentIndex - 1);
@@ -694,19 +717,16 @@
             const endX = e.changedTouches[0].clientX;
             const dx = endX - touchStartX;
 
-            // порог свайпа
             if (Math.abs(dx) > 50) {
                 if (dx < 0) {
-                    // свайп влево — следующее
-                    showImage(currentIndex + 1);
+                    showImage(currentIndex + 1); // влево — следующее
                 } else {
-                    // свайп вправо — предыдущее
-                    showImage(currentIndex - 1);
+                    showImage(currentIndex - 1); // вправо — предыдущее
                 }
             }
 
             touchStartX = null;
-            e.stopPropagation(); // чтобы тап по картинке не закрывал модалку сразу
+            e.stopPropagation(); // свайп не должен закрывать модалку
         });
 
         // Кнопка "Записаться" и меню
