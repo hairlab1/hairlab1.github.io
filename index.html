@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>HairLab — Прайсы</title>
+<title>HairLab — Прайсы на процедуры для волос в Томске</title>
 
 <style>
     /* БАЗА */
@@ -16,6 +15,16 @@
         scroll-behavior: smooth;
     }
 
+    /* УБИРАЕМ СТАНДАРТНЫЙ ФОКУС, НО ДОБАВЛЯЕМ СВОЙ (для доступности) */
+    *:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.7);
+        outline-offset: 3px;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    }
+    *:focus:not(:focus-visible) {
+        outline: none;
+    }
+
     .content {
         width: 100%;
         max-width: 920px;
@@ -23,29 +32,35 @@
         padding-bottom: 90px;
     }
 
-    /* ===== GLASS НАВИГАЦИЯ (компактная) ===== */
+    /* ===== GLASS НАВИГАЦИЯ (МОБИЛЬНАЯ ОПТИМИЗАЦИЯ) ===== */
     .nav {
         position: sticky;
-        top: 0;
+        /* Используем safe-area-inset-top для учета "челок" и системных панелей */
+        top: max(6px, env(safe-area-inset-top)); 
         z-index: 999;
 
-        margin: 6px auto 0;
+        margin: 0 auto;
         padding: 6px 10px;
 
         display: flex;
-        justify-content: center;
-        gap: 6px;
+        /* Scrollbar для горизонтальной прокрутки, если много кнопок */
+        overflow-x: auto; 
+        justify-content: flex-start;
 
         background: rgba(5, 12, 60, 0.45);
         border-radius: 22px;
         width: fit-content;
-
+        max-width: 98%; /* Ограничение ширины на широких экранах */
+        
         box-shadow: 0 8px 16px rgba(0,0,0,0.22);
         backdrop-filter: blur(14px) saturate(150%);
         -webkit-backdrop-filter: blur(14px) saturate(150%);
         border: 1px solid rgba(255,255,255,0.18);
         transition: box-shadow 0.15s ease;
     }
+    /* Скрываем визуальный скроллбар, сохраняя функционал прокрутки */
+    .nav::-webkit-scrollbar { display: none; }
+    .nav { -ms-overflow-style: none; scrollbar-width: none; }
 
     .nav button {
         background: rgba(255,255,255,0.10);
@@ -76,7 +91,7 @@
         color: #ffffff;
     }
 
-    /* ===== БЛОК БРЕНДА И АДРЕСА ===== */
+    /* ===== БЛОК БРЕНДА И АДРЕСА (H1) ===== */
     .address-bar {
         margin: 18px 18px 10px;
         display: flex;
@@ -86,10 +101,11 @@
     }
 
     .address-brand {
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.06em;
+        font-size: 18px; /* Увеличен для H1 */
+        font-weight: 700;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
+        margin: 0; /* Убираем стандартные отступы H1 */
     }
 
     .address-sub {
@@ -103,7 +119,6 @@
     }
 
     /* ===== ЗАГОЛОВКИ КАТЕГОРИЙ + ПОДПИСЬ ===== */
-
     .section-header {
         display: flex;
         align-items: center;
@@ -157,12 +172,10 @@
         cursor: pointer;
         transition: transform 0.14s ease, box-shadow 0.14s ease;
     }
-
     .intro:hover {
         transform: translateY(-2px);
         box-shadow: 0 16px 30px rgba(0,0,0,0.30);
     }
-
     .intro img {
         width: 100%;
         display: block;
@@ -191,8 +204,8 @@
         cursor: pointer;
 
         transition: transform 0.14s ease,
-                    box-shadow 0.14s ease,
-                    border-color 0.14s ease;
+                        box-shadow 0.14s ease,
+                        border-color 0.14s ease;
     }
 
     .card img {
@@ -210,7 +223,8 @@
     .fab-wrapper {
         position: fixed;
         right: 16px;
-        bottom: 14px;
+        /* Учитываем safe-area-inset-bottom для нижних системных панелей */
+        bottom: max(14px, env(safe-area-inset-bottom));
         z-index: 1000;
         display: flex;
         flex-direction: column;
@@ -329,7 +343,7 @@
         top: 1px;
     }
 
-    /* МОДАЛЬНАЯ КАРТИНКА */
+    /* МОДАЛЬНАЯ КАРТИНКА - Оптимизация для тач-устройств */
     .modal-overlay {
         position: fixed;
         inset: 0;
@@ -341,9 +355,7 @@
         padding: 16px;
     }
 
-    .modal-overlay.open {
-        display: flex;
-    }
+    .modal-overlay.open { display: flex; }
 
     .modal-inner {
         position: relative;
@@ -353,6 +365,8 @@
         flex-direction: column;
         align-items: center;
         gap: 8px;
+        /* Добавил отступ снизу для подсказки */
+        padding-bottom: 24px; 
     }
 
     .modal-inner img {
@@ -364,23 +378,23 @@
             0 0 24px rgba(200,220,255,0.9);
     }
 
-    /* Минималистичный стеклянный крестик */
+    /* Минималистичный стеклянный крестик - Увеличен для пальца */
     .modal-close {
         position: absolute;
-        top: -6px;
-        right: -6px;
-        width: 22px;
-        height: 22px;
+        top: 4px; /* Сдвинул */
+        right: 4px; /* Сдвинул */
+        width: 28px; /* Увеличил */
+        height: 28px; /* Увеличил */
 
-        background: rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.18);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
 
         border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.35);
+        border: 1px solid rgba(255,255,255,0.45);
 
         color: #ffffff;
-        font-size: 14px;
+        font-size: 20px; /* Увеличил */
         line-height: 1;
         font-weight: 400;
 
@@ -401,14 +415,14 @@
         transform: scale(0.9);
     }
 
-    /* Стеклянные стрелки вперёд/назад */
+    /* Стеклянные стрелки вперёд/назад - Увеличены для пальца */
     .modal-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
 
-        width: 28px;
-        height: 28px;
+        width: 38px; /* Увеличил */
+        height: 38px; /* Увеличил */
 
         background: rgba(255,255,255,0.14);
         border-radius: 999px;
@@ -429,8 +443,8 @@
         -webkit-backdrop-filter: blur(8px);
     }
 
-    .modal-prev { left: -12px; }
-    .modal-next { right: -12px; }
+    .modal-prev { left: 4px; } /* Сдвинул */
+    .modal-next { right: 4px; } /* Сдвинул */
 
     .modal-nav:hover {
         transform: translateY(-50%) scale(1.1);
@@ -477,92 +491,82 @@
 
 <div class="content">
 
-    <!-- НАВИГАЦИЯ -->
     <div class="nav">
-        <button data-target="viypr" onclick="scrollToId('viypr')">Выпрямление</button>
-        <button data-target="uhod" onclick="scrollToId('uhod')">Уходы</button>
-        <button data-target="okrash" onclick="scrollToId('okrash')">Окрашивание</button>
+        <button data-target="viypr">Выпрямление</button>
+        <button data-target="uhod">Уходы</button>
+        <button data-target="okrash">Окрашивание</button>
     </div>
 
-    <!-- БРЕНД + АДРЕС -->
     <div class="address-bar">
-        <div class="address-brand">Hair Lab</div>
+        <h1 class="address-brand">Hair Lab</h1>
         <div class="address-sub">Первая студия по реконструкции волос</div>
         <div class="address-line">Томск — Розы Люксембург, 4В — 4 этаж</div>
     </div>
 
-    <!-- ПРЕИМУЩЕСТВА -->
-    <div class="intro zoomable">
-        <img src="Преимущества.jpeg" alt="Преимущества HairLab">
-    </div>
-
-    <!-- ВЫПРЯМЛЕНИЕ -->
-    <div id="viypr" class="section">
-        <div class="section-header">
-            <div class="section-marker"></div>
-            <h2>Процедуры для выпрямления / разглаживания волос</h2>
+    <main>
+        <div class="intro" tabindex="0">
+            <img src="Преимущества.webp" alt="Преимущества студии HairLab: квалификация мастеров, сертифицированные составы, гарантия" loading="lazy">
         </div>
-        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
-        <div class="grid">
-            <div class="card"><img src="Ботокс.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Биксипластия 2в1.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Кератин коллаген.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Кератин.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="totalnaya.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="totalnaya1.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Виски.JPG" alt="" loading="lazy"></div>
-            <div class="card"><img src="Нанопластика.jpeg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Бразилиан.jpeg" alt="" loading="lazy"></div>
+        <div id="viypr" class="section">
+            <div class="section-header">
+                <div class="section-marker"></div>
+                <h2>Процедуры для выпрямления / разглаживания волос</h2>
+            </div>
+            <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
+
+            <div class="grid">
+                <div class="card" tabindex="0"><img src="Ботокс.webp" alt="Прайс на процедуру Ботокс для волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Биксипластия 2в1.webp" alt="Прайс на Биксипластию для волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Кератин коллаген.webp" alt="Прайс на Кератин с коллагеном" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Кератин.webp" alt="Прайс на стандартный Кератин" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="totalnaya.webp" alt="Прайс на Тотальную реконструкцию волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="totalnaya1.webp" alt="Продолжение прайса Тотальная реконструкция волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Виски.webp" alt="Прайс на процедуру Виски для волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Нанопластика.webp" alt="Прайс на Нанопластику" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Бразилиан.webp" alt="Прайс на Бразилиан Блоаут" loading="lazy"></div>
+            </div>
         </div>
-    </div>
 
-    <!-- УХОДЫ -->
-    <div id="uhod" class="section">
-        <div class="section-header">
-            <div class="section-marker"></div>
-            <h2>Уходы + стрижки</h2>
+        <div id="uhod" class="section">
+            <div class="section-header">
+                <div class="section-marker"></div>
+                <h2>Уходы + стрижки</h2>
+            </div>
+            <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
+
+            <div class="grid">
+                <div class="card" tabindex="0"><img src="Холодное восстановление.webp" alt="Прайс на Холодное восстановление волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Счастье для волос.webp" alt="Прайс на процедуру Счастье для волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Адорн.webp" alt="Прайс на уход Адорн" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Диагностика+пилинг.webp" alt="Прайс на Диагностику волос и пилинг" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Авторская стрижка(полировка).webp" alt="Прайс на Авторскую стрижку и полировку волос" loading="lazy"></div>
+                <div class="card" tabindex="0"><img src="Стрижка.webp" alt="Прайс на Стрижку волос" loading="lazy"></div>
+            </div>
         </div>
-        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
 
-        <div class="grid">
-            <div class="card"><img src="Холодное восстановление.jpeg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Счастье для волос.jpeg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Адорн.jpeg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Диагностика+пилинг.jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Авторская стрижка(полировка).jpg" alt="" loading="lazy"></div>
-            <div class="card"><img src="Стрижка.jpeg" alt="" loading="lazy"></div>
+        <div id="okrash" class="section">
+            <div class="section-header">
+                <div class="section-marker"></div>
+                <h2>Окрашивание</h2>
+            </div>
+            <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
+
+            <div class="grid">
+                <div class="card" tabindex="0"><img src="Окрашивание.webp" alt="Прайс на окрашивание волос" loading="lazy"></div>
+            </div>
         </div>
-    </div>
 
-    <!-- ОКРАШИВАНИЕ -->
-    <div id="okrash" class="section">
-        <div class="section-header">
-            <div class="section-marker"></div>
-            <h2>Окрашивание и биозавивка</h2>
+        <div class="footer-note">
+            HairLab · Томск · Красивые волосы без компромиссов
         </div>
-        <p class="section-hint">Коснитесь любой карточки, чтобы открыть прайс крупнее.</p>
-
-        <div class="grid">
-            <div class="card"><img src="Окрашивание.JPG" alt="" loading="lazy"></div>
-            <div class="card"><img src="Биозавивка.jpg" alt="" loading="lazy"></div>
-        </div>
-    </div>
-
-    <!-- ФУТЕР -->
-    <div class="footer-note">
-        HairLab · Томск · Красивые волосы без компромиссов
-    </div>
-
+    </main>
 </div>
 
-<!-- МЕНЮ "ЗАПИСАТЬСЯ" -->
 <div id="fabWrapper" class="fab-wrapper">
     <div id="fabMenu" class="fab-menu">
-
         <button class="fab-option whatsapp" onclick="openWhatsApp()">
             <span class="fab-option-icon">
-                <!-- WhatsApp SVG -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="#ffffff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.472-.148-.672.15-.198.297-.77.966-.944 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.298-.496.099-.198.05-.372-.025-.521-.075-.149-.672-1.611-.92-2.206-.242-.579-.487-.5-.672-.51l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 3.766h-.004a4.9 4.9 0 01-2.403-.654l-.172-.102-1.785.467.476-1.74-.112-.178a4.9 4.9 0 01-.754-2.6c.001-2.717 2.212-4.928 4.932-4.928 1.318 0 2.555.513 3.484 1.443a4.92 4.92 0 011.445 3.5c-.002 2.717-2.213 4.928-4.932 4.928m4.161-9.089A6.86 6.86 0 0012.05 6a6.86 6.86 0 00-6.866 6.857 6.82 6.82 0 001.028 3.57L5 20.5l4.164-1.09a6.9 6.9 0 002.887.665h.003c3.785 0 6.868-3.079 6.87-6.866a6.82 6.82 0 00-2.012-4.84"/>
                 </svg>
@@ -572,7 +576,6 @@
 
         <button class="fab-option telegram" onclick="openTelegram()">
             <span class="fab-option-icon">
-                <!-- Telegram SVG -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="#ffffff" d="M9.999 15.2l-.39 3.45c.558 0 .801-.24 1.09-.527l2.615-2.497 5.42 3.96c.994.547 1.702.26 1.963-.918l3.56-16.7h.001c.316-1.47-.53-2.046-1.503-1.686L1.352 9.53c-1.438.559-1.417 1.36-.244 1.72l4.77 1.488 11.08-6.98c.522-.317.997-.147.606.17"/>
                 </svg>
@@ -582,7 +585,6 @@
 
         <button class="fab-option instagram" onclick="openInstagram()">
             <span class="fab-option-icon">
-                <!-- Instagram SVG -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="none" stroke="#ffffff" stroke-width="1.6" d="M8 3.5h8a4.5 4.5 0 0 1 4.5 4.5v8a4.5 4.5 0 0 1-4.5 4.5H8A4.5 4.5 0 0 1 3.5 16v-8A4.5 4.5 0 0 1 8 3.5z"/>
                     <circle cx="12" cy="12" r="3.2" fill="none" stroke="#ffffff" stroke-width="1.6"/>
@@ -594,7 +596,6 @@
 
         <button class="fab-option phone" onclick="openPhone()">
             <span class="fab-option-icon">
-                <!-- Phone icon -->
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="#ffffff" d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.96-.27 11.72 11.72 0 003.68.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.27.96l-2.2 2.15z"/>
                 </svg>
@@ -610,7 +611,6 @@
     </button>
 </div>
 
-<!-- МОДАЛЬНОЕ УВЕЛИЧЕНИЕ КАРТОК -->
 <div id="imageModal" class="modal-overlay">
     <div class="modal-inner">
         <button class="modal-close" type="button" aria-label="Закрыть">×</button>
@@ -622,7 +622,8 @@
 </div>
 
 <script>
-    function scrollToId(id) {
+    // Прокрутка к элементу
+    function scrollToElement(id) {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -652,6 +653,9 @@
         const prevBtn = modal.querySelector(".modal-prev");
         const nextBtn = modal.querySelector(".modal-next");
         const fabWrapper = document.getElementById("fabWrapper");
+        
+        const fabMain = document.getElementById("fabMain");
+        const fabMenu = document.getElementById("fabMenu");
 
         const thumbs = Array.from(document.querySelectorAll(".card img, .intro img"));
         let currentIndex = 0;
@@ -662,18 +666,8 @@
             if (index >= thumbs.length) index = 0;
             currentIndex = index;
             modalImage.src = thumbs[currentIndex].src;
+            modalImage.alt = thumbs[currentIndex].alt;
         }
-
-        // Открытие модалки по клику на картинки
-        thumbs.forEach((img, idx) => {
-            img.addEventListener("click", function () {
-                currentIndex = idx;
-                showImage(currentIndex);
-                modal.classList.add("open");
-                document.body.style.overflow = "hidden";
-                fabWrapper.classList.add("hidden");
-            });
-        });
 
         function closeModal() {
             modal.classList.remove("open");
@@ -681,10 +675,38 @@
             fabWrapper.classList.remove("hidden");
         }
 
-        // Закрытие по клику на любую часть модалки
-        modal.addEventListener("click", function () {
-            closeModal();
+        // Открытие модалки
+        document.querySelectorAll(".card, .intro").forEach((element, idx) => {
+            element.addEventListener("click", function () {
+                currentIndex = Array.from(document.querySelectorAll(".card, .intro")).indexOf(element); // Находим новый индекс
+                showImage(currentIndex);
+                modal.classList.add("open");
+                document.body.style.overflow = "hidden";
+                fabWrapper.classList.add("hidden");
+            });
+
+            // Доступность: открываем по нажатию Enter/Space
+            element.addEventListener("keydown", function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    element.click();
+                }
+            });
         });
+
+        // Закрытие по клику на оверлей
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        // Доступность: закрытие по Esc
+        document.addEventListener("keydown", function (e) {
+            if (modal.classList.contains("open") && e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
 
         // Крестик
         modalClose.addEventListener("click", function (e) {
@@ -702,6 +724,18 @@
             e.stopPropagation();
             showImage(currentIndex + 1);
         });
+        
+        // Доступность: навигация по стрелкам клавиатуры
+        document.addEventListener("keydown", function (e) {
+            if (modal.classList.contains("open")) {
+                if (e.key === 'ArrowLeft') {
+                    showImage(currentIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    showImage(currentIndex + 1);
+                }
+            }
+        });
+
 
         // Свайпы по картинке
         let touchStartX = null;
@@ -724,15 +758,11 @@
                     showImage(currentIndex - 1); // вправо — предыдущее
                 }
             }
-
             touchStartX = null;
-            e.stopPropagation(); // свайп не должен закрывать модалку
+            e.stopPropagation();
         });
 
         // Кнопка "Записаться" и меню
-        const fabMain = document.getElementById("fabMain");
-        const fabMenu = document.getElementById("fabMenu");
-
         fabMain.addEventListener("click", function (e) {
             e.stopPropagation();
             fabMenu.classList.toggle("open");
@@ -744,9 +774,17 @@
             }
         });
 
-        // Подсветка активной вкладки в навигации
-        const sections = document.querySelectorAll(".section");
+        // Навигация по якорям
         const navButtons = document.querySelectorAll(".nav button");
+        navButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                const targetId = btn.getAttribute("data-target");
+                scrollToElement(targetId);
+            });
+        });
+
+        // Подсветка активной вкладки
+        const sections = document.querySelectorAll(".section");
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -762,7 +800,9 @@
                 }
             });
         }, {
-            threshold: 0.4
+            // Небольшой отступ сверху, чтобы учесть высоту навигационной панели
+            rootMargin: '-10% 0px -60% 0px', 
+            threshold: 0.1
         });
 
         sections.forEach(sec => observer.observe(sec));
