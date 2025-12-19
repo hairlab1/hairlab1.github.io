@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HairLab — Меню напитков</title>
+
+<style>
+    /* БАЗОВЫЕ СТИЛИ */
+    body {
+        margin: 0;
+        background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* ШАПКА */
+    .header {
+        text-align: center;
+        margin-bottom: 25px;
+        margin-top: 20px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 0;
+        font-weight: 800;
+    }
+
+    .free-badge {
+        display: inline-block;
+        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 15px;
+        border-radius: 999px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+    }
+
+    /* КАРТОЧКА МЕНЮ */
+    .menu-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px) saturate(160%);
+        -webkit-backdrop-filter: blur(16px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 28px;
+        padding: 25px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        margin-bottom: 20px;
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .category-icon {
+        font-size: 24px;
+    }
+
+    .category-title {
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.95);
+    }
+
+    /* ПОЗИЦИИ МЕНЮ */
+    .menu-item {
+        margin-bottom: 18px;
+    }
+
+    .item-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .item-dots {
+        flex: 1;
+        border-bottom: 1px dotted rgba(255,255,255,0.2);
+        margin: 0 8px;
+    }
+
+    .price-free {
+        font-size: 13px;
+        font-weight: 600;
+        color: #7efaff; /* Нежно-голубой акцент */
+    }
+
+    .item-desc {
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 4px;
+        line-height: 1.4;
+        display: block;
+    }
+
+    /* КНОПКА */
+    .back-btn {
+        display: inline-block;
+        margin: 20px 0 40px;
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+        font-size: 13px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 8px 20px;
+        border-radius: 999px;
+        transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+    }
+
+    footer {
+        text-align: center;
+        padding-bottom: 30px;
+        font-size: 12px;
+        opacity: 0.6;
+        line-height: 1.5;
+    }
+</style>
+</head>
+<body>
+
+<div class="content">
+    <div class="header">
+        <h1>HairLab</h1>
+        <div class="free-badge">С любовью к вашим волосам</div>
+    </div>
+
+    <div class="menu-card">
+        <div class="category-header">
+            <span class="category-icon">☕</span>
+            <div class="category-title">Кофейная карта</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Капучино</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Классика с густой молочной пенкой</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Латте</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Много молока и нежный вкус кофе</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Американо</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Бодрящий черный кофе</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Флэт Уайт</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Насыщенный вкус кофе с тонким слоем молока</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Раф Кофе</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Десертный кофе на сливках (ванильный или ореховый)</span>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <div class="category-header">
+            <span class="category-icon">🍃</span>
+            <div class="category-title">Чайная коллекция</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Эрл Грей</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Черный чай с ароматом бергамота</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Сенча</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Классический японский зеленый чай</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Жасминовый цвет</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Зеленый чай с нежным ароматом жасмина</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Наглый фрукт</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Яркий фруктовый микс с гибискусом</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Травяной сбор</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Мята, мелисса и чабрец для полного релакса</span>
+        </div>
+    </div>
+
+    <div class="menu-card">
+        <div class="category-header">
+            <span class="category-icon">✨</span>
+            <div class="category-title">К напитку</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Сладкий комплимент</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+            <span class="item-desc">Мини-шоколад или печенье</span>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-main">
+                <span>Вода с лимоном</span>
+                <div class="item-dots"></div>
+                <span class="price-free">0₽</span>
+            </div>
+        </div>
+    </div>
+
+    <center>
+        <a href="index.html" class="back-btn">← На главную HairLab</a>
+    </center>
+
+    <footer>
+        Все напитки предоставляются гостям студии<br>бесплатно. Приятного отдыха!
+    </footer>
+</div>
+
+</body>
+</html>
