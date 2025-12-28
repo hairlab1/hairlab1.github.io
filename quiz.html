@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HairLab — Квиз-диагностика</title>
+<title>HairLab — Подбор процедуры</title>
 
 <style>
-    /* БАЗА (Фирменный синий стиль) */
+    /* БАЗОВЫЙ СТИЛЬ (СИНХРОННО С INDEX) */
     body {
         margin: 0;
         background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
@@ -32,20 +32,17 @@
 
     .header h1 {
         font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
         text-transform: uppercase;
+        letter-spacing: 2px;
         margin: 0;
     }
 
-    /* КАРТОЧКА КВИЗА (Glassmorphism) */
+    /* КАРТОЧКА КВИЗА */
     .quiz-card {
-        background: rgba(255,255,255,0.05);
+        background: rgba(255,255,255,0.08);
         border-radius: 20px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
         border: 1px solid rgba(255,255,255,0.15);
-        backdrop-filter: blur(22px) saturate(160%);
-        -webkit-backdrop-filter: blur(22px) saturate(160%);
         padding: 25px;
         min-height: 350px;
         display: flex;
@@ -54,7 +51,7 @@
     }
 
     .question-title {
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 700;
         margin-bottom: 25px;
         line-height: 1.4;
@@ -68,30 +65,26 @@
     }
 
     .option-btn {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
         padding: 16px;
         border-radius: 14px;
         color: #fff;
         text-align: left;
         font-size: 15px;
-        font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
     }
 
     .option-btn:hover {
-        background: rgba(255,255,255,0.15);
-        transform: scale(1.02);
+        background: rgba(255,255,255,0.2);
     }
 
-    /* ЭКРАН РЕЗУЛЬТАТА */
+    /* РЕЗУЛЬТАТ */
     #result-screen { display: none; text-align: center; }
     
-    .result-emoji { font-size: 48px; margin-bottom: 15px; }
-
     .result-title {
-        font-size: 24px;
+        font-size: 22px;
         color: #e28bc7;
         font-weight: 800;
         margin-bottom: 15px;
@@ -99,10 +92,21 @@
     }
 
     .result-desc {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.6;
         opacity: 0.9;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .care-tip {
+        background: rgba(226, 139, 199, 0.15);
+        border-radius: 12px;
+        padding: 15px;
+        font-size: 13px;
+        margin-bottom: 25px;
+        text-align: left;
+        border: 1px solid rgba(226, 139, 199, 0.3);
     }
 
     .action-btn {
@@ -114,10 +118,8 @@
         font-weight: 700;
         text-decoration: none;
         display: inline-block;
-        box-shadow: 0 10px 25px rgba(196, 90, 189, 0.4);
-        transition: transform 0.1s;
+        box-shadow: 0 10px 20px rgba(196, 90, 189, 0.3);
     }
-    .action-btn:active { transform: scale(0.96); }
 
     .back-link {
         margin-top: 30px;
@@ -125,9 +127,7 @@
         color: rgba(255,255,255,0.5);
         text-decoration: none;
         font-size: 13px;
-        transition: color 0.2s;
     }
-    .back-link:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -135,7 +135,7 @@
 <div class="content">
     <div class="header">
         <h1>HairLab</h1>
-        <div style="font-size: 12px; opacity: 0.7; margin-top: 8px; letter-spacing: 1px;">ДИАГНОСТИКА ВОЛОС</div>
+        <div style="font-size: 12px; opacity: 0.7; margin-top: 5px;">ИНДИВИДУАЛЬНЫЙ ПОДБОР</div>
     </div>
 
     <div class="quiz-card" id="quiz-container">
@@ -145,35 +145,40 @@
         </div>
 
         <div id="result-screen">
-            <div class="result-emoji">✨</div>
-            <div style="font-size: 12px; opacity: 0.7; margin-bottom: 5px;">ВАМ ИДЕАЛЬНО ПОДОЙДЕТ:</div>
+            <div style="font-size: 40px; margin-bottom: 10px;">✨</div>
             <div class="result-title" id="res-name">Процедура</div>
             <div class="result-desc" id="res-desc">Описание.</div>
-            <a href="index.html" class="action-btn">Посмотреть цену</a>
+            
+            <div class="care-tip" id="res-tip">
+                <strong>Важно об окрашивании:</strong><br>
+                Планируйте окрашивание за 10-14 дней ДО или через 10-14 дней ПОСЛЕ визита.
+            </div>
+
+            <a href="index.html" class="action-btn">Посмотреть цены</a>
             <br>
-            <a href="quiz.html" class="back-link">Пройти тест заново</a>
+            <a href="quiz.html" class="back-link">Начать заново</a>
         </div>
     </div>
 
-    <center><a href="index.html" class="back-link">← Вернуться к прайсам</a></center>
+    <center><a href="index.html" class="back-link">← На главную</a></center>
 </div>
 
 <script>
     const questions = [
         {
-            text: "Какое состояние ваших волос на данный момент?",
+            text: "В каком состоянии ваши волосы?",
             options: [
-                { text: "Натуральные, здоровые или окрашены в темный", points: { nano: 2, ker: 1, bixy: 1 } },
-                { text: "Сухие, пушатся, трудно укладывать", points: { ker: 2, bixy: 2, bot: 1 } },
-                { text: "Осветленные (блонд) или сильно поврежденные", points: { bot: 3, total: 3 } }
+                { text: "Натуральные / Здоровые", points: { nano: 3, ker: 1 } },
+                { text: "Окрашены в темный / Сухие / Пушатся", points: { ker: 2, bixy: 3, bot: 1 } },
+                { text: "Блонд / Сильно повреждены / Обламываются", points: { total: 5, bot: 2 } }
             ]
         },
         {
-            text: "Какой эффект для вас в приоритете?",
+            text: "Какой результат вы хотите увидеть?",
             options: [
-                { text: "Идеальная гладкость и выпрямление надолго", points: { nano: 3, ker: 3 } },
-                { text: "Увлажнение, мягкость и легкое разглаживание", points: { bot: 2, bixy: 3 } },
-                { text: "Максимальное восстановление и плотность", points: { total: 4, bot: 1 } }
+                { text: "Идеально прямые и зеркальный блеск", points: { ker: 4, nano: 4 } },
+                { text: "Убрать пух, сохранить объем и напитать", points: { bot: 4, bixy: 2 } },
+                { text: "Восстановить структуру и плотность", points: { total: 4, bot: 2 } }
             ]
         }
     ];
@@ -214,29 +219,35 @@
         
         const results = {
             ker: { 
-                name: "Кератин", 
-                desc: "Ваш запрос — безупречная прямота. Кератин дисциплинирует даже самый непослушный завиток, дарит зеркальный блеск и защищает от влажности." 
+                name: "Кератиновое выпрямление", 
+                desc: "Для ваших волос это лучший способ добиться идеальной прямоты и блеска на срок до 9 месяцев. Справится даже с сильным завитком!",
+                tip: "Окрашивание возможно за 10-14 дней до или после процедуры."
             },
             bot: { 
-                name: "Ботокс", 
-                desc: "Вашим волосам нужно интенсивное питание. Ботокс уплотнит структуру, уберет лишнюю пушистость и сделает волосы рассыпчатыми." 
+                name: "Ботокс для волос", 
+                desc: "Вашим волосам не хватает питания. Ботокс уберет пушистость, сохранит прикорневой объем и сделает волосы мягкими на 3-5 месяцев.",
+                tip: "Идеально подходит для поддержания здоровья волос между окрашиваниями."
             },
             nano: { 
-                name: "Нанопластика", 
-                desc: "Идеально для здоровых или натуральных волос. Максимальное выпрямление с сохранением природного блеска и силы." 
+                name: "Нанопластика Floractive", 
+                desc: "ЭКО-выпрямление для ваших здоровых волос. Невероятный зеркальный блеск на срок до 12 месяцев без формальдегида!",
+                tip: "Внимание: процедура не подходит для осветленных и поврежденных волос."
             },
             bixy: { 
-                name: "Биксипластия", 
-                desc: "Золотая середина! Она одновременно выпрямляет и глубоко увлажняет волосы, что особенно важно для сухих и окрашенных волос." 
+                name: "Биксипластия (2 в 1)", 
+                desc: "Оптимальный выбор для сухих и пористых волос. Она одновременно выпрямляет и глубоко увлажняет структуру волос.",
+                tip: "Отлично работает на окрашенных волосах, возвращая им плотность."
             },
             total: { 
-                name: "Реконструкция", 
-                desc: "Вашим волосам нужна 'терапия'. Мы восстановим поврежденные связи внутри волоса, вернем им эластичность и подготовим к будущим преображениям." 
+                name: "Тотальная реконструкция", 
+                desc: "Вашим волосам нужна максимальная забота. Это двухэтапное восстановление, которое вернет прочность даже самым поврежденным прядям.",
+                tip: "Обесцвечивание волос после данной процедуры возможно только через 2 месяца."
             }
         };
 
         document.getElementById('res-name').innerText = results[winner].name;
         document.getElementById('res-desc').innerText = results[winner].desc;
+        document.getElementById('res-tip').innerHTML = `<strong>Важно:</strong><br>${results[winner].tip}`;
     }
 
     renderQuestion();
