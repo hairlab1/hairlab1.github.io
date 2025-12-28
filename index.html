@@ -1,4 +1,178 @@
-<div id="care" class="section">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>HairLab — Прайсы и Уход</title>
+
+<style>
+    /* === БАЗОВЫЕ СТИЛИ (ФИРМЕННЫЙ СИНИЙ) === */
+    body {
+        margin: 0;
+        background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        color: #ffffff;
+        scroll-behavior: smooth;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 920px;
+        margin: 0 auto;
+        padding-bottom: 90px;
+    }
+
+    /* === GLASS НАВИГАЦИЯ === */
+    .nav {
+        position: sticky;
+        top: max(6px, env(safe-area-inset-top)); 
+        z-index: 999;
+        margin: 0 auto;
+        padding: 6px 10px;
+        display: flex;
+        overflow-x: auto; 
+        justify-content: flex-start;
+        background: rgba(5, 12, 60, 0.45);
+        border-radius: 22px;
+        width: fit-content;
+        max-width: 98%; 
+        box-shadow: 0 8px 16px rgba(0,0,0,0.22);
+        backdrop-filter: blur(14px) saturate(150%);
+        -webkit-backdrop-filter: blur(14px) saturate(150%);
+        border: 1px solid rgba(255,255,255,0.18);
+    }
+    .nav::-webkit-scrollbar { display: none; }
+
+    .nav button {
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.20);
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+        white-space: nowrap;
+        margin-right: 6px;
+    }
+    .nav button.active { background: rgba(255,255,255,0.26); border-color: rgba(255,255,255,0.45); }
+
+    /* === ШАПКА === */
+    .address-bar { margin: 18px 18px 10px; display: flex; flex-direction: column; gap: 2px; }
+    .address-brand { font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+    .address-line { font-size: 12px; opacity: 0.85; }
+
+    /* === СЕТКА КАРТОЧЕК === */
+    .section-header { display: flex; align-items: center; gap: 10px; margin: 32px 18px 4px; }
+    .section-marker { width: 6px; height: 22px; border-radius: 999px; background: rgba(255,255,255,0.85); box-shadow: 0 0 12px rgba(255,255,255,0.7); }
+    .section-header h2 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .section-header::after { content: ""; flex: 1; height: 1px; margin-left: 12px; background: rgba(255,255,255,0.30); }
+
+    .intro { width: 94%; margin: 20px auto 30px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.22); cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+    .intro img { width: 100%; display: block; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 16px; }
+    .card { background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(22px); cursor: pointer; transition: transform 0.1s; }
+    .card:active { transform: scale(0.98); }
+    .card img { width: 100%; display: block; }
+
+    /* === КАРТОЧКИ ДОМАШНЕГО УХОДА === */
+    .care-container { padding: 0 16px; display: flex; flex-direction: column; gap: 16px; }
+    .care-card {
+        background: rgba(255,255,255,0.07); border-radius: 20px; padding: 20px;
+        border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+    }
+    .care-card h3 { margin: 0 0 12px; font-size: 16px; color: #e28bc7; display: flex; align-items: center; gap: 8px; }
+    .care-card p { margin: 0 0 10px; font-size: 13px; line-height: 1.5; opacity: 0.9; }
+    .care-card ul { margin: 0; padding-left: 18px; font-size: 13px; opacity: 0.9; }
+    .care-card li { margin-bottom: 6px; }
+    .important-badge { background: rgba(226, 139, 199, 0.2); color: #ffb6e6; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+    .warning-box { background: rgba(255, 59, 48, 0.1); border-left: 3px solid #ff3b30; padding: 10px; margin-top: 10px; font-size: 12px; }
+
+    /* === МЕНЮ ЗАПИСАТЬСЯ === */
+    .fab-wrapper { position: fixed; right: 16px; bottom: max(14px, env(safe-area-inset-top)); z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .fab-menu { display: none; flex-direction: column; gap: 8px; margin-bottom: 6px; }
+    .fab-menu.open { display: flex; }
+    .fab-option {
+        border: none; border-radius: 999px; padding: 12px 20px; font-size: 14px; font-weight: 600; color: #fff;
+        cursor: pointer; min-width: 180px; display: flex; align-items: center; gap: 12px;
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+    }
+    .fab-option:hover { background: rgba(255, 255, 255, 0.1); }
+    .fab-main {
+        background: linear-gradient(135deg, #e28bc7 0%, #c45abd 100%); color: #fff; border-radius: 999px;
+        padding: 14px 32px; font-size: 16px; font-weight: 700; cursor: pointer; border: none;
+        box-shadow: 0 10px 25px rgba(196, 90, 189, 0.4);
+    }
+
+    /* === МОДАЛКА === */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
+    .modal-overlay.open { display: flex; }
+    .modal-inner { position: relative; max-width: 100%; max-height: 90vh; }
+    .modal-inner img { max-width: 100%; max-height: 85vh; border-radius: 12px; }
+    .modal-close { position: absolute; top: -45px; right: 0; color: #fff; font-size: 35px; cursor: pointer; }
+
+    .footer-note { margin: 40px 18px 20px; text-align: center; font-size: 11px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<div class="content">
+    <div class="nav">
+        <button data-target="viypr">Выпрямление</button>
+        <button data-target="uhods">Уходы</button>
+        <button data-target="okrash">Окрашивание</button>
+        <button data-target="care">Домашний уход</button>
+        <button onclick="window.location.href='quiz.html'" style="background: rgba(226, 139, 199, 0.3); border-color: #e28bc7;">Подбор 🪄</button>
+    </div>
+
+    <div class="address-bar">
+        <h1 class="address-brand">Hair Lab</h1>
+        <div class="address-line">Томск — Розы Люксембург, 4В — 4 этаж</div>
+    </div>
+
+    <main>
+        <div class="intro" onclick="openImage('19 Презентация.jpg')">
+            <img src="19 Презентация.jpg" alt="О студии">
+        </div>
+
+        <div id="viypr" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Выпрямление</h2></div>
+            <div class="grid">
+                <div class="card" onclick="openImage('2 Ботокс.jpg')"><img src="2 Ботокс.jpg"></div>
+                <div class="card" onclick="openImage('3 Биксипластия.jpg')"><img src="3 Биксипластия.jpg"></div>
+                <div class="card" onclick="openImage('5 Кератин.jpg')"><img src="5 Кератин.jpg"></div>
+                <div class="card" onclick="openImage('8 Нанопластика.jpg')"><img src="8 Нанопластика.jpg"></div>
+                <div class="card" onclick="openImage('4 Коллаген.jpg')"><img src="4 Коллаген.jpg"></div>
+                <div class="card" onclick="openImage('13 Височная зона.jpg')"><img src="13 Височная зона.jpg"></div>
+                <div class="card" onclick="openImage('17 Бразилиан.jpg')"><img src="17 Бразилиан.jpg"></div>
+            </div>
+        </div>
+
+        <div id="uhods" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Уходы</h2></div>
+            <div class="grid">
+                <div class="card" onclick="openImage('9 Холодное.jpg')"><img src="9 Холодное.jpg"></div>
+                <div class="card" onclick="openImage('10 Счастье.jpg')"><img src="10 Счастье.jpg"></div>
+                <div class="card" onclick="openImage('6 Тотальная описание.jpg')"><img src="6 Тотальная описание.jpg"></div>
+                <div class="card" onclick="openImage('7 Тотальная стоимость.jpg')"><img src="7 Тотальная стоимость.jpg"></div>
+                <div class="card" onclick="openImage('11 Пилинг диагностика.jpg')"><img src="11 Пилинг диагностика.jpg"></div>
+                <div class="card" onclick="openImage('12 Полировка.jpg')"><img src="12 Полировка.jpg"></div>
+                <div class="card" onclick="openImage('14 Стрижка.jpg')"><img src="14 Стрижка.jpg"></div>
+            </div>
+        </div>
+
+        <div id="okrash" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
+            <div class="grid">
+                <div class="card" onclick="openImage('15 Тонирование.jpg')"><img src="15 Тонирование.jpg"></div>
+                <div class="card" onclick="openImage('18 Биозавивка.jpg')"><img src="18 Биозавивка.jpg"></div>
+            </div>
+        </div>
+
+        <div id="care" class="section">
             <div class="section-header"><div class="section-marker"></div><h2>Памятка после процедуры</h2></div>
             <div class="care-container">
                 
@@ -21,30 +195,85 @@
 
                 <div class="care-card">
                     <h3>🌬 Секреты сушки</h3>
-                    <p>Отжимаем полотенцем, но не трем. <span class="important-badge">В полотенце НЕ ХОДИМ!</span> Помыли — и сразу сушим.</p>
-                    <p>Используйте термозащиту и сушите на максимальной скорости теплым или горячим воздухом.</p>
+                    <p>Отжимаем полотенцем, но не трем. <span class="important-badge">В полотенце НЕ ХОДИМ!</span></p>
+                    <p>Помыли, отжали и <span class="important-badge">сразу</span> приступаем к сушке феном.</p>
+                    <p>Сушите на максимальной скорости теплым или горячим воздухом.</p>
                     <ul>
-                        <li><strong>Для объема:</strong> наклоните голову вниз и сушите корни.</li>
-                        <li><strong>Для гладкости:</strong> сушите сверху вниз, поток воздуха «в пол».</li>
+                        <li><strong>Для объема:</strong> наклоните голову вниз и сушите только корни.</li>
+                        <li><strong>Для гладкости:</strong> встаньте прямо, фен над головой, поток воздуха «в пол».</li>
                     </ul>
                 </div>
 
                 <div class="care-card">
                     <h3>🎨 Окрашивание и блонд</h3>
                     <p><strong>Краска:</strong> за 10-14 дней ДО или через 10-14 дней ПОСЛЕ.</p>
-                    <p><strong>Обесцвечивание (порошок):</strong> за 10-14 дней ДО или через 2 месяца ПОСЛЕ.</p>
+                    <p><strong>Обесцвечивание:</strong> за 10-14 дней ДО или через 2 месяца ПОСЛЕ.</p>
                     <p>Обесцвечивать ТОЛЬКО КОРНИ можно через 3 недели.</p>
                 </div>
 
                 <div class="care-card">
-                    <h3>🚫 Категорически нельзя</h3>
+                    <h3>🚫 Нельзя делать</h3>
                     <ul>
                         <li>Ложиться спать с мокрой головой.</li>
-                        <li>Сушить волосы естественным способом.</li>
                         <li>Использовать масла для волос.</li>
+                        <li>Сушить волосы естественным способом.</li>
                     </ul>
-                    <p style="margin-top:15px; font-style: italic; font-size: 12px; color: #e28bc7;">Если появился залом (после сна/резинки) — смочите водой и высушите феном.</p>
+                    <div class="warning-box">Если появился залом (от сна или резинки) — смочите водой и высушите феном.</div>
                 </div>
 
             </div>
         </div>
+
+        <div class="footer-note">С любовью, Hair Lab ❤️<br>Томск · Красивые волосы без компромиссов</div>
+    </main>
+</div>
+
+<div id="fabWrapper" class="fab-wrapper">
+    <div id="fabMenu" class="fab-menu">
+        <button class="fab-option" onclick="window.location.href='tel:+79528883050'">📞 Позвонить</button>
+        <button class="fab-option" onclick="window.open('https://t.me/hairlab_tomsk')">✈️ Telegram</button>
+        <button class="fab-option" onclick="window.open('https://max.ru/u/f9LHodD0cOIlRLZOAOZa-YWwHrQ7eNQtVgbGT8yuzBOVtGVbokoiV5S59JQ')">💬 Max Messenger</button>
+        <button class="fab-option" onclick="window.open('https://wa.me/79528883050')">🟢 WhatsApp</button>
+    </div>
+    <button id="fabMain" class="fab-main">Записаться</button>
+</div>
+
+<div id="imageModal" class="modal-overlay">
+    <div class="modal-inner">
+        <span class="modal-close" onclick="closeImage()">&times;</span>
+        <img id="modalImg" src="">
+    </div>
+</div>
+
+<script>
+    function openImage(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('imageModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeImage() {
+        document.getElementById('imageModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.getElementById('imageModal').onclick = (e) => { if(e.target.id === 'imageModal') closeImage(); };
+
+    const fabMain = document.getElementById('fabMain');
+    const fabMenu = document.getElementById('fabMenu');
+    fabMain.onclick = (e) => { e.stopPropagation(); fabMenu.classList.toggle('open'); };
+    document.onclick = () => fabMenu.classList.remove('open');
+
+    const navBtns = document.querySelectorAll('.nav button');
+    navBtns.forEach(b => {
+        b.onclick = () => {
+            const target = document.getElementById(b.dataset.target);
+            if(target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    const obs = new IntersectionObserver(ents => {
+        ents.forEach(en => { if(en.isIntersecting) navBtns.forEach(b => b.classList.toggle('active', b.dataset.target === en.target.id)); });
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0.1 });
+    document.querySelectorAll('.section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
