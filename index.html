@@ -196,15 +196,15 @@
         border: none; border-radius: 999px; padding: 10px 18px; font-size: 13px; font-weight: 600;
         color: #fff; cursor: pointer; min-width: 160px; box-shadow: 0 8px 18px rgba(0,0,0,0.35);
         display: flex; align-items: center; gap: 10px;
-        /* Фирменный синий стиль для кнопок меню */
-        background: rgba(5, 12, 60, 0.85);
+        /* Максимально прозрачный фон */
+        background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px);
         transition: transform 0.12s ease, background 0.12s ease;
     }
     
     .fab-option:hover {
-        background: rgba(13, 43, 215, 0.9);
+        background: rgba(255, 255, 255, 0.2);
         transform: translateX(-4px);
     }
 
@@ -312,11 +312,26 @@
 
 <div id="fabWrapper" class="fab-wrapper">
     <div id="fabMenu" class="fab-menu">
-        <button class="fab-option" onclick="openPhone()">📞 Позвонить</button>
-        <button class="fab-option" onclick="openTelegram()">✈️ Telegram</button>
-        <button class="fab-option" onclick="openMax()">💬 Мессенджер Макс</button>
-        <button class="fab-option" onclick="openWhatsApp()">📱 WhatsApp</button>
-        <button class="fab-option" onclick="openInstagram()">📸 Instagram</button>
+        <button class="fab-option" onclick="openPhone()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#00d736"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            Позвонить
+        </button>
+        <button class="fab-option" onclick="openTelegram()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.12l-1.94 9.15c-.15.67-.55.83-1.11.52l-3.08-2.27-1.49 1.44c-.16.16-.3.3-.61.3l.22-3.13 5.69-5.14c.25-.22-.05-.35-.39-.12l-7.03 4.43-3.04-.95c-.66-.21-.67-.66.14-.98l11.86-4.57c.55-.2 1.03.12.88.82z"/></svg>
+            Telegram
+        </button>
+        <button class="fab-option" onclick="openMax()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c6ff"/><stop offset="100%" stop-color="#0072ff"/></linearGradient></defs><path fill="url(#a)" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/><path fill="#fff" d="M12 4c-4.411 0-8 3.589-8 8 0 1.967.71 3.767 1.894 5.167L4 20l3.833-1.894C9.233 19.29 11.033 20 12 20c4.411 0 8-3.589 8-8s-3.589-8-8-8z"/></svg>
+            Max
+        </button>
+        <button class="fab-option" onclick="openWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M12.031 0C5.396 0 0 5.396 0 12.031c0 2.122.55 4.167 1.596 5.953L0 24l6.161-1.617c1.73.945 3.693 1.446 5.87 1.446 6.635 0 12.031-5.396 12.031-12.031C24.062 5.396 18.666 0 12.031 0zM12.031 21.99c-1.832 0-3.567-.496-5.096-1.385l-3.646.957.975-3.553c-.972-1.678-1.492-3.609-1.492-5.619C2.772 6.933 6.933 2.772 12.031 2.772s9.259 4.161 9.259 9.259-4.161 9.259-9.259 9.259zM16.887 13.36c-.267-.134-1.582-.78-1.827-.869-.244-.089-.422-.134-.6.134-.178.267-.689.869-.845 1.047-.156.178-.311.2-.578.067-1.476-.729-2.443-1.261-3.421-2.922-.118-.198-.012-.306.087-.404.089-.089.2-.244.311-.378.111-.134.156-.222.222-.378.067-.156.033-.311-.022-.444-.067-.134-.6-1.446-.822-1.98-.222-.511-.444-.444-.6-.444-.156 0-.333.011-.511.011-.178 0-.467.067-.711.333-.244.267-.933.911-.933 2.222s.956 2.578 1.089 2.778c.134.2 1.889 3.111 4.689 4.178 2.8.956 2.8.644 3.311.6.511-.044 1.582-.644 1.8-1.267.222-.622.222-1.156.156-1.267-.067-.111-.244-.178-.511-.311z"/></svg>
+            WhatsApp
+        </button>
+        <button class="fab-option" onclick="openInstagram()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#b)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.667 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.073-4.947-.2-4.356-2.623-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+        </button>
     </div>
     <button id="fabMain" class="fab-main">
         <span>Записаться</span>
