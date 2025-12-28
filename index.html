@@ -87,6 +87,18 @@
     .card:hover { transform: translateY(-2px); }
     .card img { width: 100%; display: block; }
 
+    /* НОВЫЙ БЛОК: КАРТОЧКИ УХОДА */
+    .care-card {
+        background: rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+    }
+    .care-card h3 { margin: 0 0 8px; font-size: 16px; color: #e28bc7; }
+    .care-card p { margin: 0; font-size: 13px; line-height: 1.5; opacity: 0.9; }
+
     /* ===== МЕНЮ ЗАПИСАТЬСЯ ===== */
     .fab-wrapper {
         position: fixed;
@@ -113,7 +125,6 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        /* МАКСИМАЛЬНАЯ ПРОЗРАЧНОСТЬ */
         background: rgba(255, 255, 255, 0.02); 
         border: 1px solid rgba(255, 255, 255, 0.10);
         backdrop-filter: blur(15px) saturate(180%);
@@ -123,7 +134,6 @@
     }
     .fab-option:hover { background: rgba(255, 255, 255, 0.08); transform: translateX(-4px); }
     .fab-option:active { transform: scale(0.97); }
-    
     .fab-option img, .fab-option svg { width: 22px; height: 22px; flex-shrink: 0; object-fit: contain; }
 
     .fab-main {
@@ -141,6 +151,7 @@
     .modal-close { position: absolute; top: 4px; right: 4px; width: 30px; height: 30px; background: rgba(255,255,255,0.2); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.4); z-index: 2001; }
     .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); z-index: 2001; }
     .modal-prev { left: 4px; } .modal-next { right: 4px; }
+    .modal-hint { text-align: center; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 10px; }
 
     .footer-note { margin: 32px 18px 10px; text-align: center; font-size: 11px; color: rgba(255,255,255,0.65); }
 </style>
@@ -152,6 +163,7 @@
         <button data-target="viypr">Выпрямление</button>
         <button data-target="uhod">Уходы</button>
         <button data-target="okrash">Окрашивание</button>
+        <button data-target="care">Уход</button>
     </div>
 
     <div class="address-bar">
@@ -165,7 +177,6 @@
 
         <div id="viypr" class="section">
             <div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
-            <p class="section-hint">Коснитесь карточки для увеличения</p>
             <div class="grid">
                 <div class="card" tabindex="0"><img src="2 Ботокс.jpg" alt="Ботокс"></div>
                 <div class="card" tabindex="0"><img src="3 Биксипластия.jpg" alt="Биксипластия"></div>
@@ -198,6 +209,27 @@
                 <div class="card" tabindex="0"><img src="18 Биозавивка.jpg" alt="Биозавивка"></div>
             </div>
         </div>
+
+        <div id="care" class="section" style="padding: 0 16px;">
+            <div class="section-header"><div class="section-marker"></div><h2>Карманный уход</h2></div>
+            <p class="section-hint">Как сохранить эффект надолго</p>
+            
+            <div class="care-card">
+                <h3>🧴 Правильное мытье</h3>
+                <p>Используйте только бессульфатные шампуни. Намыливайте только корни, длину промоет стекающая пена.</p>
+            </div>
+            
+            <div class="care-card">
+                <h3>💨 Сушка феном</h3>
+                <p>Всегда сушите волосы феном по направлению роста чешуек (сверху вниз). Это «запечатывает» состав внутри.</p>
+            </div>
+            
+            <div class="care-card">
+                <h3>🌊 Море и хлор</h3>
+                <p>Перед купанием наносите защитное масло или бальзам. После — обязательно промойте волосы пресной водой.</p>
+            </div>
+        </div>
+
         <div class="footer-note">HairLab · Томск · Красивые волосы без компромиссов</div>
     </main>
 </div>
@@ -234,7 +266,7 @@
         <button class="modal-nav modal-prev">‹</button>
         <button class="modal-nav modal-next">›</button>
         <img id="modalImage" src="" alt="">
-        <div class="modal-hint" style="text-align: center; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 10px;">Нажмите в любое место, чтобы закрыть</div>
+        <div class="modal-hint">Нажмите в любое место, чтобы закрыть</div>
     </div>
 </div>
 
@@ -245,8 +277,6 @@
     function openTelegram() { window.open("https://t.me/hairlab_tomsk", "_blank"); }
     function openInstagram() { window.open("https://instagram.com/hairlab_", "_blank"); }
     function openPhone() { window.location.href = `tel:+${PHONE}`; }
-    
-    // Обновленная функция с прямой ссылкой на профиль Max
     function openMax() { window.open("https://max.ru/u/f9LHodD0cOIlRLZOAOZa-YWwHrQ7eNQtVgbGT8yuzBOVtGVbokoiV5S59JQ", "_blank"); }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -264,21 +294,10 @@
         };
 
         document.querySelectorAll(".card, .intro").forEach((el, i) => {
-            el.onclick = () => { 
-                showImg(i); 
-                modal.classList.add("open"); 
-                document.body.style.overflow="hidden"; 
-                fabWrapper.classList.add("hidden"); 
-            };
+            el.onclick = () => { showImg(i); modal.classList.add("open"); document.body.style.overflow="hidden"; fabWrapper.classList.add("hidden"); };
         });
 
-        // Закрытие карточки нажатием в любое место
-        modal.onclick = () => { 
-            modal.classList.remove("open"); 
-            document.body.style.overflow=""; 
-            fabWrapper.classList.remove("hidden"); 
-        };
-        
+        modal.onclick = () => { modal.classList.remove("open"); document.body.style.overflow=""; fabWrapper.classList.remove("hidden"); };
         document.querySelector(".modal-prev").onclick = (e) => { e.stopPropagation(); showImg(curIdx - 1); };
         document.querySelector(".modal-next").onclick = (e) => { e.stopPropagation(); showImg(curIdx + 1); };
 
