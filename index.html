@@ -7,13 +7,14 @@
 <title>HairLab — Прайсы</title>
 
 <style>
-    /* === БАЗОВЫЕ СТИЛИ (ФИРМЕННЫЙ СИНИЙ) === */
+    /* === БАЗОВЫЕ СТИЛИ (ОПТИМИЗИРОВАНО) === */
     body {
         margin: 0;
         background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         color: #ffffff;
         scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
     }
 
     .content {
@@ -32,7 +33,6 @@
         padding: 6px 10px;
         display: flex;
         overflow-x: auto; 
-        justify-content: flex-start;
         background: rgba(5, 12, 60, 0.45);
         border-radius: 22px;
         width: fit-content;
@@ -41,6 +41,7 @@
         backdrop-filter: blur(14px) saturate(150%);
         -webkit-backdrop-filter: blur(14px) saturate(150%);
         border: 1px solid rgba(255,255,255,0.18);
+        scrollbar-width: none;
     }
     .nav::-webkit-scrollbar { display: none; }
 
@@ -57,6 +58,7 @@
         white-space: nowrap;
         margin-right: 6px;
     }
+    .nav button:last-child { margin-right: 0; }
     .nav button.active { background: rgba(255,255,255,0.26); border-color: rgba(255,255,255,0.45); }
 
     /* === ШАПКА === */
@@ -71,11 +73,12 @@
     .section-header h2 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
     .section-header::after { content: ""; flex: 1; height: 1px; margin-left: 12px; background: rgba(255,255,255,0.30); }
 
-    .intro { width: 94%; margin: 20px auto 30px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.22); cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+    .intro { width: 94%; margin: 20px auto 30px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.22); cursor: pointer; box-shadow: 0 12px 30px rgba(0,0,0,0.3); background: rgba(255,255,255,0.05); }
     .intro img { width: 100%; display: block; }
 
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 16px; }
-    .card { background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: transform 0.1s; }
+    .card { background: rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: transform 0.1s; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .card:active { transform: scale(0.97); }
     .card img { width: 100%; display: block; }
 
     /* === МЕНЮ ЗАПИСАТЬСЯ === */
@@ -85,7 +88,8 @@
     .fab-option {
         border: none; border-radius: 999px; padding: 12px 20px; font-size: 14px; font-weight: 600; color: #fff;
         cursor: pointer; min-width: 180px; display: flex; align-items: center; gap: 12px;
-        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 25px rgba(0,0,0,0.25);
     }
     .fab-main {
         background: linear-gradient(135deg, #e28bc7 0%, #c45abd 100%); color: #fff; border-radius: 999px;
@@ -93,15 +97,15 @@
         box-shadow: 0 10px 25px rgba(196, 90, 189, 0.4);
     }
 
-    /* === МОДАЛКА === */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; }
+    /* === МОДАЛКА С ЛИСТАНИЕМ === */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 16px; backdrop-filter: blur(5px); }
     .modal-overlay.open { display: flex; }
     .modal-inner { position: relative; max-width: 100%; max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
     .modal-inner img { max-width: 100%; max-height: 80vh; border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.7); cursor: pointer; }
     
-    .modal-close { position: absolute; top: 4px; right: 4px; width: 34px; height: 34px; background: rgba(255,255,255,0.2); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.4); z-index: 2001; font-size: 24px; }
-    .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); z-index: 2001; font-size: 24px; }
-    .modal-prev { left: 4px; } .modal-next { right: 4px; }
+    .modal-close { position: absolute; top: 4px; right: 4px; width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.4); z-index: 2001; font-size: 26px; }
+    .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); z-index: 2001; font-size: 30px; }
+    .modal-prev { left: 8px; } .modal-next { right: 8px; }
     .modal-hint { text-align: center; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 10px; }
 
     .footer-note { margin: 40px 18px 20px; text-align: center; font-size: 11px; color: rgba(255,255,255,0.65); }
@@ -114,8 +118,6 @@
         <button data-target="viypr">Выпрямление</button>
         <button data-target="uhods">Уходы</button>
         <button data-target="okrash">Окрашивание</button>
-        <button onclick="window.location.href='menu.html'" style="background: rgba(255, 255, 255, 0.12);">Бар ☕️</button>
-        <button onclick="window.location.href='quiz.html'" style="background: rgba(226, 139, 199, 0.3); border-color: #e28bc7; margin-right: 0;">Подбор 🪄</button>
     </div>
 
     <div class="address-bar">
@@ -128,25 +130,26 @@
         <div class="intro"><img src="19 Презентация.jpg" alt="О студии"></div>
 
         <div id="viypr" class="section">
-            <div class="section-header"><div class="section-marker"></div><h2>Выпрямление</h2></div>
+            <div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
             <div class="grid">
                 <div class="card"><img src="2 Ботокс.jpg"></div>
                 <div class="card"><img src="3 Биксипластия.jpg"></div>
-                <div class="card"><img src="5 Кератин.jpg"></div>
-                <div class="card"><img src="8 Нанопластика.jpg"></div>
                 <div class="card"><img src="4 Коллаген.jpg"></div>
+                <div class="card"><img src="5 Кератин.jpg"></div>
+                <div class="card"><img src="6 Тотальная описание.jpg"></div>
+                <div class="card"><img src="7 Тотальная стоимость.jpg"></div>
                 <div class="card"><img src="13 Височная зона.jpg"></div>
+                <div class="card"><img src="8 Нанопластика.jpg"></div>
                 <div class="card"><img src="17 Бразилиан.jpg"></div>
             </div>
         </div>
 
         <div id="uhods" class="section">
-            <div class="section-header"><div class="section-marker"></div><h2>Уходы</h2></div>
+            <div class="section-header"><div class="section-marker"></div><h2>Уходы + Стрижки</h2></div>
             <div class="grid">
                 <div class="card"><img src="9 Холодное.jpg"></div>
                 <div class="card"><img src="10 Счастье.jpg"></div>
-                <div class="card"><img src="6 Тотальная описание.jpg"></div>
-                <div class="card"><img src="7 Тотальная стоимость.jpg"></div>
+                <div class="card"><img src="16 Адорн.jpg"></div>
                 <div class="card"><img src="11 Пилинг диагностика.jpg"></div>
                 <div class="card"><img src="12 Полировка.jpg"></div>
                 <div class="card"><img src="14 Стрижка.jpg"></div>
@@ -169,8 +172,9 @@
     <div id="fabMenu" class="fab-menu">
         <button class="fab-option" onclick="window.location.href='tel:+79528883050'">📞 Позвонить</button>
         <button class="fab-option" onclick="window.open('https://t.me/hairlab_tomsk')">✈️ Telegram</button>
-        <button class="fab-option" onclick="window.open('https://max.ru/u/f9LHodD0cOIlRLZOAOZa-YWwHrQ7eNQtVgbGT8yuzBOVtGVbokoiV5S59JQ')">💬 Max Messenger</button>
+        <button class="fab-option" onclick="window.open('https://max.ru/u/f9LHodD0cOIlRLZOAOZa-YWwHrQ7eNQtVgbGT8yuzBOVtGVbokoiV5S59JQ')">💬 Max</button>
         <button class="fab-option" onclick="window.open('https://wa.me/79528883050')">🟢 WhatsApp</button>
+        <button class="fab-option" onclick="window.open('https://instagram.com/hairlab_')">📸 Instagram</button>
     </div>
     <button id="fabMain" class="fab-main"><span>Записаться</span></button>
 </div>
@@ -191,7 +195,8 @@
         const modalImg = document.getElementById("modalImage");
         const fabWrapper = document.getElementById("fabWrapper");
         
-        const thumbs = Array.from(document.querySelectorAll(".card img, .intro img"));
+        // Массив всех изображений для листания
+        const thumbs = Array.from(document.querySelectorAll(".intro img, .card img"));
         let curIdx = 0;
 
         const showImg = (i) => {
@@ -201,7 +206,8 @@
             modalImg.src = thumbs[curIdx].src;
         };
 
-        document.querySelectorAll(".card, .intro").forEach((el, i) => {
+        // Открытие модалки
+        document.querySelectorAll(".intro, .card").forEach((el, i) => {
             el.onclick = (e) => {
                 e.stopPropagation();
                 showImg(i);
@@ -211,21 +217,25 @@
             };
         });
 
+        // Закрытие модалки по клику на фон
         modal.onclick = () => {
             modal.classList.remove("open");
             document.body.style.overflow = "";
             fabWrapper.style.display = "flex";
         };
 
+        // Навигация внутри модалки
         document.querySelector(".modal-prev").onclick = (e) => { e.stopPropagation(); showImg(curIdx - 1); };
         document.querySelector(".modal-next").onclick = (e) => { e.stopPropagation(); showImg(curIdx + 1); };
         document.querySelector(".modal-close").onclick = (e) => { e.stopPropagation(); modal.onclick(); };
 
+        // Меню Записаться
         const fabMain = document.getElementById("fabMain");
         const fabMenu = document.getElementById("fabMenu");
         fabMain.onclick = (e) => { e.stopPropagation(); fabMenu.classList.toggle("open"); };
         document.onclick = () => fabMenu.classList.remove("open");
 
+        // Плавный скролл по навигации
         const navBtns = document.querySelectorAll(".nav button[data-target]");
         navBtns.forEach(b => {
             b.onclick = () => {
@@ -234,6 +244,7 @@
             }
         });
 
+        // Подсветка активной кнопки при скролле
         const obs = new IntersectionObserver(ents => {
             ents.forEach(en => { if(en.isIntersecting) navBtns.forEach(b => b.classList.toggle("active", b.dataset.target === en.target.id)); });
         }, { rootMargin: '-10% 0px -70% 0px', threshold: 0.1 });
