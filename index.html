@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Hair Lab — Клиентское меню</title>
 
 <style>
@@ -15,7 +14,6 @@ body {
   color: #fff;
   scroll-behavior: smooth;
 }
-
 .content {
   max-width: 920px;
   margin: 0 auto;
@@ -29,17 +27,11 @@ body {
 .address-brand {
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
-.address-sub {
-  font-size: 11px;
-  opacity: .8;
-}
-.address-line {
-  font-size: 12px;
-  opacity: .85;
-}
+.address-sub { font-size: 11px; opacity: .8; }
+.address-line { font-size: 12px; opacity: .85; }
 
 /* ===== CLIENT HUB ===== */
 .hub {
@@ -48,7 +40,6 @@ body {
   gap: 14px;
   margin: 20px 16px 30px;
 }
-
 .hub-btn {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.25);
@@ -61,11 +52,7 @@ body {
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
-
-.hub-btn:active {
-  transform: scale(0.97);
-}
-
+.hub-btn:active { transform: scale(0.97); }
 .hub-note {
   text-align: center;
   font-size: 11px;
@@ -77,20 +64,36 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 32px 18px 8px;
+  margin: 36px 18px 10px;
 }
-
 .section-marker {
   width: 6px;
   height: 22px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,.9);
 }
-
 .section-header h2 {
   margin: 0;
   font-size: 18px;
   letter-spacing: .06em;
+}
+
+/* ===== BUTTON LIST ===== */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 16px;
+}
+.list button {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* ===== GRID ===== */
@@ -100,18 +103,29 @@ body {
   gap: 14px;
   padding: 0 16px;
 }
-
 .card {
   background: rgba(255,255,255,0.1);
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
-
 .card img {
   width: 100%;
   display: block;
+}
+
+/* ===== TEXT ===== */
+.text {
+  padding: 0 18px;
+  font-size: 14px;
+  opacity: .9;
+  line-height: 1.5;
+}
+.hint {
+  text-align: center;
+  font-size: 12px;
+  opacity: .6;
+  margin-top: 12px;
 }
 
 /* ===== FOOTER ===== */
@@ -135,12 +149,37 @@ body {
 </div>
 
 <!-- CLIENT HUB -->
-<section id="client-hub" class="hub">
+<section class="hub">
   <button class="hub-btn" data-target="gift">Получить подарок</button>
   <button class="hub-btn" data-target="cashback">Твой кешбэк</button>
   <button class="hub-btn" data-target="price">Прайс со скидкой</button>
   <button class="hub-btn" onclick="openTelegram()">Онлайн-запись</button>
   <div class="hub-note">Для клиентов Hair Lab</div>
+</section>
+
+<!-- GIFT -->
+<section id="gift">
+  <div class="section-header">
+    <div class="section-marker"></div>
+    <h2>Получите подарок от Hair Lab</h2>
+  </div>
+
+  <div class="text">
+    Всего 2 простых шага:
+    <br><br>
+    1. Оставьте отзыв на одной из площадок<br>
+    2. Отправьте скрин администратору или покажите мастеру
+  </div>
+
+  <div class="list" style="margin-top:16px">
+    <button onclick="openYandex()">Яндекс Карты</button>
+    <button onclick="open2GIS()">2GIS</button>
+    <button onclick="openYclients()">Yclients</button>
+  </div>
+
+  <div class="hint">
+    Это наш способ сказать спасибо за честную обратную связь
+  </div>
 </section>
 
 <!-- CASHBACK -->
@@ -149,7 +188,8 @@ body {
     <div class="section-marker"></div>
     <h2>Твой кешбэк</h2>
   </div>
-  <div style="padding:0 18px;font-size:14px;opacity:.9">
+
+  <div class="text">
     С каждого визита вы копите бонусные рубли<br>
     <strong>1 бонус = 1 рубль</strong><br><br>
 
@@ -167,6 +207,7 @@ body {
     <div class="section-marker"></div>
     <h2>Прайс</h2>
   </div>
+
   <div class="grid">
     <div class="card"><img src="2 Ботокс.jpg"></div>
     <div class="card"><img src="3 Биксипластия.jpg"></div>
@@ -185,12 +226,20 @@ const PHONE = "79528883050";
 function openTelegram() {
   window.open("https://t.me/hairlab_tomsk", "_blank");
 }
-
 function openWhatsApp() {
   window.open(`https://wa.me/${PHONE}`, "_blank");
 }
+function openYandex() {
+  window.open("https://yandex.ru/maps", "_blank");
+}
+function open2GIS() {
+  window.open("https://2gis.ru", "_blank");
+}
+function openYclients() {
+  window.open("https://yclients.com", "_blank");
+}
 
-document.querySelectorAll(".hub-btn[data-target]").forEach(btn => {
+document.querySelectorAll("[data-target]").forEach(btn => {
   btn.onclick = () => {
     const el = document.getElementById(btn.dataset.target);
     if (el) el.scrollIntoView({ behavior: "smooth" });
