@@ -6,105 +6,129 @@
 <title>Hair Lab — Клиентское меню</title>
 
 <style>
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
+/* ===== VARIABLES ===== */
+:root {
+    --blue-main: #3F54E3;
+    --blue-dark: #2F3FC8;
+    --blue-light: #5167F0;
+    --pink-accent: #F2A3C7;
 }
 
-/* ===== BACKGROUND ===== */
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  color: #fff;
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-    url("fonhlsite.png") center / cover no-repeat fixed;
+/* ===== BODY / BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            1200px 600px at 20% -10%,
+            rgba(255,255,255,0.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            900px 500px at 80% 10%,
+            rgba(255,255,255,0.08),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            var(--blue-light) 0%,
+            var(--blue-main) 45%,
+            var(--blue-dark) 100%
+        );
+    background-attachment: fixed;
 }
 
 /* ===== LAYOUT ===== */
 .content {
-  max-width: 720px;
-  margin: 0 auto;
-  padding-bottom: 120px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: 120px;
 }
 
 /* ===== HEADER ===== */
 .address-bar {
-  padding: 22px 18px 12px;
+    padding: 22px 18px 14px;
 }
 
 .address-brand {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .address-sub {
-  font-size: 11px;
-  opacity: 0.85;
-  margin-top: 2px;
+    font-size: 11px;
+    opacity: 0.9;
+    margin-top: 4px;
 }
 
 .address-line {
-  font-size: 12px;
-  opacity: 0.85;
-  margin-top: 2px;
+    font-size: 12px;
+    opacity: 0.85;
+    margin-top: 2px;
 }
 
 /* ===== CLIENT HUB ===== */
 .hub {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: 26px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 26px 16px 42px;
 }
 
 .hub a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .hub-btn {
-  width: 100%;
-  padding: 20px 18px;
-  text-align: center;
+    width: 100%;
+    padding: 20px 18px;
+    text-align: center;
 
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 
-  color: #fff;
-  background: rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.75);
-  border-radius: 18px;
+    color: #ffffff;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
-  transition: transform 0.12s ease, background 0.12s ease;
+    transition: transform 0.12s ease, background 0.12s ease;
 }
 
 .hub-btn:active {
-  transform: scale(0.97);
-  background: rgba(0,0,0,0.45);
+    transform: scale(0.97);
+    background: rgba(255,255,255,0.18);
 }
 
 .hub-note {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 11px;
-  opacity: 0.7;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 11px;
+    opacity: 0.75;
 }
 
 /* ===== FOOTER ===== */
 .footer-note {
-  margin: 60px 18px 20px;
-  text-align: center;
-  font-size: 11px;
-  opacity: 0.65;
+    margin: 60px 18px 20px;
+    text-align: center;
+    font-size: 11px;
+    opacity: 0.65;
 }
 </style>
 </head>
@@ -113,30 +137,49 @@ body {
 
 <div class="content">
 
-  <!-- HEADER -->
-  <div class="address-bar">
-    <div class="address-brand">Hair Lab</div>
-    <div class="address-sub">Первая студия по реконструкции волос</div>
-    <div class="address-line">Томск — Розы Люксембург, 4В</div>
-  </div>
+    <!-- HEADER -->
+    <div class="address-bar">
+        <div class="address-brand">Hair Lab</div>
+        <div class="address-sub">Первая студия по реконструкции волос</div>
+        <div class="address-line">Томск — Розы Люксембург, 4В</div>
+    </div>
 
-  <!-- CLIENT MENU -->
-  <section class="hub">
+    <!-- CLIENT MENU -->
+    <section class="hub">
 
-    <a href="gift.html"><div class="hub-btn">Получи подарок</div></a>
-    <a href="cashback.html"><div class="hub-btn">Твой кешбэк</div></a>
-    <a href="price.html"><div class="hub-btn">Прайс со скидкой</div></a>
-    <a href="https://t.me/hairlab_tomsk" target="_blank"><div class="hub-btn">Онлайн-запись</div></a>
-    <a href="snacks.html"><div class="hub-btn">Чем заняться во время процедуры</div></a>
-    <a href="treat.html"><div class="hub-btn">Побалуй себя</div></a>
+        <a href="gift.html">
+            <div class="hub-btn">Получить подарок</div>
+        </a>
 
-    <div class="hub-note">Клиентское меню Hair Lab</div>
+        <a href="cashback.html">
+            <div class="hub-btn">Твой кешбэк</div>
+        </a>
 
-  </section>
+        <a href="price.html">
+            <div class="hub-btn">Прайс со скидкой</div>
+        </a>
 
-  <div class="footer-note">
-    Hair Lab · Красивые волосы без компромиссов
-  </div>
+        <a href="https://t.me/hairlab_tomsk" target="_blank">
+            <div class="hub-btn">Онлайн-запись</div>
+        </a>
+
+        <a href="snacks.html">
+            <div class="hub-btn">Во время процедуры</div>
+        </a>
+
+        <a href="treat.html">
+            <div class="hub-btn">Побалуй себя</div>
+        </a>
+
+        <div class="hub-note">
+            Клиентское меню Hair Lab
+        </div>
+
+    </section>
+
+    <div class="footer-note">
+        Hair Lab · Красивые волосы без компромиссов
+    </div>
 
 </div>
 
