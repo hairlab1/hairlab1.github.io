@@ -6,6 +6,11 @@
 <title>Hair Lab — Получить подарок</title>
 
 <style>
+/* ===== BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: #f4f1ec;
@@ -13,23 +18,27 @@ body {
   color: #6b5b4b;
 }
 
+/* ===== CONTAINER ===== */
 .wrapper {
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 28px 18px 60px;
+  padding: 56px 18px 72px;
 }
 
+/* ===== TITLES ===== */
 h1 {
-  font-size: 28px;
-  text-transform: uppercase;
+  font-size: 30px;
   line-height: 1.2;
-  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
 }
 
+/* ===== STEPS ===== */
 .steps {
   font-size: 15px;
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .steps span {
@@ -37,42 +46,49 @@ h1 {
   margin-bottom: 12px;
 }
 
+/* ===== GIFT BOX ===== */
 .gift-box {
   background: #ebe5de;
   border-radius: 18px;
-  padding: 24px;
+  padding: 26px 22px;
   text-align: center;
-  margin-bottom: 26px;
+  font-size: 15px;
   font-weight: 600;
+  margin-bottom: 30px;
 }
 
+/* ===== BUTTONS ===== */
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .buttons a {
   display: block;
   text-align: center;
-  padding: 18px;
+  padding: 20px;
   border: 2px solid #6b5b4b;
-  border-radius: 16px;
+  border-radius: 18px;
   text-decoration: none;
   color: #6b5b4b;
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   background: transparent;
 }
 
+/* ===== NOTE ===== */
 .note {
-  margin-top: 24px;
+  margin-top: 26px;
   font-size: 13px;
-  opacity: .7;
+  opacity: 0.75;
   text-align: center;
 }
 
+/* ===== BACK LINK ===== */
 .back {
-  margin-top: 36px;
+  margin-top: 44px;
   text-align: center;
 }
 
@@ -80,38 +96,44 @@ h1 {
   color: #6b5b4b;
   text-decoration: none;
   font-size: 14px;
+  opacity: 0.85;
 }
 </style>
 </head>
 
 <body>
+
 <div class="wrapper">
 
-<h1>Получи подарок<br>от нас прямо сейчас</h1>
+  <h1>
+    Получи подарок<br>
+    от нас прямо сейчас
+  </h1>
 
-<div class="steps">
-  <span><strong>1.</strong> Оставь отзыв на одном из сервисов ниже</span>
-  <span><strong>2.</strong> Отправь скрин администратору или покажи мастеру</span>
+  <div class="steps">
+    <span><strong>1.</strong> Оставь отзыв на одном из этих ресурсов</span>
+    <span><strong>2.</strong> Отправь скрин отзыва в чат с администратором или покажи мастеру</span>
+  </div>
+
+  <div class="gift-box">
+    🎁 Подарочек от нашей студии — твой
+  </div>
+
+  <div class="buttons">
+    <a href="https://yandex.ru/maps" target="_blank">Яндекс Карты</a>
+    <a href="https://2gis.ru" target="_blank">2GIS</a>
+    <a href="https://yclients.com" target="_blank">Yclients</a>
+  </div>
+
+  <div class="note">
+    Это наш способ сказать тебе спасибо за честную обратную связь
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Вернуться в меню</a>
+  </div>
+
 </div>
 
-<div class="gift-box">
-  🎁 Подарочек от нашей студии — твой
-</div>
-
-<div class="buttons">
-  <a href="https://yandex.ru/maps" target="_blank">Яндекс Карты</a>
-  <a href="https://2gis.ru" target="_blank">2GIS</a>
-  <a href="https://yclients.com" target="_blank">Yclients</a>
-</div>
-
-<div class="note">
-  Это наш способ сказать тебе спасибо за честную обратную связь
-</div>
-
-<div class="back">
-  <a href="index.html">← Вернуться в меню</a>
-</div>
-
-</div>
 </body>
 </html>
