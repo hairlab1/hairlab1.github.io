@@ -3,181 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hair Lab — Прайс со скидкой</title>
+<title>HairLab — Прайсы</title>
 
 <style>
-:root {
-    --blue-main: #3F54E3;
-    --blue-dark: #2F3FC8;
-    --blue-light: #5167F0;
-    --pink-accent: #F2A3C7;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* === БАЗОВЫЕ СТИЛИ === */
 body {
-    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     color: #ffffff;
-    background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,0.12), transparent 40%),
-        radial-gradient(900px 500px at 80% 10%, rgba(255,255,255,0.08), transparent 45%),
-        linear-gradient(180deg, var(--blue-light) 0%, var(--blue-main) 45%, var(--blue-dark) 100%);
-    background-attachment: fixed;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ===== LAYOUT ===== */
-.wrapper {
-    max-width: 420px;   /* 🔑 ключевой момент */
+.content {
+    width: 100%;
+    max-width: 920px;
     margin: 0 auto;
     padding-bottom: 120px;
 }
 
-/* ===== HEADER ===== */
-.header {
-    padding: 22px 16px 14px;
-    text-align: center;
+/* === GLASS НАВИГАЦИЯ === */
+.nav {
+    position: sticky;
+    top: max(6px, env(safe-area-inset-top));
+    z-index: 999;
+    margin: 12px auto 0;
+    padding: 6px 10px;
+    display: flex;
+    overflow-x: auto;
+    background: rgba(5,12,60,0.45);
+    border-radius: 22px;
+    width: fit-content;
+    max-width: 98%;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.22);
+    backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav button {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 6px;
+}
+.nav button.active {
+    background: rgba(255,255,255,0.26);
+    border-color: rgba(255,255,255,0.45);
 }
 
-.header-title {
-    font-size: 16px;
+/* === ШАПКА === */
+.address-bar {
+    margin: 18px 18px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.address-brand {
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
+.address-sub { font-size: 11px; opacity: 0.8; }
+.address-line { font-size: 12px; opacity: 0.85; }
 
-.header-sub {
-    font-size: 12px;
-    opacity: 0.9;
-    margin-top: 6px;
-}
-
-/* ===== NOTICE ===== */
-.notice {
-    margin: 14px 16px 20px;
-    padding: 14px 16px;
-    font-size: 12px;
-    text-align: center;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 14px;
-    backdrop-filter: blur(8px);
-}
-
-/* ===== PRICE LIST ===== */
-.price-list {
+/* === СЕКЦИИ === */
+.section-header {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 18px 6px;
+}
+.section-marker {
+    width: 6px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 0 12px rgba(255,255,255,0.7);
+}
+.section-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.section-header::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    margin-left: 12px;
+    background: rgba(255,255,255,0.30);
+}
+
+.intro {
+    width: 94%;
+    margin: 20px auto 30px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.22);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+.intro img { width: 100%; display: block; }
+
+/* === GRID === */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
     padding: 0 16px;
 }
-
-.price-item {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 18px;
+.card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
+.card:active { transform: scale(0.97); }
+.card img { width: 100%; display: block; }
 
-.price-item img {
-    width: 100%;
-    display: block;
-}
-
-/* ===== ACTIONS ===== */
-.actions {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin: 32px 16px 0;
-}
-
-.actions a {
-    text-decoration: none;
-}
-
-.action-btn {
-    padding: 18px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #ffffff;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 999px;
-    backdrop-filter: blur(10px);
-}
-
-.action-btn:active {
-    transform: scale(0.97);
-}
-
-/* ===== FOOTER ===== */
-.footer {
-    margin: 40px 16px 20px;
+/* === FOOTER === */
+.footer-note {
+    margin: 40px 18px 20px;
     text-align: center;
     font-size: 11px;
-    opacity: 0.65;
+    color: rgba(255,255,255,0.65);
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="content">
 
-    <div class="header">
-        <div class="header-title">Hair Lab</div>
-        <div class="header-sub">Прайс со скидкой для клиентов</div>
+    <div class="nav">
+        <button data-target="viypr">Выпрямление</button>
+        <button data-target="uhods">Уходы</button>
+        <button data-target="okrash">Окрашивание</button>
     </div>
 
-    <div class="notice">
-        Цены указаны с учётом персональной скидки<br>
-        <span style="color:var(--pink-accent)">Окончательная стоимость зависит от длины и густоты волос</span>
+    <div class="address-bar">
+        <div class="address-brand">Hair Lab</div>
+        <div class="address-sub">Первая студия по реконструкции волос</div>
+        <div class="address-line">Томск — Розы Люксембург, 4В — 4 этаж</div>
     </div>
 
-    <!-- 🔵 ПОЛНЫЙ ПРАЙС (в правильном порядке) -->
-    <div class="price-list">
-        <div class="price-item"><img src="1 Измерение.jpg" alt=""></div>
-        <div class="price-item"><img src="2 Ботокс.jpg" alt=""></div>
-        <div class="price-item"><img src="3 Биксипластия.jpg" alt=""></div>
-        <div class="price-item"><img src="4 Коллаген.jpg" alt=""></div>
-        <div class="price-item"><img src="5 Кератин.jpg" alt=""></div>
-        <div class="price-item"><img src="6 Тотальная описание.jpg" alt=""></div>
-        <div class="price-item"><img src="7 Тотальная стоимость.jpg" alt=""></div>
-        <div class="price-item"><img src="8 Нанопластика.jpg" alt=""></div>
-        <div class="price-item"><img src="9 Холодное.jpg" alt=""></div>
-        <div class="price-item"><img src="10 Счастье.jpg" alt=""></div>
-        <div class="price-item"><img src="11 Пилинг диагностика.jpg" alt=""></div>
-        <div class="price-item"><img src="12 Полировка.jpg" alt=""></div>
-        <div class="price-item"><img src="13 Височная зона.jpg" alt=""></div>
-        <div class="price-item"><img src="14 Стрижка.jpg" alt=""></div>
-        <div class="price-item"><img src="15 Тонирование.jpg" alt=""></div>
-        <div class="price-item"><img src="16 Адорн.jpg" alt=""></div>
-        <div class="price-item"><img src="17 Бразилиан.jpg" alt=""></div>
-        <div class="price-item"><img src="18 Биозавивка.jpg" alt=""></div>
-    </div>
+    <main>
 
-    <div class="actions">
-        <a href="https://t.me/hairlab_tomsk" target="_blank">
-            <div class="action-btn">Записаться</div>
-        </a>
-        <a href="index.html">
-            <div class="action-btn">Вернуться в меню</div>
-        </a>
-    </div>
+        <div class="intro">
+            <img src="19 Презентация.jpg" alt="">
+        </div>
 
-    <div class="footer">
-        Hair Lab · Профессиональная реконструкция волос
-    </div>
+        <section id="viypr" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
+            <div class="grid">
+                <div class="card"><img src="2 Ботокс.jpg"></div>
+                <div class="card"><img src="3 Биксипластия.jpg"></div>
+                <div class="card"><img src="4 Коллаген.jpg"></div>
+                <div class="card"><img src="5 Кератин.jpg"></div>
+                <div class="card"><img src="6 Тотальная описание.jpg"></div>
+                <div class="card"><img src="7 Тотальная стоимость.jpg"></div>
+                <div class="card"><img src="13 Височная зона.jpg"></div>
+                <div class="card"><img src="8 Нанопластика.jpg"></div>
+                <div class="card"><img src="17 Бразилиан.jpg"></div>
+            </div>
+        </section>
 
+        <section id="uhods" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Уходы / Стрижки</h2></div>
+            <div class="grid">
+                <div class="card"><img src="9 Холодное.jpg"></div>
+                <div class="card"><img src="10 Счастье.jpg"></div>
+                <div class="card"><img src="16 Адорн.jpg"></div>
+                <div class="card"><img src="11 Пилинг диагностика.jpg"></div>
+                <div class="card"><img src="12 Полировка.jpg"></div>
+                <div class="card"><img src="14 Стрижка.jpg"></div>
+            </div>
+        </section>
+
+        <section id="okrash" class="section">
+            <div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
+            <div class="grid">
+                <div class="card"><img src="15 Тонирование.jpg"></div>
+                <div class="card"><img src="18 Биозавивка.jpg"></div>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            Hair Lab · Томск · Красивые волосы без компромиссов
+        </div>
+
+    </main>
 </div>
 
 </body>
