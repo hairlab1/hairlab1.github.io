@@ -6,14 +6,27 @@
 <title>Hair Lab — Клиентское меню</title>
 
 <style>
-/* ===== BASE ===== */
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== BODY & BACKGROUND ===== */
 body {
   margin: 0;
-  background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  color: #fff;
-  scroll-behavior: smooth;
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.35)
+    ),
+    url("fonhlsite.png") center / cover no-repeat fixed;
 }
+
+/* ===== MAIN CONTAINER ===== */
 .content {
   max-width: 920px;
   margin: 0 auto;
@@ -22,230 +35,133 @@ body {
 
 /* ===== HEADER ===== */
 .address-bar {
-  margin: 18px;
+  padding: 20px 18px 10px;
 }
+
 .address-brand {
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.address-sub { font-size: 11px; opacity: .8; }
-.address-line { font-size: 12px; opacity: .85; }
 
-/* ===== CLIENT HUB ===== */
+.address-sub {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.address-line {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* ===== CLIENT HUB BUTTONS ===== */
 .hub {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin: 20px 16px 30px;
+  margin: 24px 16px 40px;
 }
+
+.hub a {
+  text-decoration: none;
+}
+
 .hub-btn {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 18px;
-  padding: 18px;
+  width: 100%;
+  padding: 20px 18px;
+
+  text-align: center;
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 18px;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   cursor: pointer;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.12s ease, background 0.12s ease;
 }
-.hub-btn:active { transform: scale(0.97); }
+
+.hub-btn:active {
+  transform: scale(0.97);
+  background: rgba(0,0,0,0.45);
+}
+
 .hub-note {
+  margin-top: 8px;
   text-align: center;
   font-size: 11px;
-  opacity: .65;
-}
-
-/* ===== SECTIONS ===== */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 36px 18px 10px;
-}
-.section-marker {
-  width: 6px;
-  height: 22px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.9);
-}
-.section-header h2 {
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: .06em;
-}
-
-/* ===== BUTTON LIST ===== */
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 0 16px;
-}
-.list button {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 16px;
-  padding: 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* ===== GRID ===== */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  padding: 0 16px;
-}
-.card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.card img {
-  width: 100%;
-  display: block;
-}
-
-/* ===== TEXT ===== */
-.text {
-  padding: 0 18px;
-  font-size: 14px;
-  opacity: .9;
-  line-height: 1.5;
-}
-.hint {
-  text-align: center;
-  font-size: 12px;
-  opacity: .6;
-  margin-top: 12px;
+  opacity: 0.7;
 }
 
 /* ===== FOOTER ===== */
 .footer-note {
-  margin: 40px 18px 20px;
+  margin: 60px 18px 20px;
   text-align: center;
   font-size: 11px;
-  opacity: .65;
+  opacity: 0.65;
 }
 </style>
 </head>
 
 <body>
+
 <div class="content">
 
-<!-- HEADER -->
-<div class="address-bar">
-  <div class="address-brand">Hair Lab</div>
-  <div class="address-sub">Первая студия по реконструкции волос</div>
-  <div class="address-line">Томск — Розы Люксембург, 4В</div>
-</div>
-
-<!-- CLIENT HUB -->
-<section class="hub">
-  <a href="gift.html" class="hub-btn">Получить подарок</a>
-  <button class="hub-btn" data-target="cashback">Твой кешбэк</button>
-  <button class="hub-btn" data-target="price">Прайс со скидкой</button>
-  <button class="hub-btn" onclick="openTelegram()">Онлайн-запись</button>
-  <div class="hub-note">Для клиентов Hair Lab</div>
-</section>
-
-<!-- GIFT -->
-<section id="gift">
-  <div class="section-header">
-    <div class="section-marker"></div>
-    <h2>Получите подарок от Hair Lab</h2>
+  <!-- HEADER -->
+  <div class="address-bar">
+    <div class="address-brand">Hair Lab</div>
+    <div class="address-sub">Первая студия по реконструкции волос</div>
+    <div class="address-line">Томск — Розы Люксембург, 4В</div>
   </div>
 
-  <div class="text">
-    Всего 2 простых шага:
-    <br><br>
-    1. Оставьте отзыв на одной из площадок<br>
-    2. Отправьте скрин администратору или покажите мастеру
+  <!-- CLIENT MENU -->
+  <section class="hub">
+
+    <a href="gift.html">
+      <div class="hub-btn">Получи подарок</div>
+    </a>
+
+    <a href="cashback.html">
+      <div class="hub-btn">Твой кешбэк</div>
+    </a>
+
+    <a href="price.html">
+      <div class="hub-btn">Прайс со скидкой</div>
+    </a>
+
+    <a href="https://t.me/hairlab_tomsk" target="_blank">
+      <div class="hub-btn">Онлайн-запись</div>
+    </a>
+
+    <a href="snacks.html">
+      <div class="hub-btn">Чем заняться во время процедуры</div>
+    </a>
+
+    <a href="treat.html">
+      <div class="hub-btn">Побалуй себя</div>
+    </a>
+
+    <div class="hub-note">
+      Клиентское меню Hair Lab
+    </div>
+
+  </section>
+
+  <div class="footer-note">
+    Hair Lab · Красивые волосы без компромиссов
   </div>
-
-  <div class="list" style="margin-top:16px">
-    <button onclick="openYandex()">Яндекс Карты</button>
-    <button onclick="open2GIS()">2GIS</button>
-    <button onclick="openYclients()">Yclients</button>
-  </div>
-
-  <div class="hint">
-    Это наш способ сказать спасибо за честную обратную связь
-  </div>
-</section>
-
-<!-- CASHBACK -->
-<section id="cashback">
-  <div class="section-header">
-    <div class="section-marker"></div>
-    <h2>Твой кешбэк</h2>
-  </div>
-
-  <div class="text">
-    С каждого визита вы копите бонусные рубли<br>
-    <strong>1 бонус = 1 рубль</strong><br><br>
-
-    до 4 000 ₽ — 3%<br>
-    от 4 000 ₽ — 5%<br>
-    от 7 000 ₽ — 7%<br><br>
-
-    Бонусами можно оплатить до 10% стоимости услуг
-  </div>
-</section>
-
-<!-- PRICE -->
-<section id="price">
-  <div class="section-header">
-    <div class="section-marker"></div>
-    <h2>Прайс</h2>
-  </div>
-
-  <div class="grid">
-    <div class="card"><img src="2 Ботокс.jpg"></div>
-    <div class="card"><img src="3 Биксипластия.jpg"></div>
-    <div class="card"><img src="5 Кератин.jpg"></div>
-    <div class="card"><img src="8 Нанопластика.jpg"></div>
-  </div>
-</section>
-
-<div class="footer-note">Hair Lab · Клиентское меню</div>
 
 </div>
-
-<script>
-const PHONE = "79528883050";
-
-function openTelegram() {
-  window.open("https://t.me/hairlab_tomsk", "_blank");
-}
-function openWhatsApp() {
-  window.open(`https://wa.me/${PHONE}`, "_blank");
-}
-function openYandex() {
-  window.open("https://yandex.ru/maps", "_blank");
-}
-function open2GIS() {
-  window.open("https://2gis.ru", "_blank");
-}
-function openYclients() {
-  window.open("https://yclients.com", "_blank");
-}
-
-document.querySelectorAll("[data-target]").forEach(btn => {
-  btn.onclick = () => {
-    const el = document.getElementById(btn.dataset.target);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-});
-</script>
 
 </body>
 </html>
