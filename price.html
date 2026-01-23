@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hair Lab — Прайс со скидкой</title>
+
+<style>
+/* ===== VARIABLES ===== */
+:root {
+    --blue-main: #3F54E3;
+    --blue-dark: #2F3FC8;
+    --blue-light: #5167F0;
+    --pink-accent: #F2A3C7;
+}
+
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BODY / BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            1200px 600px at 20% -10%,
+            rgba(255,255,255,0.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            900px 500px at 80% 10%,
+            rgba(255,255,255,0.08),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            var(--blue-light) 0%,
+            var(--blue-main) 45%,
+            var(--blue-dark) 100%
+        );
+    background-attachment: fixed;
+}
+
+/* ===== LAYOUT ===== */
+.content {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-bottom: 120px;
+}
+
+/* ===== HEADER ===== */
+.header {
+    padding: 22px 18px 14px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.header-sub {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+/* ===== NOTICE ===== */
+.notice {
+    margin: 14px 16px 26px;
+    padding: 14px 16px;
+    font-size: 13px;
+    text-align: center;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 16px;
+
+    backdrop-filter: blur(8px);
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 0 16px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 40px 16px 0;
+}
+
+.actions a {
+    text-decoration: none;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 18px;
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: #ffffff;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 999px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.action-btn:active {
+    transform: scale(0.97);
+    background: rgba(255,255,255,0.18);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin: 50px 18px 20px;
+    text-align: center;
+    font-size: 11px;
+    opacity: 0.65;
+}
+</style>
+</head>
+
+<body>
+
+<div class="content">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-title">Hair Lab</div>
+        <div class="header-sub">Прайс со скидкой для клиентов</div>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="notice">
+        Цены указаны с учётом персональной скидки<br>
+        <span style="color:var(--pink-accent)">Окончательная стоимость зависит от длины и густоты волос</span>
+    </div>
+
+    <!-- PRICE GRID -->
+    <div class="grid">
+
+        <!-- заменяй / дополняй изображения по необходимости -->
+        <div class="card"><img src="1 Измерение.jpg" alt=""></div>
+        <div class="card"><img src="2 Ботокс.jpg" alt=""></div>
+        <div class="card"><img src="3 Биксипластия.jpg" alt=""></div>
+        <div class="card"><img src="6 Тотальная описание.jpg" alt=""></div>
+        <div class="card"><img src="7 Тотальная стоимость.jpg" alt=""></div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+        <a href="https://t.me/hairlab_tomsk" target="_blank">
+            <div class="action-btn">Записаться</div>
+        </a>
+
+        <a href="index.html">
+            <div class="action-btn">Вернуться в меню</div>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        Hair Lab · Профессиональная реконструкция волос
+    </div>
+
+</div>
+
+</body>
+</html>
