@@ -234,6 +234,31 @@ body {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+        // NAV scroll + active state
+    const navButtons = Array.from(document.querySelectorAll(".nav button"));
+
+    function setActiveById(id) {
+        navButtons.forEach(b => b.classList.toggle("active", b.getAttribute("data-target") === id));
+    }
+
+    function scrollToId(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 70; // отступ под sticky-nav
+        window.scrollTo({ top: y, behavior: "smooth" });
+        setActiveById(id);
+    }
+
+    navButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-target");
+            if (id) scrollToId(id);
+        });
+    });
+
+    if (navButtons[0]) setActiveById(navButtons[0].getAttribute("data-target"));
+
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     const images = Array.from(document.querySelectorAll(".intro img, .card img"));
