@@ -60,52 +60,50 @@
       <a class="pill" href="index.html">Прайсы →</a>
     </div>
 
-    <div class="grid">
-      <a class="card full" href="https://t.me/hairlab_tomsk" target="_blank" rel="noopener">
-        <div>
-          <div class="t">Онлайн-запись</div>
-          <div class="d">Написать администратору / записаться на удобное время</div>
-        </div>
-        <div class="tag">быстро</div>
-      </a>
-
-      <a class="card" href="quiz.html">
-        <div>
-          <div class="t">Подбор процедуры</div>
-          <div class="d">2 вопроса — и мы подскажем лучший вариант</div>
-        </div>
-        <div class="tag">рекомендация</div>
-      </a>
-
-      <a class="card" href="gift.html">
-        <div>
-          <div class="t">Подарок за отзыв</div>
-          <div class="d">Оставь отзыв и забери подарок в студии</div>
-        </div>
-        <div class="tag">бонус</div>
-      </a>
-
-      <!-- Если есть cashback.html — раскомментируй -->
-      <!--
-      <a class="card" href="cashback.html">
-        <div>
-          <div class="t">Кешбэк</div>
-          <div class="d">Проверь бонусы и условия</div>
-        </div>
-        <div class="tag">баллы</div>
-      </a>
-      -->
-
-      <a class="card full" href="menu.html">
-        <div>
-          <div class="t">Во время процедуры</div>
-          <div class="d">Wi-Fi, удобства, правила, уход после процедуры</div>
-        </div>
-        <div class="tag">полезно</div>
-      </a>
-    </div>
+    <!-- Карточки рендерятся из hub-data.js -->
+    <div id="hubGrid" class="grid"></div>
 
     <div class="footer">Hair Lab · Красивые волосы без компромиссов</div>
   </div>
+
+  <!-- Конфиг -->
+  <script src="hub-data.js"></script>
+
+  <!-- Рендер -->
+  <script>
+    (function () {
+      const data = window.HAIRLAB_HUB;
+      if (!data) return;
+
+      const brand = document.querySelector(".brand");
+      const sub = document.querySelector(".sub");
+      const pill = document.querySelector(".pill");
+      const grid = document.getElementById("hubGrid");
+
+      if (brand) brand.textContent = data.title || "Hair Lab";
+      if (sub) sub.innerHTML = (data.subtitle || "").replace(/\n/g, "<br/>");
+
+      if (pill && data.topLink) {
+        pill.textContent = data.topLink.text || "Прайсы →";
+        pill.href = data.topLink.href || "index.html";
+      }
+
+      if (!grid) return;
+
+      grid.innerHTML = (data.cards || []).map(c => {
+        const cls = "card" + (c.full ? " full" : "");
+        const attrs = c.external ? ' target="_blank" rel="noopener"' : "";
+        return `
+          <a class="${cls}" href="${c.href || "#"}"${attrs}>
+            <div>
+              <div class="t">${c.title || ""}</div>
+              <div class="d">${c.desc || ""}</div>
+            </div>
+            <div class="tag">${c.tag || ""}</div>
+          </a>
+        `;
+      }).join("");
+    })();
+  </script>
 </body>
 </html>
