@@ -1,7 +1,9 @@
+// hub-data.js
 window.HAIRLAB_HUB = {
   title: "Hair Lab",
   subtitle: "Клиентский хаб\nТомск — Розы Люксембург, 4В",
   topLink: { text: "Прайсы →", href: "index.html" },
+
   cards: [
     {
       full: true,
@@ -26,9 +28,15 @@ window.HAIRLAB_HUB = {
     {
       full: true,
       title: "Во время процедуры",
-      desc: "Wi-Fi, удобства, правила, уход после процедуры",
+      desc: "Wi-Fi и меню напитков",
       tag: "полезно",
-      href: "menu.html"
+      href: "menu-lite.html"
+    },
+    {
+      title: "QR для печати",
+      desc: "Wi-Fi QR + QR на хаб (один лист)",
+      tag: "печатать",
+      href: "qr.html"
     }
   ]
 };
