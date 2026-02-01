@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HairLab — QR</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;padding:24px;background:#fff;color:#111}
+    .wrap{max-width:900px;margin:0 auto}
+    h1{margin:0 0 14px;font-size:22px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .card{border:1px solid #ddd;border-radius:16px;padding:18px}
+    .title{font-size:18px;font-weight:800;margin:0 0 10px}
+    .hint{margin:8px 0 0;color:#444;font-size:13px;line-height:1.35}
+    img{width:100%;max-width:360px;height:auto;display:block;margin:0 auto}
+    .small{margin-top:10px;font-size:12px;color:#666;word-break:break-all}
+    @media print { body{padding:0} .card{border:none} }
+    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>HairLab — QR для клиентской зоны</h1>
+
+    <div class="grid">
+      <div class="card">
+        <div class="title">📶 Подключиться к Wi-Fi</div>
+
+        <img
+          src="https://quickchart.io/qr?size=600&text=WIFI:T:WPA;S:wifi_zdorovogo_cheloveka;P:88884444;;"
+          alt="Wi-Fi QR"
+        />
+
+        <div class="hint">Отсканируйте камерой — телефон предложит подключиться (без ввода пароля).</div>
+        <div class="small">SSID: wifi_zdorovogo_cheloveka · Пароль: 88884444</div>
+      </div>
+
+      <div class="card">
+        <div class="title">☕ Клиентский хаб / меню</div>
+
+        <img
+          src="https://quickchart.io/qr?size=600&text=https://hairlab1.github.io/hub.html"
+          alt="Hub QR"
+        />
+
+        <div class="hint">Откроется хаб со ссылками (включая меню напитков).</div>
+        <div class="small">https://hairlab1.github.io/hub.html</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
