@@ -5,47 +5,120 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HairLab — QR</title>
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;padding:24px;background:#fff;color:#111}
-    .wrap{max-width:900px;margin:0 auto}
-    h1{margin:0 0 14px;font-size:22px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .card{border:1px solid #ddd;border-radius:16px;padding:18px}
-    .title{font-size:18px;font-weight:800;margin:0 0 10px}
-    .hint{margin:8px 0 0;color:#444;font-size:13px;line-height:1.35}
-    img{width:100%;max-width:360px;height:auto;display:block;margin:0 auto}
-    .small{margin-top:10px;font-size:12px;color:#666;word-break:break-all}
-    @media print { body{padding:0} .card{border:none} }
-    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
+    body{
+      margin:0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
+      color:#fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap{ max-width: 920px; margin:0 auto; padding: 18px 16px 40px; }
+    .top{
+      margin: 10px auto 16px;
+      padding: 14px 14px;
+      background: rgba(5,12,60,0.45);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .sub{ font-size:12px; opacity:.85; margin-top:6px; line-height:1.35; }
+
+    .steps{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:12px;
+      opacity:.92;
+    }
+    .step{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top: 14px; }
+    .card{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+    }
+    .title{ font-size:14px; font-weight:800; letter-spacing:.02em; margin:0 0 10px; }
+    .hint{ margin:10px 0 0; font-size:12px; opacity:.82; line-height:1.4; }
+    img{ width:100%; max-width:360px; height:auto; display:block; margin: 0 auto; background:#fff; border-radius: 12px; padding: 10px; }
+    .small{ margin-top:10px; font-size:11px; opacity:.75; word-break:break-all }
+
+    .note{
+      margin-top: 14px;
+      text-align:center;
+      font-size:11px;
+      opacity:.75;
+      line-height:1.4;
+    }
+
+    @media (max-width:720px){ .grid{ grid-template-columns:1fr } }
+
+    /* PRINT: белый лист, экономия чернил */
+    @media print {
+      body{ background:#fff; color:#111; }
+      .top{ background:#fff; border:1px solid #ddd; }
+      .step{ background:#fff; border:1px solid #ddd; color:#111; }
+      .card{ background:#fff; border:1px solid #ddd; }
+      .hint, .small, .sub, .note{ color:#333; opacity:1; }
+      img{ border:1px solid #ddd; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <h1>HairLab — QR для клиентской зоны</h1>
+    <div class="top">
+      <div class="brand">Hair Lab</div>
+      <div class="sub">Гостевой сервис · Wi-Fi и меню напитков</div>
+
+      <div class="steps">
+        <div class="step">1) 📶 Wi-Fi → подключиться</div>
+        <div class="step">2) ☕ Меню → выбрать напиток</div>
+      </div>
+    </div>
 
     <div class="grid">
       <div class="card">
         <div class="title">📶 Подключиться к Wi-Fi</div>
-
         <img
-          src="https://quickchart.io/qr?size=600&text=WIFI:T:WPA;S:wifi_zdorovogo_cheloveka;P:88884444;;"
+          src="https://quickchart.io/qr?size=650&text=WIFI:T:WPA;S:wifi_zdorovogo_cheloveka;P:88884444;;"
           alt="Wi-Fi QR"
         />
-
-        <div class="hint">Отсканируйте камерой — телефон предложит подключиться (без ввода пароля).</div>
+        <div class="hint">Сканируйте камерой — телефон предложит подключиться без ввода пароля.</div>
         <div class="small">SSID: wifi_zdorovogo_cheloveka · Пароль: 88884444</div>
       </div>
 
       <div class="card">
         <div class="title">☕ Клиентский хаб / меню</div>
-
         <img
-          src="https://quickchart.io/qr?size=600&text=https://hairlab1.github.io/hub.html"
+          src="https://quickchart.io/qr?size=650&text=https://hairlab1.github.io/hub.html"
           alt="Hub QR"
         />
-
         <div class="hint">Откроется хаб со ссылками (включая меню напитков).</div>
         <div class="small">https://hairlab1.github.io/hub.html</div>
       </div>
+    </div>
+
+    <div class="note">
+      Если Wi-Fi не предложился автоматически — откройте «Гостевой сервис» в хабе и скопируйте пароль.
     </div>
   </div>
 </body>
