@@ -4,175 +4,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HairLab — Меню напитков</title>
-<style>
-  body {
-    margin: 0;
-    background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .content { width: 100%; max-width: 520px; padding: 20px; box-sizing: border-box; }
-  .header { text-align: center; margin: 20px 0 22px; }
-  .header h1 {
-    font-size: 20px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0;
-  }
-  .header-subtitle { font-size: 13px; opacity: 0.8; margin-top: 8px; line-height: 1.35; }
-
-  .card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.15);
-    backdrop-filter: blur(22px) saturate(160%);
-    -webkit-backdrop-filter: blur(22px) saturate(160%);
-    padding: 18px;
-    margin-bottom: 16px;
-  }
-
-  .wifi-section {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-  }
-  .wifi-label { font-size: 11px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
-  .wifi-name { font-size: 16px; font-weight: 700; margin-top: -5px; color: #7efaff; }
-
-  .copy-btn {
-    background: linear-gradient(135deg, #e28bc7 0%, #c45abd 100%);
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.12s ease, background 0.2s ease;
-    box-shadow: 0 5px 15px rgba(196, 90, 189, 0.3);
-  }
-  .copy-btn:active { transform: scale(0.95); }
-  .copy-btn.success { background: #34C759; }
-
-  .category-header { display:flex; align-items:center; gap:10px; margin-bottom: 14px; }
-  .category-marker {
-    width: 6px; height: 20px; border-radius: 999px;
-    background: rgba(255,255,255,0.85);
-    box-shadow: 0 0 12px rgba(255,255,255,0.7);
-  }
-  .category-title {
-    margin: 0; font-size: 16px; font-weight: 700;
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .category-header::after {
-    content: ""; flex: 1; height: 1px; margin-left: 12px;
-    background: rgba(255,255,255,0.30);
-  }
-
-  .menu-list { list-style: none; padding: 0; margin: 0; }
-  .menu-item {
-    padding: 11px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.10);
-  }
-  .menu-item:first-child { border-top: none; padding-top: 4px; }
-  .item-name { font-size: 15px; font-weight: 500; display: block; }
-  .badge { background: rgba(255,255,255,0.15); font-size: 11px; padding: 4px 8px; border-radius: 10px; font-weight: 600; white-space: nowrap; opacity: .9; }
-
-  .back-btn {
-    display: inline-flex;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.20);
-    padding: 10px 24px;
-    border-radius: 999px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    margin: 14px 0 34px;
-    transition: background 0.2s;
-  }
-  .back-btn:hover { background: rgba(255,255,255,0.2); }
-
-  footer { text-align: center; padding-bottom: 30px; font-size: 12px; opacity: 0.55; margin-top: auto; }
-</style>
+<link rel="stylesheet" href="brand.css">
 </head>
+
 <body>
-
-<div class="content">
-  <div class="header">
-    <h1>HairLab</h1>
-    <div class="header-subtitle">Меню напитков · угощаем с любовью</div>
-  </div>
-
-  <div class="card wifi-section">
-    <div style="font-size: 24px; margin-bottom: 5px;">📶</div>
-    <span class="wifi-label">Бесплатный Wi-Fi</span>
-    <span class="wifi-name">wifi_zdorovogo_cheloveka</span>
-
-    <div style="font-size:12px; opacity:.85; line-height:1.35; margin-top:-2px;">
-      Самый быстрый способ — Wi-Fi QR в клиентской зоне.<br/>
-      Если нужно — можно скопировать пароль ниже.
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <div class="brand">Hair Lab</div>
+        <div class="sub">Меню напитков · комплимент от студии</div>
+      </div>
+      <div class="pills">
+        <a class="pill" href="hub.html">Хаб →</a>
+        <a class="pill" href="index.html">Прайсы →</a>
+      </div>
     </div>
 
-    <button class="copy-btn" id="wifiBtn" onclick="copyWifi('88884444')">Скопировать пароль</button>
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Wi-Fi</h2></div>
+      <div class="small" style="margin-bottom:10px;">
+        Самый быстрый способ — Wi-Fi QR в клиентской зоне. Если нужно — можно скопировать пароль.
+      </div>
 
-    <div id="wifiHint" style="font-size: 10px; opacity: 0; transition: opacity 0.3s; margin-top: 6px; color: #7efaff;">
-      Теперь просто вставьте его в настройках Wi-Fi
+      <div class="row">
+        <div>
+          <div class="h" style="font-size:13px;">wifi_zdorovogo_cheloveka</div>
+          <div class="small">Гостевая сеть</div>
+        </div>
+        <span class="badge badge-accent">Wi-Fi</span>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <button class="btn-primary" id="wifiBtn" onclick="copyWifi('88884444')">Скопировать пароль</button>
+        <span id="wifiHint" class="badge badge-ok" style="opacity:0; transition:opacity .25s;">Пароль скопирован</span>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Кофе</h2></div>
+      <ul class="list">
+        <li class="row"><span>Эспрессо</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Американо</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Капучино</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Чай</h2></div>
+      <ul class="list">
+        <li class="row"><span>Чёрный</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Зелёный</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Напитки</h2></div>
+      <ul class="list">
+        <li class="row"><span>Какао</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Вода</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Сиропы</h2></div>
+      <div class="small" style="margin:-6px 0 10px;">Можно добавить к кофе (например, к капучино)</div>
+      <ul class="list">
+        <li class="row"><span>Солёная карамель</span></li>
+        <li class="row"><span>Ваниль</span></li>
+        <li class="row"><span>Ореховый</span></li>
+      </ul>
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:16px;">
+      <a class="btn-ghost" href="hub.html">← Вернуться в хаб</a>
+    </div>
+
+    <div class="footer">Hair Lab · Томск · Угощаем с заботой о деталях</div>
   </div>
-
-  <div class="card">
-    <div class="category-header"><div class="category-marker"></div><h2 class="category-title">Кофе</h2></div>
-    <ul class="menu-list">
-      <li class="menu-item"><span class="item-name">Эспрессо</span><span class="badge">0₽</span></li>
-      <li class="menu-item"><span class="item-name">Американо</span><span class="badge">0₽</span></li>
-      <li class="menu-item"><span class="item-name">Капучино</span><span class="badge">0₽</span></li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="category-header"><div class="category-marker"></div><h2 class="category-title">Чай</h2></div>
-    <ul class="menu-list">
-      <li class="menu-item"><span class="item-name">Чёрный</span><span class="badge">0₽</span></li>
-      <li class="menu-item"><span class="item-name">Зелёный</span><span class="badge">0₽</span></li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="category-header"><div class="category-marker"></div><h2 class="category-title">Напитки</h2></div>
-    <ul class="menu-list">
-      <li class="menu-item"><span class="item-name">Какао</span><span class="badge">0₽</span></li>
-      <li class="menu-item"><span class="item-name">Вода</span><span class="badge">0₽</span></li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="category-header"><div class="category-marker"></div><h2 class="category-title">Сиропы</h2></div>
-    <div style="font-size:12px; opacity:.75; margin:-6px 0 10px;">Можно добавить к кофе (например, к капучино)</div>
-    <ul class="menu-list">
-      <li class="menu-item"><span class="item-name">Солёная карамель</span></li>
-      <li class="menu-item"><span class="item-name">Ваниль</span></li>
-      <li class="menu-item"><span class="item-name">Ореховый</span></li>
-    </ul>
-  </div>
-
-  <center>
-    <a href="hub.html" class="back-btn">← Вернуться в хаб</a>
-  </center>
-
-  <footer>
-    HairLab · Томск<br>Если чего-то нет в наличии — скажите администратору
-  </footer>
-</div>
 
 <script>
   function copyWifi(pass) {
@@ -186,18 +94,10 @@
     const btn = document.getElementById('wifiBtn');
     const hint = document.getElementById('wifiHint');
 
-    const originalText = btn.innerText;
-    btn.innerText = '✅ Пароль скопирован';
-    btn.classList.add('success');
+    const original = btn.innerText;
+    btn.innerText = '✅ Скопировано';
     hint.style.opacity = '1';
 
     setTimeout(() => {
-      btn.innerText = originalText;
-      btn.classList.remove('success');
-      setTimeout(() => { hint.style.opacity = '0'; }, 3000);
-    }, 2000);
-  }
-</script>
-
-</body>
-</html>
+      btn.innerText = original;
+      setTimeout(() => { hint.sty
