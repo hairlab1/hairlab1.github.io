@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HairLab — Меню напитков</title>
+<link rel="stylesheet" href="brand.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <div class="brand">Hair Lab</div>
+        <div class="sub">Меню напитков · комплимент от студии</div>
+      </div>
+      <div class="pills">
+        <a class="pill" href="hub.html">Хаб →</a>
+        <a class="pill" href="index.html">Прайсы →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Wi-Fi</h2></div>
+      <div class="small" style="margin-bottom:10px;">
+        Самый быстрый способ — Wi-Fi QR в клиентской зоне. Если нужно — можно скопировать пароль.
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="h" style="font-size:13px;">wifi_zdorovogo_cheloveka</div>
+          <div class="small">Гостевая сеть</div>
+        </div>
+        <span class="badge badge-accent">Wi-Fi</span>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <button class="btn-primary" id="wifiBtn" onclick="copyWifi('88884444')">Скопировать пароль</button>
+        <span id="wifiHint" class="badge badge-ok" style="opacity:0; transition:opacity .25s;">Пароль скопирован</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Кофе</h2></div>
+      <ul class="list">
+        <li class="row"><span>Эспрессо</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Американо</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Капучино</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Чай</h2></div>
+      <ul class="list">
+        <li class="row"><span>Чёрный</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Зелёный</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Напитки</h2></div>
+      <ul class="list">
+        <li class="row"><span>Какао</span><span class="badge">Комплимент</span></li>
+        <li class="row"><span>Вода</span><span class="badge">Комплимент</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="hr-title"><div class="marker"></div><h2>Сиропы</h2></div>
+      <div class="small" style="margin:-6px 0 10px;">Можно добавить к кофе (например, к капучино)</div>
+      <ul class="list">
+        <li class="row"><span>Солёная карамель</span></li>
+        <li class="row"><span>Ваниль</span></li>
+        <li class="row"><span>Ореховый</span></li>
+      </ul>
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:16px;">
+      <a class="btn-ghost" href="hub.html">← Вернуться в хаб</a>
+    </div>
+
+    <div class="footer">Hair Lab · Томск · Угощаем с заботой о деталях</div>
+  </div>
+
+<script>
+  function copyWifi(pass) {
+    const el = document.createElement('textarea');
+    el.value = pass;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    const btn = document.getElementById('wifiBtn');
+    const hint = document.getElementById('wifiHint');
+
+    const original = btn.innerText;
+    btn.innerText = '✅ Скопировано';
+    hint.style.opacity = '1';
+
+    setTimeout(() => {
+      btn.innerText = original;
+      setTimeout(() => { hint.sty
