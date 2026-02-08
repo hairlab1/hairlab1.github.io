@@ -194,40 +194,40 @@ body {
 
 <main>
 
-<div class="intro"><img src="19 Презентация.jpg"></div>
+<div class="intro"><img src="19 Презентация.jpg" alt="Презентация"></div>
 
 <section id="viypr">
     <div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
     <div class="grid">
-        <div class="card"><img src="2 Ботокс.jpg"></div>
-        <div class="card"><img src="3 Биксипластия.jpg"></div>
-        <div class="card"><img src="4 Коллаген.jpg"></div>
-        <div class="card"><img src="5 Кератин.jpg"></div>
-        <div class="card"><img src="6 Тотальная описание.jpg"></div>
-        <div class="card"><img src="7 Тотальная стоимость.jpg"></div>
-        <div class="card"><img src="13 Височная зона.jpg"></div>
-        <div class="card"><img src="8 Нанопластика.jpg"></div>
-        <div class="card"><img src="17 Бразилиан.jpg"></div>
+        <div class="card"><img src="2 Ботокс.jpg" alt="Ботокс"></div>
+        <div class="card"><img src="3 Биксипластия.jpg" alt="Биксипластия"></div>
+        <div class="card"><img src="4 Коллаген.jpg" alt="Коллаген"></div>
+        <div class="card"><img src="5 Кератин.jpg" alt="Кератин"></div>
+        <div class="card"><img src="6 Тотальная описание.jpg" alt="Тотальная описание"></div>
+        <div class="card"><img src="7 Тотальная стоимость.jpg" alt="Тотальная стоимость"></div>
+        <div class="card"><img src="13 Височная зона.jpg" alt="Височная зона"></div>
+        <div class="card"><img src="8 Нанопластика.jpg" alt="Нанопластика"></div>
+        <div class="card"><img src="17 Бразилиан.jpg" alt="Бразилиан"></div>
     </div>
 </section>
 
 <section id="uhods">
     <div class="section-header"><div class="section-marker"></div><h2>Уходы + Стрижки</h2></div>
     <div class="grid">
-        <div class="card"><img src="9 Холодное.jpg"></div>
-        <div class="card"><img src="10 Счастье.jpg"></div>
-        <div class="card"><img src="16 Адорн.jpg"></div>
-        <div class="card"><img src="11 Пилинг диагностика.jpg"></div>
-        <div class="card"><img src="12 Полировка.jpg"></div>
-        <div class="card"><img src="14 Стрижка.jpg"></div>
+        <div class="card"><img src="9 Холодное.jpg" alt="Холодное"></div>
+        <div class="card"><img src="10 Счастье.jpg" alt="Счастье"></div>
+        <div class="card"><img src="16 Адорн.jpg" alt="Адорн"></div>
+        <div class="card"><img src="11 Пилинг диагностика.jpg" alt="Пилинг диагностика"></div>
+        <div class="card"><img src="12 Полировка.jpg" alt="Полировка"></div>
+        <div class="card"><img src="14 Стрижка.jpg" alt="Стрижка"></div>
     </div>
 </section>
 
 <section id="okrash">
     <div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
     <div class="grid">
-        <div class="card"><img src="15 Тонирование.jpg"></div>
-        <div class="card"><img src="18 Биозавивка.jpg"></div>
+        <div class="card"><img src="15 Тонирование.jpg" alt="Тонирование"></div>
+        <div class="card"><img src="18 Биозавивка.jpg" alt="Биозавивка"></div>
     </div>
 </section>
 
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .filter(e => e.isIntersecting)
             .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (visible?.target?.id) setActiveById(visible.target.id);
+        if (visible && visible.target && visible.target.id) setActiveById(visible.target.id);
     }, {
         rootMargin: "-35% 0px -55% 0px",
         threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
