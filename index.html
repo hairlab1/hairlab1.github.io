@@ -6,173 +6,269 @@
 <title>HairLab — Прайсы</title>
 
 <style>
-body {
-    margin: 0;
-    background: linear-gradient(180deg, #0d2bd7 0%, #143bdb 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    color: #fff;
-    -webkit-font-smoothing: antialiased;
+body{
+margin:0;
+background:linear-gradient(180deg,#0d2bd7 0%,#143bdb 100%);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+color:#fff;
+-webkit-font-smoothing:antialiased;
 }
 
-.content {
-    max-width: 920px;
-    margin: 0 auto;
-    padding-bottom: 120px;
+.content{
+max-width:920px;
+margin:0 auto;
+padding-bottom:120px;
 }
 
 /* NAV */
-.nav {
-    position: sticky;
-    top: 8px;
-    z-index: 1000;
-    margin: 12px auto;
-    padding: 6px 10px;
-    display: flex;
-    gap: 6px;
-    background: rgba(5,12,60,0.45);
-    border-radius: 22px;
-    backdrop-filter: blur(14px);
-    width: fit-content;
+
+.nav{
+position:sticky;
+top:8px;
+z-index:1000;
+margin:12px auto;
+padding:6px 10px;
+display:flex;
+gap:6px;
+background:rgba(5,12,60,0.45);
+border-radius:22px;
+backdrop-filter:blur(14px);
+width:fit-content;
 }
-.nav button {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
+
+.nav button{
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);
+color:#fff;
+padding:8px 14px;
+border-radius:999px;
+font-size:13px;
+font-weight:600;
+cursor:pointer;
 }
-.nav button.active {
-    background: rgba(255,255,255,0.3);
+
+.nav button.active{
+background:rgba(255,255,255,0.3);
 }
 
 /* HEADER */
-.address-bar {
-    margin: 18px;
+
+.address-bar{
+margin:18px;
 }
-.address-brand {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+
+.address-brand{
+font-size:18px;
+font-weight:700;
+letter-spacing:.08em;
+text-transform:uppercase;
 }
-.address-sub { font-size: 11px; opacity: .8; }
-.address-line { font-size: 12px; opacity: .85; }
+
+.address-sub{
+font-size:11px;
+opacity:.8;
+}
+
+.address-line{
+font-size:12px;
+opacity:.85;
+}
 
 /* SECTIONS */
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 32px 18px 8px;
+
+.section-header{
+display:flex;
+align-items:center;
+gap:10px;
+margin:32px 18px 8px;
 }
-.section-marker {
-    width: 6px;
-    height: 22px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.85);
+
+.section-marker{
+width:6px;
+height:22px;
+border-radius:999px;
+background:rgba(255,255,255,0.85);
 }
-.section-header h2 {
-    font-size: 18px;
-    margin: 0;
-    text-transform: uppercase;
+
+.section-header h2{
+font-size:18px;
+margin:0;
+text-transform:uppercase;
 }
 
 /* INTRO */
-.intro {
-    width: 94%;
-    margin: 20px auto 30px;
-    border-radius: 22px;
-    overflow: hidden;
-    cursor: pointer;
+
+.intro{
+width:94%;
+margin:20px auto 30px;
+border-radius:22px;
+overflow:hidden;
+cursor:pointer;
 }
-.intro img { width: 100%; display: block; }
+
+.intro img{
+width:100%;
+display:block;
+}
 
 /* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    padding: 0 16px;
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+padding:0 16px;
 }
-.card {
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
+
+.card{
+border-radius:16px;
+overflow:hidden;
+cursor:pointer;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
 }
-.card img {
-    width: 100%;
-    display: block;
+
+.card img{
+width:100%;
+display:block;
 }
 
 /* MODAL */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-}
-.modal-overlay.open { display: flex; }
 
-.modal-inner {
-    position: relative;
-    max-width: 96%;
-    max-height: 90vh;
+.modal-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.92);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
 }
 
-.modal-inner img {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 18px;
-    display: block;
+.modal-overlay.open{
+display:flex;
+}
+
+.modal-inner{
+position:relative;
+max-width:96%;
+max-height:90vh;
+}
+
+.modal-inner img{
+max-width:100%;
+max-height:80vh;
+border-radius:18px;
+display:block;
 }
 
 /* CONTROLS */
-.modal-close {
-    position: absolute;
-    top: -14px;
-    right: -14px;
-    width: 36px;
-    height: 36px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 50%;
-    font-size: 26px;
-    text-align: center;
-    line-height: 34px;
-    cursor: pointer;
+
+.modal-close{
+position:absolute;
+top:-14px;
+right:-14px;
+width:36px;
+height:36px;
+background:rgba(255,255,255,0.25);
+border-radius:50%;
+font-size:26px;
+text-align:center;
+line-height:34px;
+cursor:pointer;
 }
 
-.modal-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 50%;
-    font-size: 30px;
-    line-height: 42px;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
+.modal-nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:44px;
+height:44px;
+background:rgba(255,255,255,0.25);
+border-radius:50%;
+font-size:30px;
+line-height:42px;
+text-align:center;
+cursor:pointer;
+user-select:none;
 }
 
-.modal-prev { left: 8px; }
-.modal-next { right: 8px; }
+.modal-prev{left:8px;}
+.modal-next{right:8px;}
 
-.footer-note {
-    margin: 40px 18px;
-    text-align: center;
-    font-size: 11px;
-    opacity: .65;
+.footer-note{
+margin:40px 18px;
+text-align:center;
+font-size:11px;
+opacity:.65;
 }
+
+/* CONTACT BUTTON */
+
+.contact-menu{
+position:fixed;
+bottom:26px;
+right:20px;
+z-index:5000;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:12px;
+}
+
+.contact-main{
+background:rgba(255,255,255,0.9);
+color:#0d2bd7;
+border:none;
+border-radius:999px;
+padding:14px 22px;
+font-weight:700;
+font-size:14px;
+cursor:pointer;
+backdrop-filter:blur(20px);
+box-shadow:0 12px 30px rgba(0,0,0,0.25);
+transition:all .25s ease;
+}
+
+.contact-main:hover{
+transform:translateY(-2px) scale(1.03);
+}
+
+.contact-items{
+display:flex;
+flex-direction:column;
+gap:10px;
+opacity:0;
+transform:translateY(10px);
+pointer-events:none;
+transition:all .25s ease;
+}
+
+.contact-items.open{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+.contact-items a{
+display:flex;
+align-items:center;
+gap:10px;
+background:rgba(255,255,255,0.95);
+color:#0d2bd7;
+text-decoration:none;
+padding:10px 16px;
+border-radius:999px;
+font-size:13px;
+font-weight:600;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.contact-items img{
+width:16px;
+height:16px;
+}
+
 </style>
 </head>
 
@@ -181,54 +277,53 @@ body {
 <div class="content">
 
 <div class="nav">
-    <button data-target="viypr">Выпрямление</button>
-    <button data-target="uhods">Уходы</button>
-    <button data-target="okrash">Окрашивание</button>
+<button data-target="viypr">Выпрямление</button>
+<button data-target="uhods">Уходы</button>
+<button data-target="okrash">Окрашивание</button>
 </div>
 
 <div class="address-bar">
-    <div class="address-brand">Hair Lab</div>
-    <div class="address-sub">Первая студия по реконструкции волос</div>
-    <div class="address-line">Томск — Розы Люксембург, 4В</div>
+<div class="address-brand">Hair Lab</div>
+<div class="address-sub">Первая студия по реконструкции волос</div>
+<div class="address-line">Томск — Розы Люксембург, 4В</div>
 </div>
 
 <main>
 
-<div class="intro"><img src="19 Презентация.jpg" alt="Презентация"></div>
+<div class="intro"><img src="19 Презентация.jpg"></div>
 
 <section id="viypr">
-    <div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
-    <div class="grid">
-        <div class="card"><img src="2 Ботокс.jpg" alt="Ботокс"></div>
-        <div class="card"><img src="3 Биксипластия.jpg" alt="Биксипластия"></div>
-        <div class="card"><img src="4 Коллаген.jpg" alt="Коллаген"></div>
-        <div class="card"><img src="5 Кератин.jpg" alt="Кератин"></div>
-        <div class="card"><img src="6 Тотальная описание.jpg" alt="Тотальная описание"></div>
-        <div class="card"><img src="7 Тотальная стоимость.jpg" alt="Тотальная стоимость"></div>
-        <div class="card"><img src="13 Височная зона.jpg" alt="Височная зона"></div>
-        <div class="card"><img src="8 Нанопластика.jpg" alt="Нанопластика"></div>
-        <div class="card"><img src="17 Бразилиан.jpg" alt="Бразилиан"></div>
-    </div>
+<div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
+<div class="grid">
+<div class="card"><img src="2 Ботокс.jpg"></div>
+<div class="card"><img src="3 Биксипластия.jpg"></div>
+<div class="card"><img src="4 Коллаген.jpg"></div>
+<div class="card"><img src="5 Кератин.jpg"></div>
+<div class="card"><img src="6 Тотальная описание.jpg"></div>
+<div class="card"><img src="7 Тотальная стоимость.jpg"></div>
+<div class="card"><img src="13 Височная зона.jpg"></div>
+<div class="card"><img src="8 Нанопластика.jpg"></div>
+<div class="card"><img src="17 Бразилиан.jpg"></div>
+</div>
 </section>
 
 <section id="uhods">
-    <div class="section-header"><div class="section-marker"></div><h2>Уходы + Стрижки</h2></div>
-    <div class="grid">
-        <div class="card"><img src="9 Холодное.jpg" alt="Холодное"></div>
-        <div class="card"><img src="10 Счастье.jpg" alt="Счастье"></div>
-        <!-- <div class="card"><img src="16 Адорн.jpg" alt="Адорн"></div> -->
-        <div class="card"><img src="11 Пилинг диагностика.jpg" alt="Пилинг диагностика"></div>
-        <div class="card"><img src="12 Полировка.jpg" alt="Полировка"></div>
-        <div class="card"><img src="14 Стрижка.jpg" alt="Стрижка"></div>
-    </div>
+<div class="section-header"><div class="section-marker"></div><h2>Уходы + Стрижки</h2></div>
+<div class="grid">
+<div class="card"><img src="9 Холодное.jpg"></div>
+<div class="card"><img src="10 Счастье.jpg"></div>
+<div class="card"><img src="11 Пилинг диагностика.jpg"></div>
+<div class="card"><img src="12 Полировка.jpg"></div>
+<div class="card"><img src="14 Стрижка.jpg"></div>
+</div>
 </section>
 
 <section id="okrash">
-    <div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
-    <div class="grid">
-        <div class="card"><img src="15 Тонирование.jpg" alt="Тонирование"></div>
-        <div class="card"><img src="18 Биозавивка.jpg" alt="Биозавивка"></div>
-    </div>
+<div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
+<div class="grid">
+<div class="card"><img src="15 Тонирование.jpg"></div>
+<div class="card"><img src="18 Биозавивка.jpg"></div>
+</div>
 </section>
 
 <div class="footer-note">Hair Lab · Томск · Красивые волосы без компромиссов</div>
@@ -236,128 +331,123 @@ body {
 </main>
 </div>
 
+<!-- CONTACT MENU -->
+
+<div class="contact-menu">
+
+<div class="contact-items" id="contactItems">
+
+<a href="tel:+79528883050">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
+Позвонить
+</a>
+
+<a href="https://t.me/hairlab_tomsk" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg">
+Telegram
+</a>
+
+<a href="https://instagram.com/hairlab_" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg">
+Instagram
+</a>
+
+<a href="https://max.ru/u/f9LHodD0cOLZrGrGFrBrDkU1N-lzjiQxMWOnhH4-yC2H57ERdtRidRFZCEw" target="_blank">
+<img src="https://max.ru/favicon.ico">
+MAX
+</a>
+
+<a href="https://wa.me/79528883050?text=Здравствуйте%20Хочу%20записаться%20в%20Hair%20Lab" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg">
+WhatsApp
+</a>
+
+</div>
+
+<button class="contact-main" id="contactToggle">Записаться</button>
+
+</div>
+
 <!-- MODAL -->
+
 <div id="imageModal" class="modal-overlay">
-    <div class="modal-inner">
-        <div class="modal-close">×</div>
-        <div class="modal-nav modal-prev">‹</div>
-        <div class="modal-nav modal-next">›</div>
-        <img id="modalImage">
-    </div>
+<div class="modal-inner">
+<div class="modal-close">×</div>
+<div class="modal-nav modal-prev">‹</div>
+<div class="modal-nav modal-next">›</div>
+<img id="modalImage">
+</div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    // NAV scroll + active state
-    const navButtons = Array.from(document.querySelectorAll(".nav button"));
-        // Active tab on scroll (IntersectionObserver)
-    const sectionIds = ["viypr", "uhods", "okrash"];
-    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
-    let isAutoScrolling = false;
+document.addEventListener("DOMContentLoaded",()=>{
 
-    // Помечаем автоскролл, когда жмём кнопку (чтобы observer не "дёргал" активный таб)
-    navButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            isAutoScrolling = true;
-            setTimeout(() => (isAutoScrolling = false), 700);
-        });
-    });
+const navButtons=[...document.querySelectorAll(".nav button")]
 
-    const observer = new IntersectionObserver((entries) => {
-        if (isAutoScrolling) return;
+function scrollToId(id){
+const el=document.getElementById(id)
+const y=el.getBoundingClientRect().top+window.pageYOffset-70
+window.scrollTo({top:y,behavior:"smooth"})
+navButtons.forEach(b=>b.classList.toggle("active",b.dataset.target===id))
+}
 
-        const visible = entries
-            .filter(e => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+navButtons.forEach(btn=>{
+btn.addEventListener("click",()=>scrollToId(btn.dataset.target))
+})
 
-        if (visible && visible.target && visible.target.id) setActiveById(visible.target.id);
-    }, {
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
-    });
+const modal=document.getElementById("imageModal")
+const modalImg=document.getElementById("modalImage")
+const images=[...document.querySelectorAll(".intro img,.card img")]
 
-    sections.forEach(sec => observer.observe(sec));
+let index=0
 
+function show(i){
+if(i<0)i=images.length-1
+if(i>=images.length)i=0
+index=i
+modalImg.src=images[index].src
+}
 
-    function setActiveById(id) {
-        navButtons.forEach(b => b.classList.toggle("active", b.getAttribute("data-target") === id));
-    }
+images.forEach((img,i)=>{
+img.addEventListener("click",()=>{
+show(i)
+modal.classList.add("open")
+})
+})
 
-    function scrollToId(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
+modal.onclick=()=>{
+modal.classList.remove("open")
+}
 
-        const y = el.getBoundingClientRect().top + window.pageYOffset - 70; // отступ под sticky-nav
-        window.scrollTo({ top: y, behavior: "smooth" });
-        setActiveById(id);
-    }
+document.querySelector(".modal-prev").onclick=e=>{
+e.stopPropagation()
+show(index-1)
+}
 
-    navButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const id = btn.getAttribute("data-target");
-            if (id) scrollToId(id);
-        });
-    });
+document.querySelector(".modal-next").onclick=e=>{
+e.stopPropagation()
+show(index+1)
+}
 
-    if (navButtons[0]) setActiveById(navButtons[0].getAttribute("data-target"));
+/* CONTACT MENU */
 
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const images = Array.from(document.querySelectorAll(".intro img, .card img"));
-    let index = 0;
+const contactToggle=document.getElementById("contactToggle")
+const contactItems=document.getElementById("contactItems")
 
-    let startX = 0;
+contactToggle.addEventListener("click",e=>{
+e.stopPropagation()
+contactItems.classList.toggle("open")
+})
 
-    function show(i) {
-        if (i < 0) i = images.length - 1;
-        if (i >= images.length) i = 0;
-        index = i;
-        modalImg.src = images[index].src;
-    }
+document.addEventListener("click",e=>{
+if(!contactItems.contains(e.target)&&e.target!==contactToggle){
+contactItems.classList.remove("open")
+}
+})
 
-    images.forEach((img, i) => {
-        img.addEventListener("click", e => {
-            e.stopPropagation();
-            show(i);
-            modal.classList.add("open");
-            document.body.style.overflow = "hidden";
-        });
-    });
+})
 
-    modal.addEventListener("click", () => {
-        modal.classList.remove("open");
-        document.body.style.overflow = "";
-    });
-
-    document.querySelector(".modal-prev").onclick = e => {
-        e.stopPropagation();
-        show(index - 1);
-    };
-
-    document.querySelector(".modal-next").onclick = e => {
-        e.stopPropagation();
-        show(index + 1);
-    };
-
-    document.querySelector(".modal-close").onclick = e => {
-        e.stopPropagation();
-        modal.click();
-    };
-
-    modalImg.addEventListener("touchstart", e => {
-        startX = e.touches[0].clientX;
-    });
-
-    modalImg.addEventListener("touchend", e => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = endX - startX;
-        if (Math.abs(diff) > 40) {
-            diff < 0 ? show(index + 1) : show(index - 1);
-        }
-    });
-
-});
 </script>
 
 </body>
