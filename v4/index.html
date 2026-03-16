@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hair Lab — preview v4</title>
+  <meta name="description" content="Предпросмотровая версия нового сайта Hair Lab" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#fcfcfe] text-slate-900">
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-cyan-500 text-sm font-semibold text-white shadow-lg shadow-pink-200">HL</div>
+        <div>
+          <div class="text-lg font-semibold tracking-tight">Hair Lab</div>
+          <div class="text-xs text-slate-500">студия красивых и ухоженных волос</div>
+        </div>
+      </div>
+      <nav class="hidden items-center gap-6 md:flex text-sm text-slate-600">
+        <a href="#services" class="transition hover:text-slate-950">Услуги</a>
+        <a href="#results" class="transition hover:text-slate-950">До / После</a>
+        <a href="#pricing" class="transition hover:text-slate-950">Прайс</a>
+        <a href="#about" class="transition hover:text-slate-950">О студии</a>
+        <a href="#faq" class="transition hover:text-slate-950">FAQ</a>
+        <a href="#contacts" class="transition hover:text-slate-950">Контакты</a>
+      </nav>
+      <a href="#booking" class="rounded-full bg-slate-950 px-5 py-2.5 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800">Онлайн-запись</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(236,72,153,0.16),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.14),transparent_32%)]"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+        <div>
+          <div class="mb-5 flex flex-wrap gap-3">
+            <div class="rounded-full bg-white/90 px-4 py-2 text-sm text-slate-700 shadow-sm">Томск · ул. Розы Люксембург, 4В</div>
+            <div class="rounded-full bg-white/90 px-4 py-2 text-sm text-slate-700 shadow-sm">современная студия ухода за волосами</div>
+          </div>
+          <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            Сайт студии,
+            <span class="block bg-gradient-to-r from-pink-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">куда хочется записаться</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+            Hair Lab — студия в Томске, где можно быстро понять, какая процедура подойдет именно вам, посмотреть прайс, увидеть реальные результаты и записаться онлайн без лишних шагов.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <div class="rounded-full bg-slate-950/5 px-4 py-2 text-sm text-slate-700">Онлайн-запись в пару кликов</div>
+            <div class="rounded-full bg-slate-950/5 px-4 py-2 text-sm text-slate-700">Понятный прайс без перегруза</div>
+            <div class="rounded-full bg-slate-950/5 px-4 py-2 text-sm text-slate-700">Реальные результаты и живое доверие</div>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#booking" class="rounded-full bg-slate-950 px-7 py-3 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800">Записаться онлайн</a>
+            <a href="#pricing" class="rounded-full border border-slate-300 bg-white px-7 py-3 text-slate-900">Посмотреть прайс</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="rounded-[2rem] border border-white/70 bg-white/85 shadow-2xl shadow-slate-200 backdrop-blur overflow-hidden">
+            <div class="aspect-[4/5] bg-[linear-gradient(145deg,rgba(244,114,182,0.12),rgba(34,211,238,0.12),rgba(255,255,255,1))] p-5">
+              <div class="flex h-full flex-col justify-between rounded-[1.6rem] border border-white/80 bg-white/70 p-6 backdrop-blur">
+                <div>
+                  <div class="text-sm text-slate-500">Hair Lab</div>
+                  <div class="mt-1 text-xl font-semibold text-slate-950">Красивый, современный и удобный сайт студии</div>
+                </div>
+                <div class="grid gap-3">
+                  <div class="rounded-2xl bg-white p-4 shadow-sm">
+                    <div class="text-sm text-slate-500">Что важно клиенту</div>
+                    <div class="mt-2 text-base font-medium text-slate-950">Понять услугу, увидеть цены, почувствовать доверие и быстро записаться</div>
+                  </div>
+                  <div class="rounded-2xl bg-slate-950 p-4 text-white shadow-sm">
+                    <div class="text-sm text-white/70">Главная задача сайта</div>
+                    <div class="mt-2 text-base font-medium">Не просто показать прайс, а довести до записи ✨</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <div class="text-sm font-medium uppercase tracking-[0.22em] text-slate-500">Услуги</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">Что можно сделать в Hair Lab</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-600">Подбираем процедуру под запрос, состояние и тип волос — чтобы результат выглядел красиво и ощущался правильным именно для вас.</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Гладкость и блеск</div><h3 class="text-xl font-semibold">Кератиновое выпрямление</h3><p class="mt-3 leading-7 text-slate-600">Гладкость, блеск и более дисциплинированное полотно. Помогает уменьшить пушистость и облегчает укладку.</p></div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Уход и плотность</div><h3 class="text-xl font-semibold">Ботокс для волос</h3><p class="mt-3 leading-7 text-slate-600">Визуально более плотные, мягкие и ухоженные волосы. Когда хочется красивого, напитанного вида.</p></div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Мягкое выпрямление</div><h3 class="text-xl font-semibold">Нанопластика</h3><p class="mt-3 leading-7 text-slate-600">Мягкий дисциплинирующий эффект с акцентом на естественную гладкость и аккуратный результат.</p></div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Восстановление</div><h3 class="text-xl font-semibold">Реконструкция волос</h3><p class="mt-3 leading-7 text-slate-600">Уходовая процедура для волос, которым нужен более ухоженный вид, питание и восстановление по длине.</p></div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Аккуратная длина</div><h3 class="text-xl font-semibold">Полировка волос</h3><p class="mt-3 leading-7 text-slate-600">Помогает убрать торчащие и секущиеся кончики по длине, делая полотно визуально ровнее.</p></div>
+        <div class="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm"><div class="mb-4 inline-block rounded-full bg-pink-50 px-3 py-1 text-sm text-pink-700">Чистый оттенок</div><h3 class="text-xl font-semibold">Окрашивание и тонирование</h3><p class="mt-3 leading-7 text-slate-600">От обновления оттенка до стойкого окрашивания — бережно, аккуратно и с вниманием к состоянию волос.</p></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="bg-slate-950 py-20 text-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="text-sm font-medium uppercase tracking-[0.22em] text-slate-400">Прайс</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Понятный прайс без ощущения “просто прайса”</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-300">Точная стоимость зависит от длины, густоты и состояния волос. Цены ниже — стартовые и удобны для первого ориентирования клиента.</p>
+        </div>
+        <div class="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur">
+          <div class="grid gap-0 border-b border-white/10 bg-white/5 sm:grid-cols-2">
+            <div class="px-6 py-5"><div class="text-sm text-white/60">Важно</div><div class="mt-1 text-white/90">Клиенту достаточно понять диапазон цены и сразу перейти к записи</div></div>
+            <div class="px-6 py-5 sm:border-l sm:border-white/10"><div class="text-sm text-white/60">Формулировка</div><div class="mt-1 text-white/90">Точная стоимость зависит от длины, густоты и состояния волос</div></div>
+          </div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Кератиновое выпрямление</div><div>от 4 500 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Ботокс для волос</div><div>от 4 500 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Нанопластика</div><div>от 5 000 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Реконструкция волос</div><div>от 3 500 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Полировка волос</div><div>от 1 500 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Тонирование</div><div>от 3 000 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5 border-b border-white/10"><div>Окрашивание в один тон</div><div>от 4 500 ₽</div></div>
+          <div class="grid grid-cols-[1fr_auto] gap-4 px-6 py-5"><div>Сложное окрашивание</div><div>от 8 000 ₽</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="grid gap-4 md:grid-cols-3">
+          <a href="#booking" class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"><div class="text-sm text-slate-500">Быстрый переход</div><div class="mt-2 text-lg font-semibold">Онлайн-запись</div><div class="mt-2 text-sm text-slate-600">Открыть запись и выбрать удобное время</div></a>
+          <a href="#contacts" class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"><div class="text-sm text-slate-500">Если есть вопрос</div><div class="mt-2 text-lg font-semibold">Написать в WhatsApp</div><div class="mt-2 text-sm text-slate-600">Уточнить стоимость или подобрать процедуру</div></a>
+          <a href="#contacts" class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 transition hover:bg-slate-100"><div class="text-sm text-slate-500">Локация</div><div class="mt-2 text-lg font-semibold">Открыть карту</div><div class="mt-2 text-sm text-slate-600">Построить маршрут до студии</div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(145deg,rgba(236,72,153,0.08),rgba(34,211,238,0.08),rgba(255,255,255,1))] shadow-sm p-8 sm:p-10">
+        <div class="max-w-3xl">
+          <div class="text-sm font-medium uppercase tracking-[0.22em] text-slate-500">Онлайн-запись</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">Записаться должно быть так же удобно, как листать Instagram</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">Здесь можно встроить реальный виджет онлайн-записи, либо поставить крупные кнопки на DIKIDI, YCLIENTS, WhatsApp и Telegram.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="border-t border-slate-200 bg-white">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-cyan-500 text-sm font-semibold text-white">HL</div>
+            <div>
+              <div class="text-2xl font-semibold tracking-tight text-slate-950">Hair Lab</div>
+              <div class="text-sm text-slate-500">студия красивых и ухоженных волос</div>
+            </div>
+          </div>
+          <p class="mt-4 max-w-xl leading-7 text-slate-600">Это отдельная preview-версия новой главной страницы. Пока вы ее редактируете, основной сайт остается без изменений.</p>
+        </div>
+        <div class="grid gap-3 text-slate-600">
+          <div>Томск, ул. Розы Люксембург, 4В</div>
+          <div>+7 ___</div>
+          <div>@hairlab_</div>
+          <div>ежедневно, по записи</div>
+          <div class="mt-6 space-y-2 text-xs text-slate-400">
+            <div>Здесь можно добавить политику конфиденциальности, согласие на обработку персональных данных и ссылку на оферту.</div>
+            <div>© Hair Lab, 2026. Все права защищены.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="#booking" class="fixed bottom-4 left-4 right-4 z-50 rounded-full bg-slate-950 px-6 py-4 text-center text-sm font-medium text-white shadow-2xl md:hidden">Записаться онлайн</a>
+</body>
+</html>
