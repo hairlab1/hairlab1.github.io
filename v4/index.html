@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hair Lab — v4 preview</title>
+  <meta name="description" content="Hair Lab — студия реконструкции и преображения волос в Томске." />
+  <style>
+    :root{
+      --bg:#fcfcfe;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --soft:#f8fafc;
+      --dark:#020617;
+      --pink:#ec4899;
+      --cyan:#06b6d4;
+      --radius:28px;
+      --shadow:0 10px 30px rgba(15,23,42,.06);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(236,72,153,.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(6,182,212,.10), transparent 28%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    .header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,.86);
+      border-bottom:1px solid rgba(226,232,240,.8);
+    }
+    .header-row{
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      min-height:78px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      color:#fff;font-weight:800;font-size:14px;
+      background:linear-gradient(135deg,var(--pink),var(--cyan));
+      box-shadow:0 12px 28px rgba(236,72,153,.22);
+    }
+    .brand-title{font-weight:700;font-size:18px}
+    .brand-sub{font-size:12px;color:var(--muted)}
+    .nav{display:flex;gap:26px;font-size:14px;color:#475569}
+    .nav a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:46px;padding:0 20px;border-radius:999px;
+      font-weight:600;font-size:14px;border:1px solid transparent;
+      transition:.2s ease;background:var(--dark);color:#fff;
+      box-shadow:0 10px 24px rgba(2,6,23,.08);
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-outline{
+      background:#fff;color:var(--text);border-color:#cbd5e1;box-shadow:none;
+    }
+    .btn-white{
+      background:#fff;color:var(--dark);
+    }
+    .hero{padding:56px 0 32px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center;
+    }
+    .pills, .stats, .tag-row{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.92);
+      border:1px solid rgba(226,232,240,.7);box-shadow:var(--shadow);
+      color:#334155;font-size:14px;
+    }
+    .hero h1{
+      margin:18px 0 0;font-size:58px;line-height:1.02;letter-spacing:-.03em;
+    }
+    .gradient{
+      background:linear-gradient(90deg,var(--pink),#c026d3,var(--cyan));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      display:block;
+    }
+    .lead{margin:20px 0 0;font-size:20px;color:#475569;max-width:760px}
+    .stats .pill{background:rgba(2,6,23,.04);box-shadow:none}
+    .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+    .micro-grid{
+      margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    }
+    .micro-card{
+      padding:16px;border-radius:22px;background:rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.85);box-shadow:var(--shadow);
+      font-size:14px;color:#475569;
+    }
+    .contact-inline{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+    .contact-chip{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font-size:14px;color:#334155;
+    }
+    .hero-card{
+      background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.85);
+      box-shadow:0 30px 60px rgba(15,23,42,.10);backdrop-filter:blur(12px);
+      border-radius:32px;overflow:hidden;
+    }
+    .hero-card-inner{
+      min-height:580px;padding:20px;
+      background:linear-gradient(145deg,rgba(244,114,182,.13),rgba(34,211,238,.11),rgba(255,255,255,1));
+    }
+    .hero-card-content{
+      height:100%;display:flex;flex-direction:column;justify-content:space-between;
+      border-radius:26px;padding:26px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.84);
+    }
+    .section{padding:88px 0}
+    .section-soft{background:#f8fafc}
+    .section-dark{
+      background:var(--dark);color:#fff;
+    }
+    .eyebrow{
+      text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:700;color:#64748b;
+    }
+    .section-dark .eyebrow{color:rgba(255,255,255,.55)}
+    h2{
+      margin:10px 0 0;font-size:42px;line-height:1.08;letter-spacing:-.03em;
+    }
+    .section-text{margin-top:16px;font-size:18px;color:#475569;max-width:760px}
+    .section-dark .section-text{color:rgba(255,255,255,.76)}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+    .cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+    .cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);
+    }
+    .card-soft{
+      background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);
+    }
+    .card-dark{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:28px;
+    }
+    .service-tag,.tiny-tag{
+      display:inline-flex;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600;
+    }
+    .service-tag{background:#fdf2f8;color:#be185d}
+    .tiny-tag{background:#fff;color:#475569;border:1px solid var(--line)}
+    .service-title,.card-title{font-size:24px;font-weight:700;margin-top:16px}
+    .service-text,.card-text{margin-top:12px;color:#475569}
+    .benefit-list{display:grid;gap:14px;margin-top:24px}
+    .benefit-item{
+      display:flex;gap:12px;padding:18px 20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+      color:#334155;
+    }
+    .pick-list{display:grid;gap:14px;margin-top:24px}
+    .pick-item{padding:16px;border-radius:20px;background:#f8fafc}
+    .pick-label{font-size:14px;color:#64748b}
+    .pick-main{margin-top:4px;font-weight:700}
+    .pick-result{margin-top:8px;color:#db2777;font-size:14px}
+    .results-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;flex-wrap:wrap}
+    .before-card{
+      overflow:hidden;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    .before-media{
+      aspect-ratio:4/5;padding:20px;background:linear-gradient(145deg,rgba(236,72,153,.12),rgba(34,211,238,.08),rgba(15,23,42,.03));
+    }
+    .before-inner{
+      height:100%;display:flex;align-items:flex-end;padding:20px;border-radius:22px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.82);
+    }
+    .gallery-box{
+      aspect-ratio:1;background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;box-shadow:var(--shadow);
+    }
+    .gallery-inner{
+      height:100%;display:grid;place-items:center;text-align:center;border-radius:18px;
+      background:linear-gradient(145deg,rgba(236,72,153,.08),rgba(34,211,238,.06),rgba(15,23,42,.03));color:#64748b;font-size:14px;
+    }
+    .pricing-note{
+      padding:24px;border-radius:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    }
+    .price-table{
+      margin-top:28px;border-radius:32px;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)
+    }
+    .price-row,.price-top{
+      display:grid;grid-template-columns:1fr auto;gap:18px;padding:18px 24px
+    }
+    .price-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.10)}
+    .price-top{
+      grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.88)
+    }
+    .cta-triple{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .cta-link{
+      display:block;padding:22px;border-radius:24px;background:#f8fafc;border:1px solid var(--line);transition:.2s ease;
+    }
+    .cta-link:hover{background:#f1f5f9}
+    .steps-wrap{
+      overflow:hidden;border-radius:32px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    .steps-grid{display:grid;grid-template-columns:.95fr 1.05fr}
+    .steps-side{background:var(--dark);color:#fff;padding:34px}
+    .steps-list{display:grid;gap:14px;padding:34px}
+    .step{
+      padding:18px;border-radius:22px;background:#f8fafc;border:1px solid var(--line)
+    }
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .photo-box{
+      aspect-ratio:1;border-radius:24px;background:#fff;border:1px solid var(--line);padding:14px;box-shadow:var(--shadow);
+    }
+    .photo-inner{
+      height:100%;display:grid;place-items:center;border-radius:18px;text-align:center;font-size:14px;color:#64748b;
+      background:linear-gradient(145deg,rgba(236,72,153,.10),rgba(34,211,238,.08),rgba(15,23,42,.03));
+    }
+    .masters-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px}
+    .master-card{display:grid;gap:18px}
+    .master-head{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+    .avatar{
+      aspect-ratio:1;border-radius:24px;background:linear-gradient(145deg,rgba(236,72,153,.10),rgba(34,211,238,.08),rgba(15,23,42,.03));
+      display:grid;place-items:center;text-align:center;font-size:14px;color:#64748b;
+    }
+    .review{padding:18px;border-radius:22px;background:#f8fafc;color:#334155}
+    .faq{max-width:900px;margin:0 auto}
+    details{
+      padding:22px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    details + details{margin-top:14px}
+    summary{list-style:none;cursor:pointer;font-size:20px;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:14px 0 0;color:#475569}
+    .footer{
+      border-top:1px solid var(--line);background:#fff;
+    }
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:30px;padding:52px 0}
+    .footer-links{display:grid;gap:12px;color:#475569}
+    .muted{color:#64748b}
+    .mobile-sticky{
+      position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:none;
+    }
+    .desktop-hide{display:none}
+    @media (max-width: 1024px){
+      .hero-grid,.about-grid,.steps-grid,.masters-grid,.cards-2{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:repeat(2,1fr)}
+      .cards-4{grid-template-columns:repeat(2,1fr)}
+      .cta-triple{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .nav{display:none}
+      .desktop-hide{display:inline-flex}
+      .hero h1{font-size:48px}
+    }
+    @media (max-width: 720px){
+      .section{padding:68px 0}
+      .hero{padding:36px 0 12px}
+      .hero h1{font-size:40px}
+      h2{font-size:32px}
+      .lead,.section-text{font-size:17px}
+      .micro-grid,.cards-3,.cards-4,.photo-grid{grid-template-columns:1fr}
+      .master-head{grid-template-columns:1fr}
+      .price-top{grid-template-columns:1fr}
+      .price-row{grid-template-columns:1fr auto}
+      .header-row{min-height:70px}
+      .mobile-sticky{display:block}
+      body{padding-bottom:80px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-mark">HL</div>
+        <div>
+          <div class="brand-title">Hair Lab</div>
+          <div class="brand-sub">студия реконструкции и преображения волос</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#results">До / После</a>
+        <a href="#pricing">Прайс</a>
+        <a href="#about">О студии</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Онлайн-запись</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pills">
+            <div class="pill">📍 Томск · ул. Розы Люксембург, 4В</div>
+            <div class="pill">✨ студия реконструкции и преображения волос</div>
+          </div>
+
+          <h1>
+            Сайт студии,
+            <span class="gradient">куда хочется записаться</span>
+          </h1>
+
+          <p class="lead">
+            Hair Lab — студия в Томске, где можно быстро понять, какая процедура подойдет именно вам, посмотреть прайс, увидеть реальные результаты и записаться онлайн без лишних шагов.
+          </p>
+
+          <div class="stats" style="margin-top:18px">
+            <div class="pill">Онлайн-запись в пару кликов</div>
+            <div class="pill">Понятный прайс без перегруза</div>
+            <div class="pill">Реальные результаты и живое доверие</div>
+            <div class="pill">Telegram / WhatsApp для быстрой связи</div>
+          </div>
+
+          <div class="actions">
+            <a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться онлайн</a>
+            <a class="btn btn-outline" href="#pricing">Посмотреть прайс</a>
+          </div>
+
+          <div class="micro-grid">
+            <div class="micro-card">✅ Индивидуальный подбор процедуры</div>
+            <div class="micro-card">✅ Честная консультация</div>
+            <div class="micro-card">✅ Удобная запись с телефона</div>
+          </div>
+
+          <div class="contact-inline">
+            <a class="contact-chip" href="https://instagram.com/hairlab_" target="_blank" rel="noreferrer">📷 @hairlab_</a>
+            <a class="contact-chip" href="tel:+79528883050">📞 +7 952 888 30 50</a>
+            <a class="contact-chip" href="https://t.me/hairlab_tomsk" target="_blank" rel="noreferrer">💬 @hairlab_tomsk</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-content">
+              <div>
+                <div class="muted">Hair Lab</div>
+                <div class="card-title" style="margin-top:8px">Студия реконструкции волос с сильной репутацией</div>
+                <div class="card-text" style="margin-top:12px">
+                  Здесь собирается не просто прайс, а сайт, который объясняет услуги, показывает результаты и доводит клиента до записи.
+                </div>
+              </div>
+
+              <div style="display:grid;gap:14px">
+                <div class="card-soft" style="padding:18px">
+                  <div class="muted" style="font-size:14px">Что важно клиенту</div>
+                  <div style="margin-top:8px;font-weight:700">Понять услугу, увидеть цены, почувствовать доверие и быстро записаться</div>
+                </div>
+                <div class="card-dark">
+                  <div style="font-size:14px;color:rgba(255,255,255,.7)">Главная задача сайта</div>
+                  <div style="margin-top:8px;font-weight:700">Не просто показать прайс, а довести до записи ✨</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="eyebrow">Услуги</div>
+        <h2>Что можно сделать в Hair Lab</h2>
+        <p class="section-text">
+          Подбираем процедуру под запрос, состояние и тип волос — чтобы результат выглядел красиво и ощущался правильным именно для вас.
+        </p>
+        <div class="tag-row" style="margin-top:16px">
+          <div class="tiny-tag">Ядро услуг: ботокс, кератин, нанопластика, реконструкция, окрашивание и биозавивка</div>
+        </div>
+
+        <div class="cards-3">
+          <div class="card">
+            <div class="service-tag">Гладкость и блеск</div>
+            <div class="service-title">Кератиновое выпрямление</div>
+            <div class="service-text">Гладкость, блеск и более дисциплинированное полотно. Помогает уменьшить пушистость и облегчает укладку.</div>
+          </div>
+          <div class="card">
+            <div class="service-tag">Уход и плотность</div>
+            <div class="service-title">Ботокс для волос</div>
+            <div class="service-text">Визуально более плотные, мягкие и ухоженные волосы. Когда хочется красивого, напитанного вида.</div>
+          </div>
+          <div class="card">
+            <div class="service-tag">Мягкое выпрямление</div>
+            <div class="service-title">Нанопластика</div>
+            <div class="service-text">Мягкий дисциплинирующий эффект с акцентом на естественную гладкость и аккуратный результат.</div>
+          </div>
+          <div class="card">
+            <div class="service-tag">Восстановление</div>
+            <div class="service-title">Реконструкция волос</div>
+            <div class="service-text">Уходовая процедура для волос, которым нужен более ухоженный вид, питание и восстановление по длине.</div>
+          </div>
+          <div class="card">
+            <div class="service-tag">Локоны и объем</div>
+            <div class="service-title">Биозавивка</div>
+            <div class="service-text">Для тех, кто хочет добавить форму, объем и более выраженную текстуру волос с аккуратным подходом.</div>
+          </div>
+          <div class="card">
+            <div class="service-tag">Чистый оттенок</div>
+            <div class="service-title">Окрашивание и тонирование</div>
+            <div class="service-text">От обновления оттенка до стойкого окрашивания — бережно, аккуратно и с вниманием к состоянию волос.</div>
+          </div>
+        </div>
+
+        <div class="card-soft" style="margin-top:24px">
+          <div class="cards-3" style="margin-top:0">
+            <div style="padding:0">
+              <div class="muted" style="font-size:14px">Для нового клиента</div>
+              <div style="margin-top:8px;font-weight:700">Понять, какая процедура нужна</div>
+            </div>
+            <div style="padding:0">
+              <div class="muted" style="font-size:14px">Для доверия</div>
+              <div style="margin-top:8px;font-weight:700">Увидеть реальные результаты и отзывы</div>
+            </div>
+            <div style="padding:0">
+              <div class="muted" style="font-size:14px">Для действия</div>
+              <div style="margin-top:8px;font-weight:700">Сразу перейти в запись или мессенджер</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container cards-2">
+        <div>
+          <div class="eyebrow">Почему выбирают Hair Lab</div>
+          <h2>Студия, которой хочется доверить волосы</h2>
+          <p class="section-text">
+            Судя по профилю Instagram, Hair Lab много лет работает с волосами, показывает реальные результаты, отзывы гостей и регулярно делится полезными советами по уходу.
+          </p>
+          <div class="benefit-list">
+            <div class="benefit-item">✅ Индивидуальный подбор процедуры под запрос и состояние волос</div>
+            <div class="benefit-item">✅ Узкая специализация на уходе, реконструкции и выпрямлении волос</div>
+            <div class="benefit-item">✅ Реальные работы и контент до / после</div>
+            <div class="benefit-item">✅ Отзывы клиентов и сильное доверие аудитории</div>
+            <div class="benefit-item">✅ Полезные рекомендации по домашнему уходу</div>
+            <div class="benefit-item">✅ Удобная запись через Direct, Telegram и WhatsApp</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Как выбрать процедуру</div>
+          <div class="card-title">Не знаете, что вам подойдет?</div>
+          <div class="card-text">Это нормально — многие клиенты не знают разницу между кератином, ботоксом, нанопластикой и реконструкцией.</div>
+          <div class="pick-list">
+            <div class="pick-item">
+              <div class="pick-label">Если ваш запрос:</div>
+              <div class="pick-main">Пушистость и нужен более гладкий эффект</div>
+              <div class="pick-result">→ Кератиновое выпрямление</div>
+            </div>
+            <div class="pick-item">
+              <div class="pick-label">Если ваш запрос:</div>
+              <div class="pick-main">Хочется более ухоженный и плотный визуальный вид</div>
+              <div class="pick-result">→ Ботокс для волос</div>
+            </div>
+            <div class="pick-item">
+              <div class="pick-label">Если ваш запрос:</div>
+              <div class="pick-main">Нужен мягкий дисциплинирующий эффект</div>
+              <div class="pick-result">→ Нанопластика</div>
+            </div>
+            <div class="pick-item">
+              <div class="pick-label">Если ваш запрос:</div>
+              <div class="pick-main">Волосы повреждены и нужен уход по длине</div>
+              <div class="pick-result">→ Реконструкция</div>
+            </div>
+          </div>
+          <div class="actions" style="margin-top:22px">
+            <a class="btn" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">Записаться на консультацию</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <div class="container">
+        <div class="results-head">
+          <div>
+            <div class="eyebrow">До / После</div>
+            <h2>Результаты, которые продают лучше слов</h2>
+            <p class="section-text">В этой секции лучше показывать реальные фото работ Hair Lab. Для бьюти-сайта это один из самых сильных блоков доверия.</p>
+          </div>
+          <a class="btn btn-outline" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Хочу такой результат</a>
+        </div>
+
+        <div class="cards-3">
+          <div class="before-card">
+            <div class="before-media">
+              <div class="before-inner">
+                <div>
+                  <div class="muted">Фото до / после</div>
+                  <div class="card-title" style="margin-top:8px;font-size:22px">Гладкость и блеск</div>
+                  <div class="card-text">Запрос: пушистость, сухость и отсутствие блеска. Процедура: ботокс / реконструкция.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="before-card">
+            <div class="before-media">
+              <div class="before-inner">
+                <div>
+                  <div class="muted">Фото до / после</div>
+                  <div class="card-title" style="margin-top:8px;font-size:22px">Дисциплина волос</div>
+                  <div class="card-text">Запрос: волосы сложно укладываются и сильно пушатся. Процедура: кератин.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="before-card">
+            <div class="before-media">
+              <div class="before-inner">
+                <div>
+                  <div class="muted">Фото до / после</div>
+                  <div class="card-title" style="margin-top:8px;font-size:22px">Аккуратное полотно</div>
+                  <div class="card-text">Запрос: торчащие кончики и неаккуратная длина. Процедура: полировка + уход.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-4">
+          <div class="gallery-box"><div class="gallery-inner">Результат после ботокса</div></div>
+          <div class="gallery-box"><div class="gallery-inner">Результат после кератина</div></div>
+          <div class="gallery-box"><div class="gallery-inner">Результат после нанопластики</div></div>
+          <div class="gallery-box"><div class="gallery-inner">Результат после реконструкции</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section section-dark">
+      <div class="container">
+        <div class="cards-2" style="align-items:end">
+          <div>
+            <div class="eyebrow">Прайс</div>
+            <h2>Понятный прайс без ощущения «просто прайса»</h2>
+            <p class="section-text">Точная стоимость зависит от длины, густоты и состояния волос. Цены ниже — стартовые и удобны для первого ориентирования клиента.</p>
+          </div>
+          <div class="pricing-note">🕒 Стоимость уточняется после оценки длины и состояния волос</div>
+        </div>
+
+        <div class="price-table">
+          <div class="price-top">
+            <div>
+              <div style="font-size:14px;color:rgba(255,255,255,.6)">Важно</div>
+              <div style="margin-top:6px">Клиенту достаточно понять диапазон цены и сразу перейти к записи</div>
+            </div>
+            <div>
+              <div style="font-size:14px;color:rgba(255,255,255,.6)">Формулировка</div>
+              <div style="margin-top:6px">Точная стоимость зависит от длины, густоты и состояния волос</div>
+            </div>
+          </div>
+          <div class="price-row"><div>Кератиновое выпрямление</div><div>от 4 500 ₽</div></div>
+          <div class="price-row"><div>Ботокс для волос</div><div>от 4 500 ₽</div></div>
+          <div class="price-row"><div>Нанопластика</div><div>от 5 000 ₽</div></div>
+          <div class="price-row"><div>Реконструкция волос</div><div>от 3 500 ₽</div></div>
+          <div class="price-row"><div>Полировка волос</div><div>от 1 500 ₽</div></div>
+          <div class="price-row"><div>Тонирование</div><div>от 3 000 ₽</div></div>
+          <div class="price-row"><div>Окрашивание в один тон</div><div>от 4 500 ₽</div></div>
+          <div class="price-row"><div>Сложное окрашивание</div><div>от 8 000 ₽</div></div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-white" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться онлайн</a>
+          <a class="btn btn-outline" style="border-color:rgba(255,255,255,.2);background:transparent;color:#fff" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">Уточнить стоимость</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:28px">
+      <div class="container">
+        <div class="card-soft">
+          <div class="cta-triple">
+            <a class="cta-link" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">
+              <div class="muted" style="font-size:14px">Быстрый переход</div>
+              <div class="card-title" style="font-size:22px">Онлайн-запись</div>
+              <div class="card-text">Открыть запись и выбрать удобное время</div>
+            </a>
+            <a class="cta-link" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">
+              <div class="muted" style="font-size:14px">Если есть вопрос</div>
+              <div class="card-title" style="font-size:22px">Написать в WhatsApp</div>
+              <div class="card-text">Уточнить стоимость или подобрать процедуру</div>
+            </a>
+            <div class="cta-link">
+              <div class="muted" style="font-size:14px">Локация</div>
+              <div class="card-title" style="font-size:22px">Открыть карту</div>
+              <div class="actions" style="margin-top:12px">
+                <a class="btn btn-outline" href="https://go.2gis.com/23pgw" target="_blank" rel="noreferrer">2ГИС</a>
+                <a class="btn btn-outline" href="https://yandex.ru/maps/-/CDakuYjv" target="_blank" rel="noreferrer">Яндекс</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section">
+      <div class="container">
+        <div class="steps-wrap" style="background:linear-gradient(145deg,rgba(236,72,153,.08),rgba(34,211,238,.08),rgba(255,255,255,1));border:1px solid var(--line)">
+          <div class="cards-2" style="padding:34px;align-items:center">
+            <div>
+              <div class="eyebrow">Онлайн-запись</div>
+              <h2>Записаться должно быть так же удобно, как листать Instagram</h2>
+              <p class="section-text">Здесь можно встроить реальный виджет онлайн-записи, либо поставить крупные кнопки на YCLIENTS, WhatsApp и Telegram.</p>
+              <div class="actions">
+                <a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Онлайн-запись</a>
+                <a class="btn btn-outline" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">WhatsApp</a>
+                <a class="btn btn-outline" href="https://t.me/hairlab_tomsk" target="_blank" rel="noreferrer">Telegram</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title" style="margin-top:0">Что здесь можно подключить</div>
+              <div class="card-text">
+                • Виджет записи с выбором мастера, услуги и времени<br />
+                • Переход в мессенджер в один тап<br />
+                • Удобный сценарий именно для мобильных клиентов<br />
+                • Несколько CTA-кнопок по всему сайту
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="steps-wrap">
+          <div class="steps-grid">
+            <div class="steps-side">
+              <div class="eyebrow" style="color:rgba(255,255,255,.6)">Как проходит посещение</div>
+              <h2 style="color:#fff">Новый клиент должен чувствовать себя спокойно с первого шага</h2>
+              <p class="section-text" style="color:rgba(255,255,255,.78)">Этот блок отлично снимает тревожность у новых клиентов и показывает, что в Hair Lab всё понятно, удобно и по-человечески.</p>
+            </div>
+            <div class="steps-list">
+              <div class="step"><strong>1. Знакомство и консультация</strong><br><span class="muted">Сначала оцениваем состояние волос, обсуждаем ваш запрос и честно подсказываем, какая процедура подойдет лучше всего.</span></div>
+              <div class="step"><strong>2. Подбор процедуры</strong><br><span class="muted">Выбираем решение под длину, густоту, историю волос и желаемый результат — без шаблонного подхода.</span></div>
+              <div class="step"><strong>3. Выполнение процедуры</strong><br><span class="muted">Работаем аккуратно, бережно и с фокусом на эстетичный результат, который действительно радует.</span></div>
+              <div class="step"><strong>4. Рекомендации по уходу</strong><br><span class="muted">После процедуры даем понятные рекомендации, чтобы эффект держался дольше и волосы выглядели красиво каждый день.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-soft">
+      <div class="container about-grid">
+        <div>
+          <div class="eyebrow">О студии</div>
+          <h2>Hair Lab — не просто услуги, а ощущение красивого и понятного сервиса</h2>
+          <p class="section-text">Мы бережно работаем с красотой и состоянием волос, подбираем процедуры под конкретный запрос и делаем так, чтобы клиенту было спокойно, понятно и комфортно на каждом этапе.</p>
+          <p class="section-text">Здесь можно показать атмосферу студии, рассказать о подходе, философии бренда и визуально усилить доверие через реальные фото пространства и мастеров.</p>
+          <div class="tag-row" style="margin-top:18px">
+            <div class="tiny-tag">Уютная атмосфера</div>
+            <div class="tiny-tag">Понятный сервис</div>
+            <div class="tiny-tag">Красивый результат</div>
+            <div class="tiny-tag">Экспертный уход</div>
+          </div>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-box"><div class="photo-inner">Фото студии / мастера / интерьера</div></div>
+          <div class="photo-box"><div class="photo-inner">Фото студии / мастера / интерьера</div></div>
+          <div class="photo-box"><div class="photo-inner">Фото студии / мастера / интерьера</div></div>
+          <div class="photo-box"><div class="photo-inner">Фото студии / мастера / интерьера</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-bottom:28px">
+      <div class="container">
+        <div class="card-soft">
+          <div class="eyebrow">Что уже видно из Instagram</div>
+          <h2>Сильные смыслы, которые уже стоит перенести на сайт</h2>
+          <p class="section-text">Даже из открытой части Instagram видно, что Hair Lab строит доверие через результаты, отзывы, экспертность и удобную связь. Это важно не потерять в новой версии сайта.</p>
+          <div class="cards-4">
+            <div class="card" style="padding:20px"><div class="card-title" style="font-size:22px;margin-top:0">Результаты</div><div class="card-text">Реальные работы и заметные изменения волос после процедур — один из самых сильных активов Hair Lab.</div></div>
+            <div class="card" style="padding:20px"><div class="card-title" style="font-size:22px;margin-top:0">Отзывы</div><div class="card-text">Instagram уже работает как социальное доказательство, поэтому на сайте этот блок должен быть заметным и живым.</div></div>
+            <div class="card" style="padding:20px"><div class="card-title" style="font-size:22px;margin-top:0">Уход</div><div class="card-text">Полезный контент по домашнему уходу и рекомендациям усиливает экспертность студии.</div></div>
+            <div class="card" style="padding:20px"><div class="card-title" style="font-size:22px;margin-top:0">Запись</div><div class="card-text">Быстрый переход в мессенджер и онлайн-запись должны быть видны в нескольких местах сайта.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="results-head">
+          <div>
+            <div class="eyebrow">Команда и доверие</div>
+            <h2>Люди, к которым хочется записаться</h2>
+          </div>
+          <a class="btn btn-outline" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Выбрать время</a>
+        </div>
+
+        <div class="masters-grid">
+          <div style="display:grid;gap:20px">
+            <div class="card">
+              <div class="master-head">
+                <div class="avatar">Фото</div>
+                <div>
+                  <div class="eyebrow">Арт-директор Hair Lab</div>
+                  <div class="card-title" style="margin-top:8px">Надежда</div>
+                  <div class="card-text">Специализация: реконструкция, выпрямление и уходовые процедуры для волос. Акцент на индивидуальном подборе и аккуратном результате.</div>
+                  <div class="actions" style="margin-top:16px"><a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="master-head">
+                <div class="avatar">Фото</div>
+                <div>
+                  <div class="eyebrow">Можно добавить второго мастера</div>
+                  <div class="card-title" style="margin-top:8px">Мастер Hair Lab</div>
+                  <div class="card-text">Здесь можно разместить второго специалиста, чтобы усилить доверие и показать команду студии.</div>
+                  <div class="actions" style="margin-top:16px"><a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="eyebrow">Отзывы</div>
+            <div class="card-title">Что говорят клиенты</div>
+            <div class="card-text">Отзывы — одна из сильных сторон вашего Instagram, поэтому на сайте этот блок тоже должен выглядеть весомо и живо.</div>
+            <div style="display:grid;gap:14px;margin-top:18px">
+              <div class="review">“Очень понравился результат — волосы выглядят более гладкими, блестящими и ухоженными. Всё спокойно объяснили и помогли выбрать процедуру.”</div>
+              <div class="review">“Уютная студия, приятная атмосфера и реально красивый результат. Отдельно понравилось, что дали рекомендации по уходу.”</div>
+              <div class="review">“Было важно, что мне не навязывали лишнее, а честно подсказали, что подойдет именно моим волосам. Это очень ценно.”</div>
+            </div>
+            <div class="card-soft" style="margin-top:18px;padding:18px">
+              Сюда можно добавить реальные отзывы из 2ГИС, Instagram, WhatsApp или Яндекс Карт — это еще сильнее усилит доверие.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card-dark" style="background:var(--dark);color:#fff">
+          <div class="cards-2" style="align-items:center">
+            <div>
+              <div class="eyebrow" style="color:rgba(255,255,255,.6)">Для новых клиентов</div>
+              <h2 style="color:#fff">Не знаете, с чего начать? Это нормально</h2>
+              <p class="section-text" style="color:rgba(255,255,255,.78)">Самый частый барьер — человек не понимает, какая процедура нужна именно ему. Поэтому на сайте важно не просто перечислить услуги, а помочь с выбором и дать простой путь к консультации.</p>
+            </div>
+            <div class="card-dark">
+              <div style="font-size:14px;color:rgba(255,255,255,.6)">Лучший сценарий</div>
+              <div style="margin-top:12px;display:grid;gap:10px;color:rgba(255,255,255,.9)">
+                <div>1. Посмотреть услуги и прайс</div>
+                <div>2. Увидеть реальные результаты</div>
+                <div>3. Написать или записаться онлайн</div>
+              </div>
+              <div class="actions" style="margin-top:18px">
+                <a class="btn btn-white" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">Помогите выбрать процедуру</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-soft">
+      <div class="container faq">
+        <div style="text-align:center">
+          <div class="eyebrow">FAQ</div>
+          <h2>Частые вопросы</h2>
+          <p class="section-text" style="margin-left:auto;margin-right:auto">Блок, который снимает лишние вопросы и помогает клиенту быстрее принять решение.</p>
+        </div>
+        <div style="margin-top:26px">
+          <details>
+            <summary>Какая процедура подойдет именно мне?</summary>
+            <p>Это зависит от состояния волос, их истории и результата, который вы хотите получить. Мы подскажем оптимальный вариант после консультации.</p>
+          </details>
+          <details>
+            <summary>Сколько держится эффект?</summary>
+            <p>Длительность эффекта зависит от выбранной процедуры, домашнего ухода и индивидуальных особенностей волос.</p>
+          </details>
+          <details>
+            <summary>Можно ли делать процедуры на окрашенные или осветленные волосы?</summary>
+            <p>Во многих случаях — да, но всё зависит от текущего состояния длины. Лучше предварительно проконсультироваться.</p>
+          </details>
+          <details>
+            <summary>Как понять точную стоимость?</summary>
+            <p>Точная цена определяется после оценки длины, густоты и состояния волос.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container cards-2">
+        <div class="card">
+          <div class="eyebrow">Домашний уход</div>
+          <h2 style="font-size:34px">Что важно после процедуры</h2>
+          <p class="card-text">В Instagram студии также есть акцент на домашнем уходе и даже упоминания продукции DAVINES — это можно выгодно показать на сайте отдельным блоком.</p>
+          <div style="display:grid;gap:12px;margin-top:18px">
+            <div class="review">• Использовать домашний уход, который подходит вашему типу волос</div>
+            <div class="review">• Не ориентироваться только на советы из интернета — лучше учитывать рекомендации мастера</div>
+            <div class="review">• Поддерживать результат регулярным уходом и бережным отношением к длине</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">Финальный CTA</div>
+          <h2 style="font-size:34px">Hair Lab уже выглядит как сильный бренд — сайту осталось это догнать</h2>
+          <p class="card-text">Эта версия уже близка к публикации. Дальше остается подставить реальные фото, контакты, ссылки записи и отточить тексты под ваш голос бренда.</p>
+          <div class="actions">
+            <a class="btn" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться онлайн</a>
+            <a class="btn btn-outline" href="https://wa.me/79528883050" target="_blank" rel="noreferrer">Написать в WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacts" class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand">
+          <div class="brand-mark">HL</div>
+          <div>
+            <div class="brand-title">Hair Lab</div>
+            <div class="brand-sub">студия реконструкции и преображения волос</div>
+          </div>
+        </div>
+        <p class="section-text" style="margin-top:18px">
+          Современный сайт студии должен красиво презентовать Hair Lab, отвечать на вопросы клиента и мягко доводить его до записи. Эта версия уже выглядит как сильная база под финальный запуск.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div>📍 Томск, ул. Розы Люксембург, 4В</div>
+        <a href="tel:+79528883050">📞 +7 952 888 30 50</a>
+        <a href="https://instagram.com/hairlab_" target="_blank" rel="noreferrer">📷 @hairlab_</a>
+        <a href="https://wa.me/79528883050" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+        <a href="https://t.me/hairlab_tomsk" target="_blank" rel="noreferrer">💬 Telegram @hairlab_tomsk</a>
+        <div>🕒 ежедневно, по записи</div>
+        <div class="actions" style="margin-top:2px">
+          <a class="btn btn-outline" href="https://go.2gis.com/23pgw" target="_blank" rel="noreferrer">2ГИС</a>
+          <a class="btn btn-outline" href="https://yandex.ru/maps/-/CDakuYjv" target="_blank" rel="noreferrer">Яндекс Карты</a>
+        </div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:8px">
+          Здесь можно добавить политику конфиденциальности, согласие на обработку персональных данных и ссылку на оферту.<br>
+          © Hair Lab, 2026. Все права защищены.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky">
+    <a class="btn" style="width:100%" href="https://n92404.yclients.com" target="_blank" rel="noreferrer">Записаться онлайн</a>
+  </div>
+</body>
+</html>
