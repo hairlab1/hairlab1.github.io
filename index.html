@@ -228,6 +228,177 @@ user-select:none;
 .modal-prev{left:8px;}
 .modal-next{right:8px;}
 
+/* REVIEWS */
+
+.reviews{
+margin:40px 16px 0;
+}
+
+.reviews-head{
+display:flex;
+align-items:center;
+gap:10px;
+margin:0 2px 16px;
+}
+
+.reviews-head h2{
+font-size:18px;
+margin:0;
+text-transform:uppercase;
+}
+
+.reviews-scroll{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding:4px 2px 14px;
+scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
+}
+
+.reviews-scroll::-webkit-scrollbar{height:6px;}
+.reviews-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:999px;}
+
+.review{
+flex:0 0 300px;
+scroll-snap-align:start;
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.18);
+border-radius:18px;
+padding:18px;
+display:flex;
+flex-direction:column;
+}
+
+.review-top{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:10px;
+}
+
+.review-avatar{
+width:42px;
+height:42px;
+border-radius:50%;
+flex:0 0 42px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+font-size:15px;
+color:#fff;
+}
+
+.review-name{
+font-weight:700;
+font-size:14px;
+}
+
+.review-date{
+font-size:11px;
+opacity:.7;
+}
+
+.review-stars{
+color:#ffd23f;
+font-size:14px;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+.review-text{
+font-size:13px;
+line-height:1.5;
+opacity:.95;
+}
+
+.reviews-cta{
+margin:6px 2px 0;
+}
+
+.reviews-cta a{
+display:inline-flex;
+align-items:center;
+gap:8px;
+background:rgba(255,255,255,0.95);
+color:#0d2bd7;
+text-decoration:none;
+padding:11px 18px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+box-shadow:0 8px 22px rgba(0,0,0,0.2);
+transition:transform .2s ease;
+}
+
+.reviews-cta a:hover{transform:translateY(-2px);}
+.reviews-cta a svg{width:16px;height:16px;}
+
+/* LOCATION BLOCK */
+
+.info-block{
+margin:40px 16px 0;
+}
+
+.info-block .block-title{
+display:flex;
+align-items:center;
+gap:10px;
+margin:0 2px 14px;
+}
+
+.info-block .block-title h2{
+font-size:18px;
+margin:0;
+text-transform:uppercase;
+}
+
+.map-card{
+border-radius:18px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.18);
+background:rgba(255,255,255,0.06);
+min-height:400px;
+}
+
+.map-card iframe{
+display:block;
+width:100%;
+border:0;
+}
+
+.addr-actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:14px;
+}
+
+.addr-actions a{
+display:flex;
+align-items:center;
+gap:8px;
+background:rgba(255,255,255,0.95);
+color:#0d2bd7;
+text-decoration:none;
+padding:11px 18px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+box-shadow:0 8px 22px rgba(0,0,0,0.2);
+transition:transform .2s ease;
+}
+
+.addr-actions a:hover{transform:translateY(-2px);}
+.addr-actions a svg{width:16px;height:16px;}
+
+.addr-note{
+margin:12px 2px 0;
+font-size:12px;
+opacity:.8;
+}
+
 .footer-note{
 margin:40px 18px;
 text-align:center;
@@ -363,6 +534,99 @@ display:block;
 <div class="card"><img src="PriceMay2026/Okrashivanie.jpg" alt="Тонирование и окрашивание" loading="lazy"></div>
 <div class="card"><img src="PriceMay2026/Biozavivka.jpg" alt="Биозавивка" loading="lazy"></div>
 </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+
+<section class="reviews">
+<div class="reviews-head"><div class="section-marker"></div><h2>Отзывы клиентов</h2></div>
+
+<div class="reviews-scroll">
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#e8453c">LO</div>
+<div><div class="review-name">Lyubov Orlova</div><div class="review-date">23 мая 2026 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Первый раз пришла в эту студию, сначала меня проконсультировал очень вежливый мастер и я сразу поняла — здесь профессионалы своего дела. Сама студия очень аккуратная, чистая, комфортное пребывание на процедуре. Делала нанопластику — меня и какао угостили, и массажем ног обеспечили. Очень довольна сервисом, а особенно результатом моего мастера Алины: прекрасная, чуткая и очень грамотная в своём деле. Благодарю 🙏</div>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#c2410c">ЯЯ</div>
+<div><div class="review-name">Яся Ясечка</div><div class="review-date">18 января 2026 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Была в студии впервые, пришла по рекомендации именно к Надежде. Запрос был: убрать пушистость и придать блеск. Сделали биксипластию, всё было комфортно, в студии уютно, предложили вкусный чай, массаж ног. Я в полном восторге от результата, спасибо ❤️</div>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#0d2bd7">МБ</div>
+<div><div class="review-name">Мария Барышева</div><div class="review-date">25 марта 2026 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Отличнейшая студия! Рада вернуться после длительного перерыва. Мастер Надежда — профессионал своего дела! Время в студии как мини-отпуск, пока колдуют над твоей красотой. Волосы просто шик! Процветания и до новых встреч!</div>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#e8453c">М</div>
+<div><div class="review-name">Мария</div><div class="review-date">13 мая 2026 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Обожаю эту студию! Хожу уже который раз на ботокс, довольна очень. Во-первых, очень облегчает жизнь с пористыми волосами — они нормально выглядят и легко укладываются. Во-вторых, тут просто прекрасная атмосфера и комфорт! И массажер для ног ❤️ И прекрасные приятные мастера 💕</div>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#2563eb">ЕС</div>
+<div><div class="review-name">Елена Субоч</div><div class="review-date">26 апреля 2026 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Очень нравится студия, приятная атмосфера. Спасибо мастеру Валерии — после длительного перерыва привела мои волосы в порядок. Обязательно вернусь.</div>
+</div>
+
+<div class="review">
+<div class="review-top">
+<div class="review-avatar" style="background:#16a34a">АS</div>
+<div><div class="review-name">Александра S</div><div class="review-date">1 октября 2025 · 2ГИС</div></div>
+</div>
+<div class="review-stars">★★★★★</div>
+<div class="review-text">Лучшая студия в городе! Мастера настоящие профессионалы, всё расскажут, помогут в подборе домашнего ухода, очень уютная атмосфера в студии. Хожу уже не первый год и буду возвращаться снова! Спасибо!</div>
+</div>
+
+</div>
+
+<div class="reviews-cta">
+<a href="https://2gis.ru/tomsk/firm/70000001030344720/tab/reviews" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.5 5 5.5.8-4 3.9.95 5.5L12 16.9 7.1 18.7l.95-5.5-4-3.9 5.5-.8 2.45-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+Все отзывы в 2ГИС
+</a>
+</div>
+</section>
+
+<!-- АДРЕС, КАРТА -->
+
+<section class="info-block">
+<div class="block-title"><div class="section-marker"></div><h2>Как нас найти</h2></div>
+
+<div class="map-card" id="dgMap"></div>
+
+<div class="addr-actions">
+<a href="https://2gis.ru/tomsk/firm/70000001030344720" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+Открыть в 2ГИС
+</a>
+
+<a href="https://2gis.ru/tomsk/firm/70000001030344720/routeTab" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="none"><path d="M4 16a4 4 0 0 1 4-4h6a4 4 0 0 0 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="5" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M18 4l2 2-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+Построить маршрут
+</a>
+</div>
+
+<div class="addr-note">Томск, ул. Розы Люксембург, 4В · проезд — на карточке в 2ГИС</div>
 </section>
 
 <div class="footer-note">Hair Lab · Томск · Красивые волосы без компромиссов</div>
@@ -551,6 +815,20 @@ contactItems.classList.remove("open")
 
 })
 
+</script>
+
+<!-- 2GIS MAP WIDGET -->
+<script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+<script charset="utf-8">
+new DGWidgetLoader({
+"width":"100%",
+"height":400,
+"borderColor":"#a3a3a3",
+"pos":{"lat":56.48966425858168,"lon":84.95062351226808,"zoom":16},
+"opt":{"city":"tomsk"},
+"org":[{"id":"70000001030344720"}],
+"container":"dgMap"
+});
 </script>
 
 </body>
