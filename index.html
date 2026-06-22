@@ -3,829 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HairLab — Прайс на услуги | Студия реконструкции волос в Томске</title>
+<title>HairLab — Студия реконструкции волос в Томске</title>
 
 <!-- SEO -->
-<meta name="description" content="HairLab — первая студия по реконструкции волос в Томске. Ботокс, кератин, нанопластика, окрашивание, уходы и стрижки. Розы Люксембург, 4В. Онлайн-запись.">
-<meta name="keywords" content="hairlab, реконструкция волос, ботокс для волос, кератин, нанопластика, окрашивание, Томск, парикмахерская">
-<meta name="theme-color" content="#0d2bd7">
+<meta name="description" content="HairLab — студия реконструкции волос в Томске. 11 лет только реконструкция: ботокс, кератин, нанопластика, биксипластия, авторское холодное восстановление. Диагностика трихоскопом, безопасные составы без формальдегида, 13 111 процедур, 200+ отзывов. Розы Люксембург, 4В.">
+<meta name="keywords" content="hairlab, реконструкция волос, ботокс для волос, кератин, нанопластика, биксипластия, холодное восстановление, диагностика волос, Томск, парикмахерская">
+<meta name="theme-color" content="#d27050">
 
-<!-- Open Graph (для красивых ссылок в соцсетях/мессенджерах) -->
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="HairLab — Студия реконструкции волос в Томске">
-<meta property="og:description" content="Ботокс, кератин, нанопластика, окрашивание, уходы и стрижки. Красивые волосы без компромиссов. Онлайн-запись.">
+<meta property="og:description" content="11 лет только реконструкция волос. 13 111 процедур, 200+ отзывов. Диагностика, честный подбор, безопасные составы без формальдегида. Онлайн-запись.">
 <meta property="og:image" content="https://hairlab1.github.io/PriceMay2026/Present.jpg">
 <meta property="og:url" content="https://hairlab1.github.io">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="HairLab">
-
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HairLab — Студия реконструкции волос в Томске">
-<meta name="twitter:description" content="Ботокс, кератин, нанопластика, окрашивание, уходы и стрижки. Онлайн-запись.">
 
-<style>
-body{
-margin:0;
-background:linear-gradient(180deg,#0d2bd7 0%,#143bdb 100%);
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-color:#fff;
--webkit-font-smoothing:antialiased;
-}
-
-.content{
-max-width:920px;
-margin:0 auto;
-padding-bottom:120px;
-}
-
-/* NAV */
-
-.nav{
-position:sticky;
-top:8px;
-z-index:1000;
-margin:12px auto;
-padding:6px 10px;
-display:flex;
-gap:6px;
-background:rgba(5,12,60,0.45);
-border-radius:22px;
-backdrop-filter:blur(14px);
-width:fit-content;
-}
-
-.nav button{
-background:rgba(255,255,255,0.1);
-border:1px solid rgba(255,255,255,0.2);
-color:#fff;
-padding:8px 14px;
-border-radius:999px;
-font-size:13px;
-font-weight:600;
-cursor:pointer;
-transition:background .25s ease;
-}
-
-.nav button.active{
-background:rgba(255,255,255,0.3);
-}
-
-/* HEADER */
-
-.address-bar{
-margin:18px;
-}
-
-.address-brand{
-font-size:18px;
-font-weight:700;
-letter-spacing:.08em;
-text-transform:uppercase;
-}
-
-.address-sub{
-font-size:11px;
-opacity:.8;
-}
-
-.address-line{
-font-size:12px;
-opacity:.85;
-}
-
-/* SECTIONS */
-
-.section-header{
-display:flex;
-align-items:center;
-gap:10px;
-margin:32px 18px 8px;
-}
-
-.section-marker{
-width:6px;
-height:22px;
-border-radius:999px;
-background:rgba(255,255,255,0.85);
-}
-
-.section-header h2{
-font-size:18px;
-margin:0;
-text-transform:uppercase;
-}
-
-/* INTRO */
-
-.intro{
-width:94%;
-margin:20px auto 30px;
-border-radius:22px;
-overflow:hidden;
-cursor:pointer;
-}
-
-.intro img{
-width:100%;
-display:block;
-opacity:0;
-transition:opacity .5s ease;
-}
-
-.intro img.loaded{
-opacity:1;
-}
-
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-padding:0 16px;
-}
-
-.card{
-border-radius:16px;
-overflow:hidden;
-cursor:pointer;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.15);
-}
-
-.card img{
-width:100%;
-display:block;
-opacity:0;
-transition:opacity .5s ease;
-}
-
-.card img.loaded{
-opacity:1;
-}
-
-/* MODAL */
-
-.modal-overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.92);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:3000;
-}
-
-.modal-overlay.open{
-display:flex;
-}
-
-.modal-inner{
-position:relative;
-max-width:96%;
-max-height:90vh;
-}
-
-.modal-inner img{
-max-width:100%;
-max-height:80vh;
-border-radius:18px;
-display:block;
-}
-
-/* CONTROLS */
-
-.modal-close{
-position:absolute;
-top:-14px;
-right:-14px;
-width:36px;
-height:36px;
-background:rgba(255,255,255,0.25);
-border-radius:50%;
-font-size:26px;
-text-align:center;
-line-height:34px;
-cursor:pointer;
-}
-
-.modal-nav{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:44px;
-height:44px;
-background:rgba(255,255,255,0.25);
-border-radius:50%;
-font-size:30px;
-line-height:42px;
-text-align:center;
-cursor:pointer;
-user-select:none;
-}
-
-.modal-prev{left:8px;}
-.modal-next{right:8px;}
-
-/* REVIEWS */
-
-.reviews{
-margin:40px 16px 0;
-}
-
-.reviews-head{
-display:flex;
-align-items:center;
-gap:10px;
-margin:0 2px 16px;
-}
-
-.reviews-head h2{
-font-size:18px;
-margin:0;
-text-transform:uppercase;
-}
-
-.reviews-scroll{
-display:flex;
-gap:14px;
-overflow-x:auto;
-padding:4px 2px 14px;
-scroll-snap-type:x mandatory;
--webkit-overflow-scrolling:touch;
-}
-
-.reviews-scroll::-webkit-scrollbar{height:6px;}
-.reviews-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:999px;}
-
-.review{
-flex:0 0 300px;
-scroll-snap-align:start;
-background:rgba(255,255,255,0.1);
-border:1px solid rgba(255,255,255,0.18);
-border-radius:18px;
-padding:18px;
-display:flex;
-flex-direction:column;
-}
-
-.review-top{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:10px;
-}
-
-.review-avatar{
-width:42px;
-height:42px;
-border-radius:50%;
-flex:0 0 42px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:700;
-font-size:15px;
-color:#fff;
-}
-
-.review-name{
-font-weight:700;
-font-size:14px;
-}
-
-.review-date{
-font-size:11px;
-opacity:.7;
-}
-
-.review-stars{
-color:#ffd23f;
-font-size:14px;
-letter-spacing:2px;
-margin-bottom:10px;
-}
-
-.review-text{
-font-size:13px;
-line-height:1.5;
-opacity:.95;
-}
-
-.reviews-cta{
-margin:6px 2px 0;
-}
-
-.reviews-cta a{
-display:inline-flex;
-align-items:center;
-gap:8px;
-background:rgba(255,255,255,0.95);
-color:#0d2bd7;
-text-decoration:none;
-padding:11px 18px;
-border-radius:999px;
-font-size:13px;
-font-weight:700;
-box-shadow:0 8px 22px rgba(0,0,0,0.2);
-transition:transform .2s ease;
-}
-
-.reviews-cta a:hover{transform:translateY(-2px);}
-.reviews-cta a svg{width:16px;height:16px;}
-
-/* LOCATION BLOCK */
-
-.info-block{
-margin:40px 16px 0;
-}
-
-.info-block .block-title{
-display:flex;
-align-items:center;
-gap:10px;
-margin:0 2px 14px;
-}
-
-.info-block .block-title h2{
-font-size:18px;
-margin:0;
-text-transform:uppercase;
-}
-
-.map-card{
-border-radius:18px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,0.18);
-background:rgba(255,255,255,0.06);
-}
-
-.map-card iframe{
-display:block;
-width:100%;
-height:400px;
-border:0;
-}
-
-.addr-actions{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:14px;
-}
-
-.addr-actions a{
-display:flex;
-align-items:center;
-gap:8px;
-background:rgba(255,255,255,0.95);
-color:#0d2bd7;
-text-decoration:none;
-padding:11px 18px;
-border-radius:999px;
-font-size:13px;
-font-weight:700;
-box-shadow:0 8px 22px rgba(0,0,0,0.2);
-transition:transform .2s ease;
-}
-
-.addr-actions a:hover{transform:translateY(-2px);}
-.addr-actions a svg{width:16px;height:16px;}
-
-.addr-note{
-margin:12px 2px 0;
-font-size:12px;
-opacity:.8;
-}
-
-.footer-note{
-margin:40px 18px;
-text-align:center;
-font-size:11px;
-opacity:.65;
-}
-
-/* CONTACT BUTTON */
-
-.contact-menu{
-position:fixed;
-bottom:26px;
-right:20px;
-z-index:5000;
-display:flex;
-flex-direction:column;
-align-items:flex-end;
-gap:12px;
-}
-
-.contact-main{
-background:rgba(255,255,255,0.9);
-color:#0d2bd7;
-border:none;
-border-radius:999px;
-padding:14px 22px;
-font-weight:700;
-font-size:14px;
-cursor:pointer;
-backdrop-filter:blur(20px);
-box-shadow:0 12px 30px rgba(0,0,0,0.25);
-transition:all .25s ease;
-}
-
-.contact-main:hover{
-transform:translateY(-2px) scale(1.03);
-}
-
-.contact-items{
-display:flex;
-flex-direction:column;
-gap:10px;
-opacity:0;
-transform:translateY(10px);
-pointer-events:none;
-transition:all .25s ease;
-}
-
-.contact-items.open{
-opacity:1;
-transform:translateY(0);
-pointer-events:auto;
-}
-
-.contact-items a{
-display:flex;
-align-items:center;
-gap:10px;
-background:rgba(255,255,255,0.95);
-color:#0d2bd7;
-text-decoration:none;
-padding:10px 16px;
-border-radius:999px;
-font-size:13px;
-font-weight:600;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-.contact-items img{
-width:16px;
-height:16px;
-}
-
-.contact-items svg{
-width:16px;
-height:16px;
-flex:0 0 16px;
-display:block;
-}
-
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3e8d6'/%3E%3Cg stroke='%233c352d' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Ccircle cx='10' cy='22' r='3.4'/%3E%3Ccircle cx='22' cy='22' r='3.4'/%3E%3Cpath d='M12 19l10-12M20 19L10 7' stroke='%23d27050'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="studio.css?v=11">
 </head>
 
 <body>
 
-<div class="content">
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#top" class="nav-brand">Hair Lab</a>
+  <div class="nav-burger" id="navBurger">☰</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#services">Услуги и цены</a>
+    <a href="#studio">О студии</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#masters">Мастера</a>
+    <a href="#contacts">Контакты</a>
+    <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="nav-cta">Записаться</a>
+  </div>
+</nav>
 
-<div class="nav">
-<button data-target="viypr">Выпрямление</button>
-<button data-target="uhods">Уходы</button>
-<button data-target="okrash">Окрашивание</button>
-</div>
+<a id="top"></a>
 
-<div class="address-bar">
-<div class="address-brand">Hair Lab</div>
-<div class="address-sub">Первая студия по реконструкции волос</div>
-<div class="address-line">Томск — Розы Люксембург, 4В</div>
-</div>
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-badge"><span class="dot"></span> Первая студия в Томске</span>
+        <h1>Красивые волосы <br><span class="script">без компромиссов</span></h1>
+        <p class="hero-sub">Реконструкция — наша основная специализация. Диагностика, честный подбор процедуры и результат, который видно. Не «ещё одна услуга в прайсе», а профессия.</p>
+        <div class="hero-actions">
+          <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 3.8V7M16 3.8V7M3.5 9.5H20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 14.2l2.2 2.2 4.2-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Записаться онлайн
+          </a>
+          <a href="#services" class="btn btn-ghost">Услуги и цены</a>
+        </div>
+        <a class="hero-rating" href="https://2gis.ru/tomsk/firm/70000001030344720/tab/reviews" target="_blank" rel="noopener">
+          <span class="stars">★</span>
+          <span class="rt">Высокий рейтинг · <b>200+</b> отзывов на 2ГИС и Яндекс Картах</span>
+        </a>
+      </div>
 
-<main>
+      <!-- Рисованная иллюстрация-герой (SVG) -->
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 500 470" xmlns="http://www.w3.org/2000/svg">
+          <path class="il-frame" d="M250 8c118 0 214 96 214 214v228a14 14 0 0 1-14 14H50a14 14 0 0 1-14-14V222C36 104 132 8 250 8Z" stroke-width="4"/>
+          <clipPath id="sky"><path d="M250 44c97 0 178 80 178 178v60H72v-60C72 124 153 44 250 44Z"/></clipPath>
+          <g clip-path="url(#sky)">
+            <rect class="il-sky" x="72" y="44" width="356" height="300"/>
+            <circle class="il-sun" cx="250" cy="150" r="46"/>
+            <circle class="il-ring" cx="250" cy="150" r="46" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round"/>
+            <g class="il-cloud" opacity=".9">
+              <ellipse cx="130" cy="110" rx="34" ry="14"/>
+              <ellipse cx="160" cy="118" rx="26" ry="11"/>
+              <ellipse cx="360" cy="95" rx="30" ry="12"/>
+            </g>
+            <path class="il-ha" d="M72 250c60-46 120-46 180-8s130 30 176-6v108H72Z"/>
+            <path class="il-hb" d="M72 280c70-40 130-22 198 6s120 8 158-14v72H72Z"/>
+            <path class="il-hc" d="M72 300c80-26 150 6 214 22s90-2 142-18v40H72Z"/>
+            <path class="il-tree" d="M118 286c10-4 18-30 18-44s8-14 8 0 8 40 18 44Z"/>
+            <path class="il-tree2" d="M392 274c9-3 16-26 16-39s7-12 7 0 7 36 16 39Z"/>
+          </g>
+          <path class="il-line2" d="M250 44c97 0 178 80 178 178v60H72v-60C72 124 153 44 250 44Z" stroke-width="4"/>
+          <path class="il-line2" d="M250 44v238M72 222h356" stroke-width="3" opacity=".85"/>
+          <rect class="il-sill" x="56" y="282" width="388" height="22" rx="8" stroke-width="4"/>
+          <g>
+            <path class="il-stem" d="M120 392c-2-30 0-58 8-78" stroke-width="5" stroke-linecap="round"/>
+            <path class="il-leafA" d="M128 320c-22-6-40 6-44 26 22 4 40-8 44-26Z" stroke-width="3"/>
+            <path class="il-leafB" d="M128 334c20-12 42-8 52 8-20 12-44 8-52-8Z" stroke-width="3"/>
+            <path class="il-leafA" d="M126 360c-20-2-36 10-38 28 20 2 36-10 38-28Z" stroke-width="3"/>
+            <path class="il-pot" d="M104 392h44l-6 40a8 8 0 0 1-8 7h-16a8 8 0 0 1-8-7Z" stroke-width="4"/>
+          </g>
+          <g>
+            <rect class="il-bottleA" x="214" y="350" width="30" height="74" rx="9" stroke-width="4"/>
+            <rect class="il-cap" x="222" y="338" width="14" height="16" rx="4"/>
+            <rect class="il-bottleB" x="250" y="368" width="26" height="56" rx="9" stroke-width="4"/>
+            <rect class="il-cap" x="257" y="356" width="12" height="14" rx="4"/>
+          </g>
+          <g class="il-line2" stroke-width="4" stroke-linecap="round">
+            <circle class="il-frame" cx="338" cy="406" r="14" stroke-width="4"/>
+            <circle class="il-frame" cx="372" cy="406" r="14" stroke-width="4"/>
+            <path class="il-blade" d="M345 396l38-46M365 396l-38-46"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
 
-<div class="intro"><img src="PriceMay2026/Present.jpg" alt="HairLab — преимущества студии реконструкции волос"></div>
-
-<section id="viypr">
-<div class="section-header"><div class="section-marker"></div><h2>Выпрямление / Разглаживание</h2></div>
-<div class="grid">
-<div class="card"><img src="PriceMay2026/Botox.jpg" alt="Ботокс для волос" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Bixisplatia.jpg" alt="Биксипластия" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Collagen.jpg" alt="Коллагеновое выпрямление" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Keratin.jpg" alt="Кератиновое выпрямление" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Totalinfo.jpg" alt="Тотальная реконструкция — описание" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/TotalPrice.jpg" alt="Тотальная реконструкция — стоимость" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Obodok.jpg" alt="Обработка височной зоны" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Nanoplastica.jpg" alt="Нанопластика волос" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Brazilian.jpg" alt="Бразильское выпрямление" loading="lazy"></div>
-</div>
+<!-- ============ ПОЛОСА СТАТИСТИКИ ============ -->
+<section class="stats-band">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num">11 лет</div><div class="lbl">в сфере реконструкции волос</div></div>
+      <div class="stat"><div class="num">более&nbsp;15&nbsp;тысяч</div><div class="lbl">выполненных процедур за всё время</div></div>
+      <div class="stat"><div class="num">200+</div><div class="lbl">отзывов на 2ГИС и Яндекс Картах</div></div>
+    </div>
+  </div>
 </section>
 
-<section id="uhods">
-<div class="section-header"><div class="section-marker"></div><h2>Уходы + Стрижки</h2></div>
-<div class="grid">
-<div class="card"><img src="PriceMay2026/Holodnoe.jpg" alt="Холодное восстановление" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Schastie.jpg" alt="Счастье для волос" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/DiagnostikaPilig.jpg" alt="Пилинг и диагностика кожи головы" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Polirovka.jpg" alt="Полировка волос" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Strijka.jpg" alt="Стрижка" loading="lazy"></div>
-</div>
+<!-- ============ УСЛУГИ И ЦЕНЫ (компактный хаб) ============ -->
+<section class="section" id="services" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="section-eyebrow">прайс под рукой</div>
+      <h2 class="section-title">Услуги и цены</h2>
+      <p class="muted" style="max-width:44em;margin:0 auto;">Три направления — выберите своё и откройте подробный прайс. Всё компактно и в одном месте.</p>
+    </div>
+
+    <div class="price-hub">
+      <!-- ВЫПРЯМЛЕНИЕ — основной блок, список в 2 столбца -->
+      <div class="cat-card wide reveal">
+        <div class="cat-top terra">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 6c4 2 6 6 6 14M20 6c-4 2-6 6-6 14"/></svg></div>
+          <h3>Выпрямление и разглаживание</h3>
+        </div>
+        <div class="cat-body">
+          <ul class="proc terra">
+            <li>Ботокс для волос</li>
+            <li>Биксипластия</li>
+            <li>Кератин коллаген</li>
+            <li>Кератиновое выпрямление</li>
+            <li>Тотальная реконструкция</li>
+            <li>Нанопластика</li>
+            <li>Brazilian Blowout</li>
+          </ul>
+          <a href="price.html#viypr" class="btn btn-primary">Открыть прайс →</a>
+        </div>
+      </div>
+
+      <!-- УХОДЫ И СТРИЖКИ -->
+      <div class="cat-card reveal">
+        <div class="cat-top teal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v18M5 8l7 4 7-4"/><circle cx="12" cy="3.5" r="1.5"/></svg></div>
+          <h3>Уходы и стрижки</h3>
+        </div>
+        <div class="cat-body">
+          <ul class="proc teal">
+            <li>Холодное восстановление</li>
+            <li>«Счастье для волос»</li>
+            <li>Пилинг и диагностика</li>
+            <li>Полировка волос</li>
+            <li>Стрижка</li>
+          </ul>
+          <a href="price.html#uhods" class="btn btn-primary" style="background:var(--teal);">Открыть прайс →</a>
+        </div>
+      </div>
+
+      <!-- ОКРАШИВАНИЕ -->
+      <div class="cat-card reveal">
+        <div class="cat-top gold">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 3l9 9-6 6-9-9V3z"/><circle cx="6.5" cy="6.5" r="1.4" fill="#fff"/></svg></div>
+          <h3>Окрашивание</h3>
+        </div>
+        <div class="cat-body">
+          <ul class="proc gold">
+            <li>Тонирование и окрашивание</li>
+            <li>Биозавивка</li>
+          </ul>
+          <a href="price.html#okrash" class="btn btn-primary" style="background:var(--gold);color:#fff;">Открыть прайс →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:28px;">
+      <a href="price.html" class="btn btn-ghost">Весь прайс целиком →</a>
+    </div>
+  </div>
 </section>
 
-<section id="okrash">
-<div class="section-header"><div class="section-marker"></div><h2>Окрашивание</h2></div>
-<div class="grid">
-<div class="card"><img src="PriceMay2026/Okrashivanie.jpg" alt="Тонирование и окрашивание" loading="lazy"></div>
-<div class="card"><img src="PriceMay2026/Biozavivka.jpg" alt="Биозавивка" loading="lazy"></div>
-</div>
+<!-- ============ О СТУДИИ / ПРЕИМУЩЕСТВА ============ -->
+<section class="section" id="studio">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="section-eyebrow">почему hair lab</div>
+      <h2 class="section-title">Мы делаем одно дело — и делаем его хорошо</h2>
+      <p class="muted" style="max-width:52em;margin:0 auto;">Узкая специализация — это про глубину: мы замечаем то, что в потоке разных услуг легко пропустить. Поэтому работаем не «по стандарту», а по своему порядку — и начинается он не с состава, а с ваших волос.</p>
+    </div>
+
+    <!-- КАК МЫ РАБОТАЕМ -->
+    <div class="steps reveal">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Диагностика</h3>
+        <p>Смотрим кожу головы трихоскопом и делаем тест-прядь — чтобы понять структуру именно ваших волос.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Честный подбор</h3>
+        <p>Подбираем состав под задачу, а не самую дорогую позицию. Можно решить мягче и дешевле — скажем прямо.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Результат, который видно</h3>
+        <p>Доводим волосы до результата — заметного и в день процедуры, и спустя недели после.</p>
+      </div>
+    </div>
+
+    <!-- УТП-ТЕЗИСЫ -->
+    <div class="feature-row four">
+      <div class="feature reveal">
+        <div class="ic ic-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 2v20M4 5l16 14M20 5L4 19M2 12h20"/></svg></div>
+        <h3>Авторское восстановление</h3>
+        <p>Своя бережная методика холодного восстановления Hair Lab — для волос, которым нужен максимально щадящий уход.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic ic-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Безопасные составы</h3>
+        <p>Есть процедуры без формальдегида — подходят детям и подросткам, беременным, кормящим и аллергикам.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic ic-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 18l5-9 4 6 3-4 6 7Z" stroke-linejoin="round"/></svg></div>
+        <h3>Сложные случаи</h3>
+        <p>Осветлённые, ломкие волосы, длина ниже 80 см, гормональная волна — считаем индивидуально и решаем.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ic ic-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 5h16v11H9l-4 4V5Z"/><path d="M8 10h8M8 13h5"/></svg></div>
+        <h3>Сопровождение после</h3>
+        <p>Подбираем домашний уход под ваши волосы и остаёмся на связи — работа не заканчивается в день визита.</p>
+      </div>
+    </div>
+
+    <!-- КОМФОРТ -->
+    <div class="center reveal" style="margin:40px 0 16px;">
+      <div class="section-eyebrow">комфорт уже в цене</div>
+      <h3 style="font-size:22px;color:var(--on-bg-strong);">Доплачивать за сервис не нужно</h3>
+    </div>
+    <div class="perks reveal">
+      <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg> Мощная вытяжка, минимум запахов</span>
+      <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12h14M5 12a3 3 0 0 1 0-6M19 12v3a4 4 0 0 1-4 4H9"/></svg> Мойки-реклайнеры</span>
+      <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg> Массажёр для ног</span>
+      <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 8h9a3 3 0 0 1 0 6h-1M6 8v8a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3M8 4v2M11 4v2"/></svg> Барное меню и тапочки</span>
+      <span class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 1-2-2Z"/><path d="M8 4v13"/></svg> Книги и метафорические карты</span>
+    </div>
+  </div>
 </section>
 
-<!-- ОТЗЫВЫ -->
+<!-- ============ ОТЗЫВЫ ============ -->
+<section class="section" id="reviews" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">нам доверяют</div>
+      <h2 class="section-title">Отзывы клиентов</h2>
+      <span class="hero-rating"><span class="stars">★</span><span class="rt">Высокий рейтинг · <b>200+</b> отзывов на 2ГИС и Яндекс Картах</span></span>
+    </div>
 
-<section class="reviews">
-<div class="reviews-head"><div class="section-marker"></div><h2>Отзывы клиентов</h2></div>
+    <div class="reviews-scroll">
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#d27050">LO</div><div><div class="review-name">Lyubov Orlova</div><div class="review-date">23 мая 2026 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Первый раз пришла в эту студию, меня проконсультировал очень вежливый мастер — сразу поняла, здесь профессионалы. Делала нанопластику: и какао угостили, и массажем ног обеспечили. Очень довольна сервисом, а особенно результатом моего мастера Алины 🙏</div>
+      </div>
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#bd5a3d">ЯЯ</div><div><div class="review-name">Яся Ясечка</div><div class="review-date">18 января 2026 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Пришла по рекомендации именно к Надежде. Запрос: убрать пушистость и придать блеск. Сделали биксипластию, всё комфортно, в студии уютно, вкусный чай, массаж ног. В полном восторге от результата ❤️</div>
+      </div>
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#4f928b">МБ</div><div><div class="review-name">Мария Барышева</div><div class="review-date">25 марта 2026 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Отличнейшая студия! Мастер Надежда — профессионал своего дела. Время в студии как мини-отпуск, пока колдуют над твоей красотой. Волосы просто шик! Процветания и до новых встреч!</div>
+      </div>
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#d27050">М</div><div><div class="review-name">Мария</div><div class="review-date">13 мая 2026 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Обожаю эту студию! Хожу уже который раз на ботокс. Облегчает жизнь с пористыми волосами — они нормально выглядят и легко укладываются. Прекрасная атмосфера, комфорт и массажёр для ног ❤️</div>
+      </div>
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#3a7670">ЕС</div><div><div class="review-name">Елена Субоч</div><div class="review-date">26 апреля 2026 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Очень нравится студия, приятная атмосфера. Спасибо мастеру Валерии — после длительного перерыва привела мои волосы в порядок. Обязательно вернусь.</div>
+      </div>
+      <div class="review">
+        <div class="review-top"><div class="review-avatar" style="background:#cf8f4e">АS</div><div><div class="review-name">Александра S</div><div class="review-date">1 октября 2025 · 2ГИС</div></div></div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Лучшая студия в городе! Мастера — настоящие профессионалы, всё расскажут, помогут с подбором домашнего ухода, очень уютная атмосфера. Хожу не первый год и буду возвращаться!</div>
+      </div>
+    </div>
 
-<div class="reviews-scroll">
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#e8453c">LO</div>
-<div><div class="review-name">Lyubov Orlova</div><div class="review-date">23 мая 2026 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Первый раз пришла в эту студию, сначала меня проконсультировал очень вежливый мастер и я сразу поняла — здесь профессионалы своего дела. Сама студия очень аккуратная, чистая, комфортное пребывание на процедуре. Делала нанопластику — меня и какао угостили, и массажем ног обеспечили. Очень довольна сервисом, а особенно результатом моего мастера Алины: прекрасная, чуткая и очень грамотная в своём деле. Благодарю 🙏</div>
-</div>
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#c2410c">ЯЯ</div>
-<div><div class="review-name">Яся Ясечка</div><div class="review-date">18 января 2026 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Была в студии впервые, пришла по рекомендации именно к Надежде. Запрос был: убрать пушистость и придать блеск. Сделали биксипластию, всё было комфортно, в студии уютно, предложили вкусный чай, массаж ног. Я в полном восторге от результата, спасибо ❤️</div>
-</div>
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#0d2bd7">МБ</div>
-<div><div class="review-name">Мария Барышева</div><div class="review-date">25 марта 2026 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Отличнейшая студия! Рада вернуться после длительного перерыва. Мастер Надежда — профессионал своего дела! Время в студии как мини-отпуск, пока колдуют над твоей красотой. Волосы просто шик! Процветания и до новых встреч!</div>
-</div>
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#e8453c">М</div>
-<div><div class="review-name">Мария</div><div class="review-date">13 мая 2026 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Обожаю эту студию! Хожу уже который раз на ботокс, довольна очень. Во-первых, очень облегчает жизнь с пористыми волосами — они нормально выглядят и легко укладываются. Во-вторых, тут просто прекрасная атмосфера и комфорт! И массажер для ног ❤️ И прекрасные приятные мастера 💕</div>
-</div>
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#2563eb">ЕС</div>
-<div><div class="review-name">Елена Субоч</div><div class="review-date">26 апреля 2026 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Очень нравится студия, приятная атмосфера. Спасибо мастеру Валерии — после длительного перерыва привела мои волосы в порядок. Обязательно вернусь.</div>
-</div>
-
-<div class="review">
-<div class="review-top">
-<div class="review-avatar" style="background:#16a34a">АS</div>
-<div><div class="review-name">Александра S</div><div class="review-date">1 октября 2025 · 2ГИС</div></div>
-</div>
-<div class="review-stars">★★★★★</div>
-<div class="review-text">Лучшая студия в городе! Мастера настоящие профессионалы, всё расскажут, помогут в подборе домашнего ухода, очень уютная атмосфера в студии. Хожу уже не первый год и буду возвращаться снова! Спасибо!</div>
-</div>
-
-</div>
-
-<div class="reviews-cta">
-<a href="https://2gis.ru/tomsk/firm/70000001030344720/tab/reviews" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.5 5 5.5.8-4 3.9.95 5.5L12 16.9 7.1 18.7l.95-5.5-4-3.9 5.5-.8 2.45-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-Все отзывы в 2ГИС
-</a>
-</div>
+    <div class="center" style="margin-top:10px;">
+      <a href="https://2gis.ru/tomsk/firm/70000001030344720/tab/reviews" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5l2.5 5 5.5.8-4 3.9.95 5.5L12 16.9 7.1 18.7l.95-5.5-4-3.9 5.5-.8 2.45-5Z" stroke-linejoin="round"/></svg>
+        Все отзывы в 2ГИС
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- АДРЕС, КАРТА -->
+<!-- ============ МАСТЕРА (компактно) ============ -->
+<section class="section section-tight" id="masters">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="section-eyebrow">наша команда</div>
+      <h2 class="section-title">Мастера Hair Lab</h2>
+      <p class="muted">Круглые портреты — подставьте обработанные «мультяшные» фото в слоты.</p>
+    </div>
 
-<section class="info-block">
-<div class="block-title"><div class="section-marker"></div><h2>Как нас найти</h2></div>
-
-<div class="map-card">
-<iframe
-src="https://yandex.ru/map-widget/v1/?ll=84.950624%2C56.489664&z=16&pt=84.950624%2C56.489664%2Cpm2rdm"
-loading="lazy"
-allowfullscreen
-title="Hair Lab на карте — Томск, Розы Люксембург, 4В"></iframe>
-</div>
-
-<div class="addr-actions">
-<a href="https://2gis.ru/tomsk/firm/70000001030344720" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
-Открыть в 2ГИС
-</a>
-
-<a href="https://2gis.ru/tomsk/firm/70000001030344720/routeTab" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="none"><path d="M4 16a4 4 0 0 1 4-4h6a4 4 0 0 0 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="5" cy="18" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M18 4l2 2-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-Построить маршрут
-</a>
-
-<a href="https://yandex.ru/maps/-/CPH45Jpg" target="_blank" rel="noopener">
-<svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
-Яндекс.Карты
-</a>
-</div>
-
-<div class="addr-note">Томск, ул. Розы Люксембург, 4В · проезд — на карточке в 2ГИС</div>
+    <div class="team reveal">
+      <!-- Чтобы вставить фото: замените блок .ph на <img src="masters/master-1.png" alt="Имя"> -->
+      <div class="member">
+        <div class="ava">
+          <img src="masters/Nadezhda.jpg" alt="Надежда — арт-директор" loading="lazy">
+        </div>
+        <div class="name">Надежда</div>
+        <div class="role">Арт-директор</div>
+      </div>
+      <div class="member">
+        <div class="ava">
+          <img src="masters/Valeria.jpg" alt="Валерия — профи-мастер" loading="lazy">
+        </div>
+        <div class="name">Валерия</div>
+        <div class="role teal">Профи-мастер</div>
+      </div>
+      <div class="member">
+        <div class="ava">
+          <img src="masters/Alina.jpg" alt="Алина — профи-мастер" loading="lazy">
+        </div>
+        <div class="name">Алина</div>
+        <div class="role">Профи-мастер</div>
+      </div>
+      <div class="member">
+        <div class="ava">
+          <img src="masters/Sofia.jpg" alt="Софья — топ-мастер" loading="lazy">
+        </div>
+        <div class="name">Софья</div>
+        <div class="role teal">Топ-мастер</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="footer-note">Hair Lab · Томск · Красивые волосы без компромиссов</div>
+<!-- ============ СТУДИЯ (компактная галерея) ============ -->
+<section class="section section-tight" id="gallery" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="section-eyebrow">атмосфера</div>
+      <h2 class="section-title">Как у нас внутри</h2>
+      <p class="muted">Подставьте обработанные фото интерьера студии в слоты.</p>
+    </div>
 
-</main>
-</div>
+    <div class="studio-strip reveal">
+      <div class="shot">
+        <!-- <img src="studio/studio-1.png" alt="Зона ресепшн"> -->
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 19V8l9-5 9 5v11"/><path d="M3 19h18M9 19v-6h6v6"/></svg><small>studio-1.png</small></div>
+        <div class="cap">Ресепшн</div>
+      </div>
+      <div class="shot">
+        <!-- <img src="studio/studio-2.png" alt="Рабочее место мастера"> -->
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="13" rx="2"/><path d="M9 21h6M12 17v4"/></svg><small>studio-2.png</small></div>
+        <div class="cap">Рабочее место</div>
+      </div>
+      <div class="shot">
+        <!-- <img src="studio/studio-3.png" alt="Зона ожидания"> -->
+        <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M3 11h18v6H3zM6 17v3M18 17v3"/></svg><small>studio-3.png</small></div>
+        <div class="cap">Зона ожидания</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- CONTACT MENU -->
+<!-- ============ ТЁМНАЯ CTA-ПОЛОСА ============ -->
+<section class="cta-band">
+  <svg class="deco l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8 16L20 4M16 16L4 4"/></svg>
+  <svg class="deco r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 16.9 7 18.2l1-5.5-4-3.9 5.5-.8L12 3Z" stroke-linejoin="round"/></svg>
+  <div class="section-eyebrow">давайте знакомиться</div>
+  <h2>Готовы к переменам?</h2>
+  <p>Запишитесь — подберём процедуру под ваши волосы, расскажем про уход и встретим какао, тапочками и массажем ног.</p>
+  <div class="hero-actions">
+    <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">Записаться онлайн</a>
+    <a href="tel:+79528883050" class="btn btn-ghost">+7 952 888-30-50</a>
+  </div>
+</section>
 
+<!-- ============ КОНТАКТЫ / КАРТА ============ -->
+<section class="section" id="contacts" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="section-eyebrow">как нас найти</div>
+      <h2 class="section-title">Томск, Розы Люксембург, 4В, 4 этаж</h2>
+    </div>
+
+    <div class="map-card reveal">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=84.950624%2C56.489664&z=16&pt=84.950624%2C56.489664%2Cpm2rdm" loading="lazy" allowfullscreen title="Hair Lab на карте — Томск, Розы Люксембург, 4В"></iframe>
+    </div>
+
+    <div class="addr-actions center" style="justify-content:center;">
+      <a href="https://2gis.ru/tomsk/firm/70000001030344720" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Открыть в 2ГИС
+      </a>
+      <a href="https://yandex.ru/maps/-/CPH45Jpg" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Яндекс.Карты
+      </a>
+      <a href="tel:+79528883050" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> +7 952 888-30-50
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="script">Hair Lab</div>
+  <p>Лаборатория здоровых волос · Томск, ул. Розы Люксембург, 4В, 4 этаж<br>11 лет · 13 111 процедур · только реконструкция волос</p>
+</footer>
+
+<!-- ============ FAB КОНТАКТ-МЕНЮ ============ -->
 <div class="contact-menu">
-
-<div class="contact-items" id="contactItems">
-
-<a href="https://n92404.yclients.com" target="_blank">
-<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-<rect x="3.5" y="5.5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/>
-<path d="M8 3.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M16 3.8V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M3.5 9.5H20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M9 14.2L11.2 16.4L15.4 12.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-Онлайн-запись
-</a>
-
-<a href="tel:+79528883050">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apple.svg">
-Позвонить
-</a>
-
-<a href="https://t.me/hairlab_tomsk" target="_blank">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg">
-Telegram
-</a>
-
-<a href="https://instagram.com/hairlab_" target="_blank">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg">
-Instagram
-</a>
-
-<a href="https://max.ru/u/f9LHodD0cOLZrGrGFrBrDkU1N-lzjiQxMWOnhH4-yC2H57ERdtRidRFZCEw" target="_blank">
-<img src="https://max.ru/favicon.ico">
-MAX
-</a>
-
-<a href="https://wa.me/79528883050?text=Здравствуйте%20Хочу%20записаться%20в%20Hair%20Lab" target="_blank">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg">
-WhatsApp
-</a>
-
-</div>
-
-<button class="contact-main" id="contactToggle">Записаться</button>
-
-</div>
-
-<!-- MODAL -->
-
-<div id="imageModal" class="modal-overlay">
-<div class="modal-inner">
-<div class="modal-close">×</div>
-<div class="modal-nav modal-prev">‹</div>
-<div class="modal-nav modal-next">›</div>
-<img id="modalImage">
-</div>
+  <div class="contact-items" id="contactItems">
+    <a href="https://n92404.yclients.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5.5" width="17" height="15" rx="3"/><path d="M8 3.8V7M16 3.8V7M3.5 9.5H20.5" stroke-linecap="round"/></svg> Онлайн-запись</a>
+    <a href="tel:+79528883050"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> Позвонить</a>
+    <a href="https://t.me/hairlab_tomsk" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt=""> Telegram</a>
+    <a href="https://instagram.com/hairlab_" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt=""> Instagram</a>
+    <a href="https://wa.me/79528883050?text=Здравствуйте%20Хочу%20записаться%20в%20Hair%20Lab" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt=""> WhatsApp</a>
+  </div>
+  <button class="contact-main" id="contactToggle">Записаться</button>
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+  /* бургер-меню */
+  const burger = document.getElementById("navBurger");
+  const links = document.getElementById("navLinks");
+  burger.addEventListener("click", e => { e.stopPropagation(); links.classList.toggle("open"); });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
 
-document.addEventListener("DOMContentLoaded",()=>{
+  /* контакт-меню */
+  const toggle = document.getElementById("contactToggle");
+  const items = document.getElementById("contactItems");
+  toggle.addEventListener("click", e => { e.stopPropagation(); items.classList.toggle("open"); });
+  document.addEventListener("click", e => {
+    if (!items.contains(e.target) && e.target !== toggle) items.classList.remove("open");
+    if (!links.contains(e.target) && e.target !== burger) links.classList.remove("open");
+  });
 
-const navButtons=[...document.querySelectorAll(".nav button")]
-const sections=navButtons.map(b=>document.getElementById(b.dataset.target))
-
-function scrollToId(id){
-const el=document.getElementById(id)
-const y=el.getBoundingClientRect().top+window.pageYOffset-70
-window.scrollTo({top:y,behavior:"smooth"})
-}
-
-navButtons.forEach(btn=>{
-btn.addEventListener("click",()=>scrollToId(btn.dataset.target))
-})
-
-/* АВТОПОДСВЕТКА НАВИГАЦИИ ПРИ СКРОЛЛЕ */
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-navButtons.forEach(b=>b.classList.toggle("active",b.dataset.target===entry.target.id))
-}
-})
-},{rootMargin:"-40% 0px -55% 0px"})
-
-sections.forEach(s=>observer.observe(s))
-
-/* ПЛАВНОЕ ПОЯВЛЕНИЕ КАРТИНОК */
-
-document.querySelectorAll(".card img,.intro img").forEach(img=>{
-if(img.complete){
-img.classList.add("loaded")
-}else{
-img.addEventListener("load",()=>img.classList.add("loaded"))
-}
-})
-
-/* МОДАЛКА */
-
-const modal=document.getElementById("imageModal")
-const modalImg=document.getElementById("modalImage")
-const images=[...document.querySelectorAll(".intro img,.card img")]
-
-let index=0
-
-function show(i){
-if(i<0)i=images.length-1
-if(i>=images.length)i=0
-index=i
-modalImg.src=images[index].src
-}
-
-function openModal(i){
-show(i)
-modal.classList.add("open")
-}
-
-function closeModal(){
-modal.classList.remove("open")
-}
-
-images.forEach((img,i)=>{
-img.addEventListener("click",()=>openModal(i))
-})
-
-modal.onclick=closeModal
-
-document.querySelector(".modal-prev").onclick=e=>{
-e.stopPropagation()
-show(index-1)
-}
-
-document.querySelector(".modal-next").onclick=e=>{
-e.stopPropagation()
-show(index+1)
-}
-
-/* КЛАВИАТУРА: Esc / стрелки */
-
-document.addEventListener("keydown",e=>{
-if(!modal.classList.contains("open"))return
-if(e.key==="Escape")closeModal()
-if(e.key==="ArrowLeft")show(index-1)
-if(e.key==="ArrowRight")show(index+1)
-})
-
-/* СВАЙПЫ НА ТЕЛЕФОНЕ */
-
-let touchStartX=0
-
-modal.addEventListener("touchstart",e=>{
-touchStartX=e.changedTouches[0].screenX
-},{passive:true})
-
-modal.addEventListener("touchend",e=>{
-const dx=e.changedTouches[0].screenX-touchStartX
-if(Math.abs(dx)>50){
-if(dx<0)show(index+1)
-else show(index-1)
-}
-},{passive:true})
-
-/* CONTACT MENU */
-
-const contactToggle=document.getElementById("contactToggle")
-const contactItems=document.getElementById("contactItems")
-
-contactToggle.addEventListener("click",e=>{
-e.stopPropagation()
-contactItems.classList.toggle("open")
-})
-
-document.addEventListener("click",e=>{
-if(!contactItems.contains(e.target)&&e.target!==contactToggle){
-contactItems.classList.remove("open")
-}
-})
-
-})
-
+  /* плавное появление секций */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { rootMargin: "0px 0px -10% 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+});
 </script>
 
 </body>
