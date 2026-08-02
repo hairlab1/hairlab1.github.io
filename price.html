@@ -3,15 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HairLab — Прайс на услуги</title>
-<meta name="description" content="Прайс HairLab — выпрямление, уходы, стрижки и окрашивание. Студия реконструкции волос в Томске.">
-<meta name="theme-color" content="#d27050">
+<title>Прайс Hair Lab — реконструкция волос в Томске</title>
+<meta name="description" content="Актуальный прайс Hair Lab: ботокс, кератин, нанопластика, биксипластия, уходы, стрижки и окрашивание. Студия реконструкции волос в Томске.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#b65336">
+<link rel="canonical" href="https://hairlab1.github.io/price.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Прайс Hair Lab — реконструкция волос в Томске">
+<meta property="og:description" content="Услуги и цены Hair Lab: выпрямление, восстановление, уходы, стрижки и окрашивание.">
+<meta property="og:url" content="https://hairlab1.github.io/price.html">
+<meta property="og:image" content="https://hairlab1.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hair Lab — реконструкция волос в Томске">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3e8d6'/%3E%3Cg stroke='%233c352d' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Ccircle cx='10' cy='22' r='3.4'/%3E%3Ccircle cx='22' cy='22' r='3.4'/%3E%3Cpath d='M12 19l10-12M20 19L10 7' stroke='%23d27050'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="stylesheet" href="studio.css?v=12">
+<link rel="stylesheet" href="studio.css?v=13">
 
 <style>
 /* --- компактный прайс-хаб --- */
@@ -22,6 +34,7 @@
 .price-head .ttl{ flex:1; min-width:200px; }
 .price-head .ttl h1{ font-size:clamp(26px,4vw,38px); color:var(--on-bg-strong); }
 .price-head .ttl .script{ font-family:"Caveat",cursive; color:var(--terra); font-size:24px; line-height:1; }
+.price-actions{ display:flex; flex-wrap:wrap; gap:10px; }
 
 /* липкие вкладки */
 .tabs{
@@ -60,6 +73,7 @@
   gap:18px;
 }
 .price-card{
+  appearance:none; width:100%; padding:0; color:inherit; font:inherit; text-align:inherit;
   background:var(--card);
   border:2px solid var(--stroke-ink);
   border-radius:var(--r-md);
@@ -69,17 +83,23 @@
   transition:transform .18s, box-shadow .18s;
 }
 .price-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
-.price-card img{ width:100%; display:block; opacity:0; transition:opacity .4s; }
+.price-card img{ width:100%; height:auto; display:block; opacity:0; transition:opacity .4s; }
 .price-card img.loaded{ opacity:1; }
+@media (max-width:560px){
+  .cat-label h2{ white-space:normal; font-size:22px; }
+  .cat-label .line{ display:none; }
+}
 </style>
 </head>
 
 <body>
 
+<a class="skip-link" href="#main-content">Перейти к содержанию</a>
+
 <!-- ============ NAV ============ -->
-<nav class="nav">
+<nav class="nav" aria-label="Основная навигация">
   <a href="index.html" class="nav-brand">Hair Lab</a>
-  <div class="nav-burger" id="navBurger">☰</div>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Открыть меню" aria-controls="navLinks" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
     <a href="index.html#studio">Студия</a>
     <a href="index.html#masters">Мастера</a>
@@ -89,14 +109,17 @@
   </div>
 </nav>
 
-<div class="wrap">
+<main class="wrap" id="main-content" tabindex="-1">
 
   <div class="price-head">
     <div class="ttl">
       <div class="script">прайс под рукой</div>
       <h1>Услуги и цены</h1>
     </div>
-    <a href="index.html" class="btn btn-ghost">← На главную</a>
+    <div class="price-actions">
+      <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
+      <a href="index.html" class="btn btn-ghost">← На главную</a>
+    </div>
   </div>
 
   <div class="tabs">
@@ -109,15 +132,15 @@
   <section id="viypr" class="cat-block">
     <div class="cat-label"><span class="pin" style="background:var(--terra)"></span><h2>Выпрямление / Разглаживание</h2><span class="line"></span></div>
     <div class="price-grid">
-      <div class="price-card"><img src="PriceMay2026/Botox.jpg" alt="Ботокс для волос" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Bixisplatia.jpg" alt="Биксипластия" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Collagen.jpg" alt="Коллагеновое выпрямление" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Keratin.jpg" alt="Кератиновое выпрямление" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Nanoplastica.jpg" alt="Нанопластика волос" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Totalinfo.jpg" alt="Тотальная реконструкция — описание" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/TotalPrice.jpg" alt="Тотальная реконструкция — стоимость" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Obodok.jpg" alt="Обработка височной зоны" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Brazilian.jpg" alt="Бразильское выпрямление" loading="lazy"></div>
+      <button type="button" class="price-card" aria-label="Открыть прайс: ботокс для волос"><img src="PriceMay2026/thumbs/Botox.webp" data-full="PriceMay2026/Botox.jpg" alt="Ботокс для волос" width="800" height="1423" decoding="async" fetchpriority="high"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: биксипластия"><img src="PriceMay2026/thumbs/Bixisplatia.webp" data-full="PriceMay2026/Bixisplatia.jpg" alt="Биксипластия" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: коллагеновое выпрямление"><img src="PriceMay2026/thumbs/Collagen.webp" data-full="PriceMay2026/Collagen.jpg" alt="Коллагеновое выпрямление" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: кератиновое выпрямление"><img src="PriceMay2026/thumbs/Keratin.webp" data-full="PriceMay2026/Keratin.jpg" alt="Кератиновое выпрямление" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: нанопластика"><img src="PriceMay2026/thumbs/Nanoplastica.webp" data-full="PriceMay2026/Nanoplastica.jpg" alt="Нанопластика волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть описание тотальной реконструкции"><img src="PriceMay2026/thumbs/Totalinfo.webp" data-full="PriceMay2026/Totalinfo.jpg" alt="Тотальная реконструкция — описание" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть стоимость тотальной реконструкции"><img src="PriceMay2026/thumbs/TotalPrice.webp" data-full="PriceMay2026/TotalPrice.jpg" alt="Тотальная реконструкция — стоимость" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: обработка височной зоны"><img src="PriceMay2026/thumbs/Obodok.webp" data-full="PriceMay2026/Obodok.jpg" alt="Обработка височной зоны" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: Brazilian Blowout"><img src="PriceMay2026/thumbs/Brazilian.webp" data-full="PriceMay2026/Brazilian.jpg" alt="Brazilian Blowout" width="800" height="1423" loading="lazy" decoding="async"></button>
     </div>
   </section>
 
@@ -125,11 +148,11 @@
   <section id="uhods" class="cat-block">
     <div class="cat-label"><span class="pin" style="background:var(--teal)"></span><h2>Уходы + Стрижки</h2><span class="line"></span></div>
     <div class="price-grid">
-      <div class="price-card"><img src="PriceMay2026/Holodnoe.jpg" alt="Холодное восстановление" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Schastie.jpg" alt="Счастье для волос" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/DiagnostikaPilig.jpg" alt="Пилинг и диагностика кожи головы" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Polirovka.jpg" alt="Полировка волос" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Strijka.jpg" alt="Стрижка" loading="lazy"></div>
+      <button type="button" class="price-card" aria-label="Открыть прайс: холодное восстановление"><img src="PriceMay2026/thumbs/Holodnoe.webp" data-full="PriceMay2026/Holodnoe.jpg" alt="Холодное восстановление" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: Счастье для волос"><img src="PriceMay2026/thumbs/Schastie.webp" data-full="PriceMay2026/Schastie.jpg" alt="Счастье для волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: пилинг и диагностика"><img src="PriceMay2026/thumbs/DiagnostikaPilig.webp" data-full="PriceMay2026/DiagnostikaPilig.jpg" alt="Пилинг и диагностика кожи головы" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: полировка волос"><img src="PriceMay2026/thumbs/Polirovka.webp" data-full="PriceMay2026/Polirovka.jpg" alt="Полировка волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: стрижка"><img src="PriceMay2026/thumbs/Strijka.webp" data-full="PriceMay2026/Strijka.jpg" alt="Стрижка" width="800" height="1423" loading="lazy" decoding="async"></button>
     </div>
   </section>
 
@@ -137,8 +160,8 @@
   <section id="okrash" class="cat-block">
     <div class="cat-label"><span class="pin" style="background:var(--gold)"></span><h2>Окрашивание</h2><span class="line"></span></div>
     <div class="price-grid">
-      <div class="price-card"><img src="PriceMay2026/Okrashivanie.jpg" alt="Тонирование и окрашивание" loading="lazy"></div>
-      <div class="price-card"><img src="PriceMay2026/Biozavivka.jpg" alt="Биозавивка" loading="lazy"></div>
+      <button type="button" class="price-card" aria-label="Открыть прайс: тонирование и окрашивание"><img src="PriceMay2026/thumbs/Okrashivanie.webp" data-full="PriceMay2026/Okrashivanie.jpg" alt="Тонирование и окрашивание" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: биозавивка"><img src="PriceMay2026/thumbs/Biozavivka.webp" data-full="PriceMay2026/Biozavivka.jpg" alt="Биозавивка" width="800" height="1423" loading="lazy" decoding="async"></button>
     </div>
   </section>
 
@@ -146,14 +169,14 @@
     <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">Записаться онлайн</a>
   </div>
 
-</div>
+</main>
 
 <!-- ============ MODAL ============ -->
-<div id="imageModal" class="modal-overlay">
+<div id="imageModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Просмотр прайса" aria-hidden="true">
   <div class="modal-inner">
-    <div class="modal-close">×</div>
-    <div class="modal-nav modal-prev">‹</div>
-    <div class="modal-nav modal-next">›</div>
+    <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+    <button class="modal-nav modal-prev" type="button" aria-label="Предыдущее изображение">‹</button>
+    <button class="modal-nav modal-next" type="button" aria-label="Следующее изображение">›</button>
     <img id="modalImage" alt="">
   </div>
 </div>
@@ -163,15 +186,26 @@ document.addEventListener("DOMContentLoaded", () => {
   /* бургер */
   const burger = document.getElementById("navBurger");
   const links = document.getElementById("navLinks");
-  burger.addEventListener("click", e => { e.stopPropagation(); links.classList.toggle("open"); });
-  document.addEventListener("click", e => { if (!links.contains(e.target) && e.target !== burger) links.classList.remove("open"); });
+  const setNavOpen = open => {
+    links.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+  };
+  burger.addEventListener("click", e => { e.stopPropagation(); setNavOpen(!links.classList.contains("open")); });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setNavOpen(false)));
+  document.addEventListener("click", e => { if (!links.contains(e.target) && e.target !== burger) setNavOpen(false); });
 
   /* вкладки */
   const tabs = [...document.querySelectorAll(".tabs button")];
   const ids = ["viypr","uhods","okrash"];
   const secs = ids.map(id => document.getElementById(id));
   let autoScroll = false;
-  function setActive(id){ tabs.forEach(b => b.classList.toggle("active", b.dataset.target === id)); }
+  function setActive(id){ tabs.forEach(b => {
+    const active = b.dataset.target === id;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", String(active));
+  }); }
+  setActive("viypr");
   tabs.forEach(btn => btn.addEventListener("click", () => {
     autoScroll = true; setTimeout(() => autoScroll = false, 700);
     const el = document.getElementById(btn.dataset.target);
@@ -195,16 +229,37 @@ document.addEventListener("DOMContentLoaded", () => {
   /* модалка */
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
+  const cards = [...document.querySelectorAll(".price-card")];
   const imgs = [...document.querySelectorAll(".price-card img")];
   let index = 0;
-  const show = i => { if (i<0) i = imgs.length-1; if (i>=imgs.length) i = 0; index = i; modalImg.src = imgs[index].src; };
-  imgs.forEach((img,i) => img.addEventListener("click", () => { show(i); modal.classList.add("open"); document.body.style.overflow="hidden"; }));
-  const close = () => { modal.classList.remove("open"); document.body.style.overflow=""; };
-  modal.addEventListener("click", close);
+  let lastFocus = null;
+  const show = i => {
+    if (i<0) i = imgs.length-1;
+    if (i>=imgs.length) i = 0;
+    index = i;
+    modalImg.src = imgs[index].dataset.full || imgs[index].src;
+    modalImg.alt = imgs[index].alt;
+  };
+  cards.forEach((card,i) => card.addEventListener("click", () => {
+    lastFocus = document.activeElement;
+    show(i);
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow="hidden";
+    document.querySelector(".modal-close").focus();
+  }));
+  const close = () => {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow="";
+    if (lastFocus) lastFocus.focus();
+  };
+  modal.addEventListener("click", e => { if (e.target === modal) close(); });
   document.querySelector(".modal-prev").onclick = e => { e.stopPropagation(); show(index-1); };
   document.querySelector(".modal-next").onclick = e => { e.stopPropagation(); show(index+1); };
   document.querySelector(".modal-close").onclick = e => { e.stopPropagation(); close(); };
   document.addEventListener("keydown", e => {
+    if (e.key === "Escape") setNavOpen(false);
     if (!modal.classList.contains("open")) return;
     if (e.key === "Escape") close();
     if (e.key === "ArrowLeft") show(index-1);
