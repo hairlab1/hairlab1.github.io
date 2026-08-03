@@ -5,8 +5,7 @@
 ## Основные страницы
 
 - `index.html` — главная страница;
-- `price.html` — актуальный прайс;
-- `hub.html`, `menu-lite.html`, `menu.html`, `quiz.html`, `gift.html`, `qr.html`, `tablet.html` — клиентский хаб и сервисные страницы.
+- `price.html` — актуальный прайс.
 
 ## Структура
 
