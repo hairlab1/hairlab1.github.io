@@ -21,17 +21,79 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-</noscript>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3e8d6'/%3E%3Cg stroke='%233c352d' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Ccircle cx='10' cy='22' r='3.4'/%3E%3Ccircle cx='22' cy='22' r='3.4'/%3E%3Cpath d='M12 19l10-12M20 19L10 7' stroke='%23d27050'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="studio.css?v=13">
 
 <style>
-.price-head{padding:28px 0 20px;max-width:740px}.price-head h1{font-size:clamp(28px,5vw,44px);margin:4px 0 14px}.price-head .script{font-size:26px;color:var(--terra)}.price-head p{font-size:17px;margin:0;max-width:640px}.price-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 32px}.price-tabs a{padding:11px 17px;background:var(--card);border:1px solid var(--stroke-ink);border-radius:999px;font-weight:800;min-height:44px}.price-tabs a:hover{background:var(--card-2)}.cat-block{scroll-margin-top:110px;margin:0 0 52px}.cat-block h2{font-size:clamp(22px,3vw,30px);margin-bottom:20px}.price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}.service-card{background:var(--card);color:var(--ink);border:1px solid var(--stroke-ink);border-radius:24px;padding:26px;min-width:0;scroll-margin-top:110px;box-shadow:0 5px 0 #3c352d12}.service-card h3{font-size:23px;line-height:1.35;overflow-wrap:anywhere}.service-desc{margin:12px 0;color:var(--ink-soft);font-size:16px}.service-meta{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}.service-meta:empty{display:none}.service-meta span{background:var(--card-2);padding:5px 10px;border-radius:8px;font-size:14px}.price-group{font-size:16px;line-height:1.5;margin:22px 0 0;color:var(--terra-deep)}.price-group+.price-list{margin-top:4px}.price-list{margin:18px 0}.price-list>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:12px 0;border-bottom:1px solid #3c352d26;align-items:baseline}.price-list dt{font-size:16px;line-height:1.45}.price-list dd{margin:0;font-size:18px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}.service-card details{border-bottom:1px solid #3c352d26}.service-card summary{cursor:pointer;padding:14px 0;min-height:48px;font-weight:800}.service-card details ul{padding-left:20px;margin:0 0 18px}.service-card li+li{margin-top:8px}.service-card details .price-list>div{grid-template-columns:1fr}.service-card details .price-list dd{white-space:normal}.price-note{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:18px 0}.service-book{display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:12px 16px;background:var(--terra-deep);color:white;border-radius:14px;font-weight:800;margin-top:20px}.service-book:hover{background:var(--terra)}.price-footer{text-align:center;padding:0 0 40px}.price-footer a{text-decoration:underline}.service-card:target{outline:3px solid var(--terra);outline-offset:4px}@media(max-width:760px){.price-grid{grid-template-columns:1fr}.service-card{padding:20px}.price-head{padding-top:16px}.service-card h3{font-size:22px}}@media(max-width:360px){.service-card{padding:16px}.price-list>div{grid-template-columns:1fr;gap:4px}.price-tabs a{padding:10px 13px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.nav,.price-tabs,.service-book,.price-footer{display:none}.price-grid{display:block}.service-card{break-inside:avoid;box-shadow:none;margin-bottom:16px}body::before{display:none}}
+/* --- компактный прайс-хаб --- */
+.price-head{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  margin:18px 0 6px;
+}
+.price-head .ttl{ flex:1; min-width:200px; }
+.price-head .ttl h1{ font-size:clamp(26px,4vw,38px); color:var(--on-bg-strong); }
+.price-head .ttl .script{ font-family:"Caveat",cursive; color:var(--terra); font-size:24px; line-height:1; }
+.price-actions{ display:flex; flex-wrap:wrap; gap:10px; }
+
+/* липкие вкладки */
+.tabs{
+  position:sticky; top:80px; z-index:900;
+  display:flex; gap:8px; flex-wrap:wrap;
+  padding:10px;
+  margin:8px 0 26px;
+  background:color-mix(in srgb, var(--card) 90%, transparent);
+  border:2px solid var(--stroke-ink);
+  border-radius:999px;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(8px);
+  width:fit-content;
+}
+.tabs button{
+  border:2px solid transparent;
+  background:transparent;
+  color:var(--ink);
+  font-family:"Nunito",sans-serif;
+  font-weight:800; font-size:14px;
+  padding:8px 16px; border-radius:999px; cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.tabs button:hover{ background:rgba(210,112,80,.12); }
+.tabs button.active{ background:var(--terra); color:#fff; }
+
+.cat-block{ scroll-margin-top:150px; margin-bottom:46px; }
+.cat-label{ display:flex; align-items:center; gap:12px; margin:0 0 18px; }
+.cat-label h2{ font-size:24px; white-space:nowrap; color:var(--on-bg-strong); }
+.cat-label .line{ flex:1; height:2px; background:var(--stroke); border-radius:2px; }
+.cat-label .pin{ width:14px; height:14px; border-radius:50%; }
+
+.price-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
+}
+.price-card{
+  appearance:none; width:100%; padding:0; color:inherit; font:inherit; text-align:inherit;
+  background:var(--card);
+  border:2px solid var(--stroke-ink);
+  border-radius:var(--r-md);
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  transition:transform .18s, box-shadow .18s;
+}
+.price-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+.price-card img{ width:100%; height:auto; display:block; opacity:0; transition:opacity .4s; }
+.price-card img.loaded{ opacity:1; }
+@media (max-width:560px){
+  .cat-label h2{ white-space:normal; font-size:22px; }
+  .cat-label .line{ display:none; }
+}
 </style>
 </head>
+
 <body>
+
 <a class="skip-link" href="#main-content">Перейти к содержанию</a>
 
 <!-- ============ NAV ============ -->
@@ -48,877 +110,79 @@
 </nav>
 
 <main class="wrap" id="main-content" tabindex="-1">
-<header class="price-head">
-<div class="script">прайс под рукой</div>
-<h1>Услуги и цены</h1>
-<p>Выберите направление и сравните стоимость у мастеров. Подробности процедур и доплаты можно раскрыть прямо в карточке.</p>
-</header>
-<nav class="price-tabs" aria-label="Направления услуг">
-<a href="#viypr">Выпрямление</a>
-<a href="#uhods">Уходы и стрижки</a>
-<a href="#okrash">Окрашивание</a>
-</nav>
-<section class="cat-block" id="viypr" aria-labelledby="viypr-title">
-<h2 id="viypr-title">Выпрямление и разглаживание</h2>
-<div class="price-grid">
-<article class="service-card" id="botox">
-<h3>Ботокс для волос</h3>
-<p class="service-desc">Естественный эффект и разглаживание.</p>
-<div class="service-meta">
-<span>Время: 2–3 часа</span>
-<span>Эффект: 3–5 месяцев</span>
-</div>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>9 500 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>7 500 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>5 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Сохраняет прикорневой объём.</li>
-<li>Для тонких или ослабленных волос.</li>
-<li>Помогает структурировать кудри, устранить пористость и пушистость.</li>
-<li>Разглаживает лёгкий пушок, придаёт естественный блеск и мягкость.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Ботокс для волос">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="bixisplatia">
-<h3>Биксипластия</h3>
-<p class="service-desc">2 в 1: ботокс + кератин. Выпрямление средней силы.</p>
-<div class="service-meta">
-<span>Время: 3–4 часа</span>
-<span>Эффект: 5–8 месяцев</span>
-</div>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>9 500 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>7 500 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>5 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Предназначена для всех типов волос, в том числе осветлённых или повреждённых.</li>
-<li>Придаёт блеск, мягкость и плотность.</li>
-<li>Выпрямляет волосы, кроме упругих кудрей или гормональной волны.</li>
-<li>Можно сохранить естественный эффект и прикорневой объём или сделать волосы тяжёлыми и глянцевыми.</li>
-<li>Устраняет пористость и пушистость.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Биксипластия">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="collagen">
-<h3>Кератин коллаген</h3>
-<p class="service-desc">Выпрямление средней силы.</p>
-<div class="service-meta">
-<span>Время: 2 ч 30 мин – 4 часа</span>
-<span>Эффект: 5–8 месяцев</span>
-</div>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>9 500 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>7 500 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>5 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Для волос до плеч (каре) и тех, кто хочет, чтобы волосы гладко лежали.</li>
-<li>Придаёт зеркальный блеск, плотность и гладкость.</li>
-<li>Не подходит осветлённым и повреждённым волосам.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Кератин коллаген">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="keratin">
-<h3>Кератиновое выпрямление</h3>
-<p class="service-desc">Для сильных кудрей и тугих завитков.</p>
-<div class="service-meta">
-<span>Время: 3–5 часов</span>
-<span>Эффект: 6–9 месяцев</span>
-</div>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>11 500 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>9 500 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>8 500 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>7 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Выпрямляет кудри; работа с гормональной волной оплачивается дополнительно.</li>
-<li>Для очень пористых и пушащихся волос.</li>
-<li>Придаёт плотность, блеск и гладкость.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-<div>
-<dt>Выпрямление гормональной волны</dt>
-<dd>2 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Кератиновое выпрямление">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="nanoplastica">
-<h3>Нанопластика Floractive</h3>
-<p class="service-desc">Разглаживание и выпрямление кудрей.</p>
-<div class="service-meta">
-<span>Время: 4–7 часов</span>
-<span>Эффект: до 12 месяцев</span>
-</div>
-<h4 class="price-group">Арт-директор · Надежда</h4>
-<dl class="price-list">
-<div>
-<dt>До 30 см</dt>
-<dd>12 000 ₽</dd>
-</div>
-<div>
-<dt>До 45 см</dt>
-<dd>13 000 ₽</dd>
-</div>
-<div>
-<dt>До 60 см</dt>
-<dd>14 000 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Профи- и топ-мастер · Валерия, Алина, Софья</h4>
-<dl class="price-list">
-<div>
-<dt>До 30 см</dt>
-<dd>11 000 ₽</dd>
-</div>
-<div>
-<dt>До 45 см</dt>
-<dd>12 000 ₽</dd>
-</div>
-<div>
-<dt>До 60 см</dt>
-<dd>13 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Для детей и подростков, при беременности, кормлении или аллергии возможность процедуры уточняется индивидуально.</li>
-<li>Отрастают кудрявые корни.</li>
-<li>Без неприятного запаха во время процедуры; состав без формальдегида.</li>
-<li>Придаёт зеркальный блеск. Можно сохранить прикорневой объём или уплотнить волосы.</li>
-<li>Выпрямляет завитки, в том числе гормональную волну.</li>
-<li>Не подходит повреждённым и осветлённым волосам.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>1 000 / 1 500 / 2 000 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>1 000 / 2 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-<div>
-<dt>Выпрямление гормональной волны</dt>
-<dd>2 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Нанопластика Floractive">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="total">
-<h3>Тотальная реконструкция</h3>
-<p class="service-desc">Холодное восстановление + разглаживание или выпрямление.</p>
-<div class="service-meta">
-<span>Время: 3 ч 30 мин – 4 часа</span>
-<span>Эффект: 5–8 месяцев</span>
-</div>
-<h4 class="price-group">Ботокс, биксипластия или коллаген</h4>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>12 000 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>10 000 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>9 000 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>7 500 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Кератиновое выпрямление</h4>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>14 000 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>12 000 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья</dt>
-<dd>11 000 ₽</dd>
-</div>
-<div>
-<dt>Мастер · Аиша</dt>
-<dd>9 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Первый этап — авторское холодное восстановление Hair Lab: уход для уменьшения сухости, ломкости и статики, мягкости и плотности волос.</li>
-<li>Для повреждённых, обламывающихся и осветлённых волос, а также тех, кто отращивает длину.</li>
-<li>Второй этап — процедура с утюжком: ботокс, биксипластия, коллаген, кератиновое выпрямление или нанопластика.</li>
-<li>Мастер проводит диагностику и подбирает процедуру с учётом ваших пожеланий.</li>
-<li>Стоимость варианта с нанопластикой уточняйте у мастера.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-<div>
-<dt>Выпрямление гормональной волны</dt>
-<dd>2 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Тотальная реконструкция">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="obodok">
-<h3>Выпрямление височной зоны</h3>
-<p class="service-desc">Локальная обработка — «ободок».</p>
-<div class="service-meta">
-</div>
-<dl class="price-list">
-<div>
-<dt>Арт-директор · Надежда</dt>
-<dd>4 500 ₽</dd>
-</div>
-<div>
-<dt>Профи-мастер · Валерия и Алина</dt>
-<dd>3 500 ₽</dd>
-</div>
-<div>
-<dt>Топ-мастер · Софья и Татьяна</dt>
-<dd>3 500 ₽</dd>
-</div>
-</dl>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Выпрямление височной зоны">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="brazilian">
-<h3>Brazilian Blowout</h3>
-<p class="service-desc">Аминокислотное разглаживание лёгких и средних кудрей.</p>
-<div class="service-meta">
-<span>Время: 1 ч 30 мин – 2 ч 30 мин</span>
-<span>Эффект: до 3 месяцев</span>
-</div>
-<h4 class="price-group">Арт-директор · Надежда</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>7 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>8 000 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Профи- и топ-мастер · Валерия, Алина, Софья</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>7 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Состав без формальдегида.</li>
-<li>Утолщает волос, визуально добавляет густоту и сохраняет прикорневой объём.</li>
-<li>Придаёт зеркальный блеск, облегчает укладку, устраняет пористость и пушистость, структурирует кудри.</li>
-<li>Имеет накопительный эффект.</li>
-<li>Не подходит осветлённым, повреждённым и сухим волосам.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Brazilian Blowout">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-</div>
-</section>
-<section class="cat-block" id="uhods" aria-labelledby="uhods-title">
-<h2 id="uhods-title">Уходы и стрижки</h2>
-<div class="price-grid">
-<article class="service-card" id="holodnoe">
-<h3>Авторское холодное восстановление</h3>
-<p class="service-desc">Уход от студии Hair Lab для мягкости и ухоженной длины.</p>
-<div class="service-meta">
-<span>Время: 2 часа – 2 ч 30 мин</span>
-<span>Эффект: до 2 месяцев</span>
-</div>
-<h4 class="price-group">Арт-директор · Надежда</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>6 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>6 500 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Профи- и топ-мастер · Валерия, Алина, Софья</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>5 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>5 500 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Мастер · Аиша</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>4 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>4 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Разглаживает и дисциплинирует длину, уменьшает сухость, ломкость и статику.</li>
-<li>Волосы становятся прочными, мягкими и напитанными.</li>
-<li>Для повреждённых, обламывающихся и осветлённых волос.</li>
-<li>Облегчает ежедневную укладку, помогает структурировать кудри, уменьшить пористость и пушистость.</li>
-<li>Сохраняет прикорневой объём.</li>
-<li>Для детей, при беременности, кормлении или аллергии возможность ухода уточняется индивидуально.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально. У мастера Аиши процедура выполняется дольше стандартного времени.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Авторское холодное восстановление">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="schastie">
-<h3>«Абсолютное счастье для волос» Lebel</h3>
-<p class="service-desc">Японский уход для всех типов волос, в том числе осветлённых и повреждённых.</p>
-<div class="service-meta">
-<span>Время: 1 ч 30 мин – 2 часа</span>
-</div>
-<h4 class="price-group">Арт-директор · Надежда</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>5 500 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>6 000 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Профи- и топ-мастер · Валерия, Алина, Софья</h4>
-<dl class="price-list">
-<div>
-<dt>До 45 см</dt>
-<dd>5 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже 45 см</dt>
-<dd>5 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Питает и увлажняет волосы, выравнивает цвет окрашенных волос.</li>
-<li>Придаёт естественный блеск и мягкость.</li>
-<li>Накопительный эффект: курс из 5–7 процедур.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: «Абсолютное счастье для волос» Lebel">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="diagnostika">
-<h3>Диагностика кожи головы + пилинг + SPA</h3>
-<p class="service-desc">Осмотр трихоскопом, очищение и подбор домашнего ухода.</p>
-<div class="service-meta">
-<span>Время: 1 час – 1 ч 30 мин</span>
-</div>
-<h4 class="price-group">Арт-директор · Надежда</h4>
-<dl class="price-list">
-<div>
-<dt>Густота до 9 см</dt>
-<dd>3 000 ₽</dd>
-</div>
-<div>
-<dt>Густота больше 9 см</dt>
-<dd>3 500 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Профи- и топ-мастер · Валерия, Алина, Софья</h4>
-<dl class="price-list">
-<div>
-<dt>Густота до 9 см</dt>
-<dd>2 500 ₽</dd>
-</div>
-<div>
-<dt>Густота больше 9 см</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Перед основной процедурой</h4>
-<dl class="price-list">
-<div>
-<dt>у всех мастеров</dt>
-<dd>1 800 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Определяем тип кожи головы, чтобы подобрать шампунь.</li>
-<li>Глубоко очищаем кожу головы.</li>
-<li>Уход направлен на устранение перхоти, раздражения, зуда и шелушения кожи головы.</li>
-<li>Способствует появлению новых волосков.</li>
-<li>После пилинга появляется прикорневой объём.</li>
-<li>Индивидуально подбираем домашний уход.</li>
-</ul>
-</details>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Диагностика кожи головы + пилинг + SPA">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="polirovka">
-<h3>Полировка / авторская стрижка</h3>
-<p class="service-desc">Устранение сечёных волос ножницами и машинкой со специальной насадкой.</p>
-<div class="service-meta">
-<span>Время: 1 час – 1 ч 30 мин</span>
-</div>
-<dl class="price-list">
-<div>
-<dt>С мытьём головы и SPA-уходом</dt>
-<dd>3 500 ₽</dd>
-</div>
-<div>
-<dt>Перед основной процедурой</dt>
-<dd>1 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Удаляет секущиеся и сухие кончики с сохранением длины.</li>
-<li>Обновляются кончики волос разной длины; волосы меньше путаются.</li>
-<li>За одну процедуру уходит до 90% сечения.</li>
-<li>Повтор — не чаще одного раза в 4–6 месяцев; иногда не требуется.</li>
-</ul>
-</details>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Полировка / авторская стрижка">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="strijka">
-<h3>Стрижка · ровный срез</h3>
-<p class="service-desc">Отдельно или перед основной процедурой.</p>
-<div class="service-meta">
-</div>
-<dl class="price-list">
-<div>
-<dt>Без мытья головы</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>С мытьём головы</dt>
-<dd>2 500 ₽</dd>
-</div>
-<div>
-<dt>Перед основной процедурой · срез до 5 см</dt>
-<dd>Бесплатно</dd>
-</div>
-<div>
-<dt>Перед основной процедурой · срез больше 5 см</dt>
-<dd>500 ₽</dd>
-</div>
-</dl>
-<p class="price-note">Стоимость перед основной процедурой одинакова у всех мастеров.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Стрижка · ровный срез">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-</div>
-</section>
-<section class="cat-block" id="okrash" aria-labelledby="okrash-title">
-<h2 id="okrash-title">Окрашивание и биозавивка</h2>
-<div class="price-grid">
-<article class="service-card" id="okrashivanie">
-<h3>Окрашивание и тонирование</h3>
-<p class="service-desc">Профи-мастер Валерия · красители Davines / AlterEgo Italy.</p>
-<div class="service-meta">
-</div>
-<h4 class="price-group">Тонирование</h4>
-<dl class="price-list">
-<div>
-<dt>Плечи</dt>
-<dd>5 500 ₽</dd>
-</div>
-<div>
-<dt>Лопатки</dt>
-<dd>6 000 ₽</dd>
-</div>
-<div>
-<dt>Талия</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Пояс</dt>
-<dd>7 000 ₽</dd>
-</div>
-</dl>
-<h4 class="price-group">Окрашивание в тон</h4>
-<dl class="price-list">
-<div>
-<dt>Плечи</dt>
-<dd>6 000 ₽</dd>
-</div>
-<div>
-<dt>Лопатки</dt>
-<dd>6 500 ₽</dd>
-</div>
-<div>
-<dt>Талия</dt>
-<dd>7 000 ₽</dd>
-</div>
-<div>
-<dt>Пояс</dt>
-<dd>7 500 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Тонирование — окрашивание безаммиачным или гелевым красителем.</li>
-<li>Окрашивание в тон — стойкое окрашивание и работа с сединой.</li>
-</ul>
-</details>
-<details>
-<summary>Доплаты</summary>
-<dl class="price-list">
-<div>
-<dt>Густота от 8 / 9 / 10 см</dt>
-<dd>500 / 1 000 / 1 500 ₽</dd>
-</div>
-<div>
-<dt>Длина от 60 / 70 см</dt>
-<dd>500 / 1 000 ₽</dd>
-</div>
-<div>
-<dt>Наращённые виски (загущение)</dt>
-<dd>1 500 ₽</dd>
-</div>
-<div>
-<dt>Наращивание по всей голове</dt>
-<dd>3 000 ₽</dd>
-</div>
-</dl>
-</details>
-<p class="price-note">Волосы ниже 80 см и сложные случаи рассчитываются индивидуально.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Окрашивание и тонирование">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-<article class="service-card" id="biozavivka">
-<h3>Биозавивка волос</h3>
-<p class="service-desc">Топ-мастер Софья · от лёгких волн до упругих кудрей.</p>
-<div class="service-meta">
-</div>
-<dl class="price-list">
-<div>
-<dt>До уха</dt>
-<dd>7 000–8 000 ₽</dd>
-</div>
-<div>
-<dt>До плеч</dt>
-<dd>8 000–11 000 ₽</dd>
-</div>
-<div>
-<dt>До лопаток</dt>
-<dd>11 000–13 000 ₽</dd>
-</div>
-<div>
-<dt>Ниже лопаток</dt>
-<dd>13 000–18 000 ₽</dd>
-</div>
-</dl>
-<details>
-<summary>О процедуре</summary>
-<ul>
-<li>Мягко формирует локоны без аммиака и агрессивных компонентов.</li>
-<li>Для натуральных и окрашенных волос.</li>
-<li>Разные техники накручивания на бигуди разной формы и диаметра.</li>
-<li>Проводим диагностику состояния волос и подбираем состав под их структуру.</li>
-<li>Обучаем укладке по кудрявому методу, рассказываем про домашний уход и стайлинг.</li>
-<li>Тест-прядь бесплатно.</li>
-</ul>
-</details>
-<p class="price-note">Волосы ниже 70 см и сложные случаи рассчитываются индивидуально.</p>
-<a class="service-book" href="https://n92404.yclients.com/" target="_blank" rel="noopener" aria-label="Записаться: Биозавивка волос">Записаться онлайн <span aria-hidden="true">↗</span>
-</a>
-</article>
-</div>
-</section>
-<footer class="price-footer">
-<p>Процедуру и точную стоимость мастер подтверждает после диагностики.</p>
-<a href="index.html">← На главную Hair Lab</a>
-</footer>
+
+  <div class="price-head">
+    <div class="ttl">
+      <div class="script">прайс под рукой</div>
+      <h1>Услуги и цены</h1>
+    </div>
+    <div class="price-actions">
+      <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">Записаться</a>
+      <a href="index.html" class="btn btn-ghost">← На главную</a>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button data-target="viypr" class="active">Выпрямление</button>
+    <button data-target="uhods">Уходы и стрижки</button>
+    <button data-target="okrash">Окрашивание</button>
+  </div>
+
+  <!-- ВЫПРЯМЛЕНИЕ -->
+  <section id="viypr" class="cat-block">
+    <div class="cat-label"><span class="pin" style="background:var(--terra)"></span><h2>Выпрямление / Разглаживание</h2><span class="line"></span></div>
+    <div class="price-grid">
+      <button type="button" class="price-card" aria-label="Открыть прайс: ботокс для волос"><img src="PriceMay2026/thumbs/Botox.webp?v=20260818" data-full="PriceMay2026/Botox.jpg?v=20260818" alt="Ботокс для волос" width="800" height="1422" decoding="async" fetchpriority="high"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: биксипластия"><img src="PriceMay2026/thumbs/Bixisplatia.webp?v=20260818" data-full="PriceMay2026/Bixisplatia.jpg?v=20260818" alt="Биксипластия" width="800" height="1422" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: коллагеновое выпрямление"><img src="PriceMay2026/thumbs/Collagen.webp?v=20260818" data-full="PriceMay2026/Collagen.jpg?v=20260818" alt="Коллагеновое выпрямление" width="800" height="1422" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: кератиновое выпрямление"><img src="PriceMay2026/thumbs/Keratin.webp?v=20260818" data-full="PriceMay2026/Keratin.jpg?v=20260818" alt="Кератиновое выпрямление" width="800" height="1422" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: нанопластика"><img src="PriceMay2026/thumbs/Nanoplastica.webp" data-full="PriceMay2026/Nanoplastica.jpg" alt="Нанопластика волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть описание тотальной реконструкции"><img src="PriceMay2026/thumbs/Totalinfo.webp" data-full="PriceMay2026/Totalinfo.jpg" alt="Тотальная реконструкция — описание" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть стоимость тотальной реконструкции"><img src="PriceMay2026/thumbs/TotalPrice.webp?v=20260818" data-full="PriceMay2026/TotalPrice.jpg?v=20260818" alt="Тотальная реконструкция — стоимость" width="800" height="1422" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: обработка височной зоны"><img src="PriceMay2026/thumbs/Obodok.webp" data-full="PriceMay2026/Obodok.jpg" alt="Обработка височной зоны" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: Brazilian Blowout"><img src="PriceMay2026/thumbs/Brazilian.webp" data-full="PriceMay2026/Brazilian.jpg" alt="Brazilian Blowout" width="800" height="1423" loading="lazy" decoding="async"></button>
+    </div>
+  </section>
+
+  <!-- УХОДЫ -->
+  <section id="uhods" class="cat-block">
+    <div class="cat-label"><span class="pin" style="background:var(--teal)"></span><h2>Уходы + Стрижки</h2><span class="line"></span></div>
+    <div class="price-grid">
+      <button type="button" class="price-card" aria-label="Открыть прайс: холодное восстановление"><img src="PriceMay2026/thumbs/Holodnoe.webp?v=20260818" data-full="PriceMay2026/Holodnoe.jpg?v=20260818" alt="Холодное восстановление" width="800" height="1422" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: Счастье для волос"><img src="PriceMay2026/thumbs/Schastie.webp" data-full="PriceMay2026/Schastie.jpg" alt="Счастье для волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: пилинг и диагностика"><img src="PriceMay2026/thumbs/DiagnostikaPilig.webp" data-full="PriceMay2026/DiagnostikaPilig.jpg" alt="Пилинг и диагностика кожи головы" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: полировка волос"><img src="PriceMay2026/thumbs/Polirovka.webp" data-full="PriceMay2026/Polirovka.jpg" alt="Полировка волос" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: стрижка"><img src="PriceMay2026/thumbs/Strijka.webp" data-full="PriceMay2026/Strijka.jpg" alt="Стрижка" width="800" height="1423" loading="lazy" decoding="async"></button>
+    </div>
+  </section>
+
+  <!-- ОКРАШИВАНИЕ -->
+  <section id="okrash" class="cat-block">
+    <div class="cat-label"><span class="pin" style="background:var(--gold)"></span><h2>Окрашивание</h2><span class="line"></span></div>
+    <div class="price-grid">
+      <button type="button" class="price-card" aria-label="Открыть прайс: тонирование и окрашивание"><img src="PriceMay2026/thumbs/Okrashivanie.webp" data-full="PriceMay2026/Okrashivanie.jpg" alt="Тонирование и окрашивание" width="800" height="1423" loading="lazy" decoding="async"></button>
+      <button type="button" class="price-card" aria-label="Открыть прайс: биозавивка"><img src="PriceMay2026/thumbs/Biozavivka.webp" data-full="PriceMay2026/Biozavivka.jpg" alt="Биозавивка" width="800" height="1423" loading="lazy" decoding="async"></button>
+    </div>
+  </section>
+
+  <div class="center" style="margin:10px 0 40px;">
+    <a href="https://n92404.yclients.com" target="_blank" rel="noopener" class="btn btn-primary">Записаться онлайн</a>
+  </div>
+
 </main>
-<script>document.addEventListener("DOMContentLoaded", () => {
+
+<!-- ============ MODAL ============ -->
+<div id="imageModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Просмотр прайса" aria-hidden="true">
+  <div class="modal-inner">
+    <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+    <button class="modal-nav modal-prev" type="button" aria-label="Предыдущее изображение">‹</button>
+    <button class="modal-nav modal-next" type="button" aria-label="Следующее изображение">›</button>
+    <img id="modalImage" alt="">
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
   /* бургер */
   const burger = document.getElementById("navBurger");
   const links = document.getElementById("navLinks");
@@ -931,7 +195,78 @@
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setNavOpen(false)));
   document.addEventListener("click", e => { if (!links.contains(e.target) && e.target !== burger) setNavOpen(false); });
 
-  document.addEventListener("keydown", e => { if (e.key === "Escape") setNavOpen(false); });
-});</script>
+  /* вкладки */
+  const tabs = [...document.querySelectorAll(".tabs button")];
+  const ids = ["viypr","uhods","okrash"];
+  const secs = ids.map(id => document.getElementById(id));
+  let autoScroll = false;
+  function setActive(id){ tabs.forEach(b => {
+    const active = b.dataset.target === id;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", String(active));
+  }); }
+  setActive("viypr");
+  tabs.forEach(btn => btn.addEventListener("click", () => {
+    autoScroll = true; setTimeout(() => autoScroll = false, 700);
+    const el = document.getElementById(btn.dataset.target);
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 150;
+    window.scrollTo({ top:y, behavior:"smooth" });
+    setActive(btn.dataset.target);
+  }));
+  const obs = new IntersectionObserver(ents => {
+    if (autoScroll) return;
+    const vis = ents.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if (vis?.target?.id) setActive(vis.target.id);
+  }, { rootMargin:"-35% 0px -55% 0px", threshold:[0.01,0.1,0.25,0.5] });
+  secs.forEach(s => obs.observe(s));
+
+  /* плавное появление картинок */
+  document.querySelectorAll(".price-card img").forEach(img => {
+    if (img.complete) img.classList.add("loaded");
+    else img.addEventListener("load", () => img.classList.add("loaded"));
+  });
+
+  /* модалка */
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const cards = [...document.querySelectorAll(".price-card")];
+  const imgs = [...document.querySelectorAll(".price-card img")];
+  let index = 0;
+  let lastFocus = null;
+  const show = i => {
+    if (i<0) i = imgs.length-1;
+    if (i>=imgs.length) i = 0;
+    index = i;
+    modalImg.src = imgs[index].dataset.full || imgs[index].src;
+    modalImg.alt = imgs[index].alt;
+  };
+  cards.forEach((card,i) => card.addEventListener("click", () => {
+    lastFocus = document.activeElement;
+    show(i);
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow="hidden";
+    document.querySelector(".modal-close").focus();
+  }));
+  const close = () => {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow="";
+    if (lastFocus) lastFocus.focus();
+  };
+  modal.addEventListener("click", e => { if (e.target === modal) close(); });
+  document.querySelector(".modal-prev").onclick = e => { e.stopPropagation(); show(index-1); };
+  document.querySelector(".modal-next").onclick = e => { e.stopPropagation(); show(index+1); };
+  document.querySelector(".modal-close").onclick = e => { e.stopPropagation(); close(); };
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") setNavOpen(false);
+    if (!modal.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(index-1);
+    if (e.key === "ArrowRight") show(index+1);
+  });
+});
+</script>
+
 </body>
 </html>
